@@ -39,17 +39,32 @@ def _hour(stamp):
 
 
 def gharchive(end=None):
+    """Busy repositories pushed to mostly by one account, over the days before `end`.
+
+    Each day's push counts are saved under .cache/gharchive/ once its 24 hours are read, so a stopped run downloads
+    only the days it had not finished."""
     cfg = CONFIG["discover"]["gharchive"]
     end = end or date.today()
     days = [end - timedelta(days=i) for i in range(1, cfg["days"] + 1)]
-    stamps = [f"{d.isoformat()}-{h}" for d in days for h in range(24)]
+    store = ROOT / ".cache" / "gharchive"
+    store.mkdir(parents=True, exist_ok=True)
     pushes = defaultdict(Counter)
     active = defaultdict(set)
     with ThreadPoolExecutor(cfg["parallel_downloads"]) as pool:
-        for day, counts in pool.map(_hour, stamps):
-            for (repo, actor), n in counts.items():
+        for d in days:
+            path = store / f"{d.isoformat()}.json.gz"
+            if path.exists():
+                rows = json.loads(gzip.decompress(path.read_bytes()))
+            else:
+                day = Counter()
+                for _, counts in pool.map(_hour, [f"{d.isoformat()}-{h}" for h in range(24)]):
+                    day.update(counts)
+                rows = [[repo, actor, n] for (repo, actor), n in day.items()]
+                path.write_bytes(gzip.compress(json.dumps(rows).encode()))
+                print(f"gharchive: read {d.isoformat()}")
+            for repo, actor, n in rows:
                 pushes[repo][actor] += n
-                active[repo].add(day)
+                active[repo].add(d)
     out = []
     for repo, actors in pushes.items():
         total = sum(actors.values())
@@ -90,17 +105,41 @@ def source_lists():
     return out
 
 
-def nominate():
+def run_day(cache=None, today=None):
+    """The day of the screen in progress: the newest nomination of the last week whose screen has not finished, else
+    today. A stopped screen resumes under its own day, whenever it is restarted."""
+    cache = cache or ROOT / ".cache"
+    today = today or date.today()
+    started = sorted((p.name[len("nominees-"):-len(".json")] for p in cache.glob("nominees-*.json")), reverse=True)
+    for day in started:
+        if day >= (today - timedelta(days=6)).isoformat() and not (cache / f"funnel-{day}.json").exists():
+            return date.fromisoformat(day)
+        break
+    return today
+
+
+def sweep(cache=None, keep_days=14, today=None):
+    """Remove day caches older than `keep_days`: archive days, nominations, totals and funnels."""
+    cache = cache or ROOT / ".cache"
+    cut = ((today or date.today()) - timedelta(days=keep_days)).isoformat()
+    for path in [*cache.glob("gharchive/*.json.gz"), *cache.glob("*-20??-??-??.json")]:
+        day = re.search(r"(\d{4}-\d{2}-\d{2})", path.name)
+        if day and day.group(1) < cut:
+            path.unlink()
+
+
+def nominate(day=None):
     """Nominees by source, deduplicated case-insensitively; the first source to name a repository keeps it.
 
-    Cached for the day in .cache/, so a rerun after an interruption does not stream the archive again.
+    Cached under the run's day in .cache/, so a rerun after an interruption does not stream the archive again.
     """
-    cache = ROOT / ".cache" / f"nominees-{date.today().isoformat()}.json"
+    day = day or date.today()
+    cache = ROOT / ".cache" / f"nominees-{day.isoformat()}.json"
     if cache.exists():
         return [tuple(x) for x in json.loads(cache.read_text())]
     found = {}
     for source, repos in (("manual", read_list(DATA / "manual.txt")), ("source-list", source_lists()),
-                          ("gharchive", gharchive())):
+                          ("gharchive", gharchive(day))):
         for repo in repos:
             found.setdefault(repo.lower(), (repo, source))
         print(f"discover: {source} named {len(repos)}")

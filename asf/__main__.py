@@ -22,7 +22,9 @@ from .store import (daily, daily_dates, latest, save_daily, save_latest, save_sn
 
 
 def find():
-    watch.screen(discover.nominate())
+    discover.sweep()
+    day = discover.run_day()
+    watch.screen(discover.nominate(day), day.isoformat())
 
 
 def prior_weeks(repo, snapshots, day):

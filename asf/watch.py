@@ -78,12 +78,29 @@ def _cache(name):
 
 def _save(path, data):
     path.parent.mkdir(exist_ok=True)
-    path.write_text(json.dumps(data))
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(data))
+    os.replace(tmp, path)
 
 
-def screen(nominees, workers=None):
+def resumable(path, store, todo, fetch, step):
+    """Fetch what `store` lacks of `todo`, `step` at a time, saving `store` to `path` after each part, so a stopped run
+    picks up where it was. A repository GitHub had nothing for is stored as None, and not asked for again."""
+    left = [r for r in todo if r not in store]
+    for part in batched(left, step):
+        got = fetch(part)
+        store.update({r: got.get(r) for r in part})
+        _save(path, store)
+        print(f"{path.name}: {len(store)} of {len(todo)}")
+    return store
+
+
+def screen(nominees, day=None, workers=None):
     """nominees: [(repo, source)]. Layers 1 and 2, weekly: what passes waits in data/screened.jsonl for the gate
-    (layers 3 and 4), and what no longer passes stops waiting. Returns the repositories now waiting."""
+    (layers 3 and 4), and what no longer passes stops waiting. Returns the repositories now waiting.
+
+    day: the run's day, which names its caches: totals are saved as they are read, and the funnel once the screen is
+    done, which closes the run."""
     cfg, a, w = CONFIG["screen"], CONFIG["admit"], CONFIG["window"]
     days, week = w["days"], w["week_days"]
     workers = workers or int(os.environ.get("ASF_WORKERS", cfg["workers"]))
@@ -98,11 +115,11 @@ def screen(nominees, workers=None):
     funnel["to check"] = len(todo)
     print(f"screen: {len(todo)} nominees to check")
 
-    # Layer 1: totals, cached for the day so a rerun after an interruption starts further on.
-    facts_path, known = _cache(f"facts-{today()}.json")
-    if not known:
-        known = facts([r for r, _ in todo], days, workers)
-        _save(facts_path, known)
+    # Layer 1: totals, saved as they are read so a rerun after an interruption starts where it stopped.
+    day = day or today()
+    facts_path, known = _cache(f"facts-{day}.json")
+    resumable(facts_path, known, [r for r, _ in todo], lambda part: facts(part, days, workers), 2000)
+    known = {r: f for r, f in known.items() if f}
     # Totals cached before weekly counts were recorded get them now, but only where the other totals already pass:
     # a weekly count walks history, which is the slow part of the query.
     lacking = [f["canonical"] for f in known.values()
@@ -157,7 +174,7 @@ def screen(nominees, workers=None):
         if r not in keep and row.get("status") == "waiting":
             row.update(status="out", out_since=today())   # fell below layer 1 or 2; back if it qualifies again
     save_screened(waiting)
-    _save(ROOT / ".cache" / f"funnel-{today()}.json", funnel)
+    _save(ROOT / ".cache" / f"funnel-{day}.json", funnel)
     return solo
 
 
@@ -174,10 +191,10 @@ def gate(minutes=None, workers=None):
                   and row.get("gate_checked", "") < today()), key=lambda r: rows[r].get("gate_checked", ""))
     print(f"gate: {len(due)} waiting repositories due; {minutes} minutes to check them")
     passed, checked = [], 0
-    for part in batched(due, g["batch"]):
+    for part in batched(due, g["batch"] * workers * 10):
         if time.monotonic() > deadline:
             break
-        for r, v in clock_slots(part, w["lag_days"], w["week_days"], workers).items():
+        for r, v in clock_slots(part, w["lag_days"], w["week_days"], workers, g["batch"]).items():
             c = slot_clock(v["slots"], v["end"], w["week_days"])
             rows[r].update(gate_checked=today(), night_utilization=c["night_utilization"],
                            nights_covered=c["nights_covered"], nights_seen=c["nights_seen"])

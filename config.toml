@@ -55,7 +55,7 @@ min_lead_human_share = 0.8
 min_night_utilization = 0.4
 min_nights_covered = 5
 # Repositories per query (each asks for 84 slot counts; ten at once is more than GitHub finishes before a 502), and
-# the most time one run spends checking the ones waiting.
+# the most time one run spends checking the ones waiting. Results are saved every ten queries per worker.
 batch = 5
 minutes = 20
 

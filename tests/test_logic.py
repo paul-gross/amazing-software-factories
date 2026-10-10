@@ -2,6 +2,7 @@
 admission, tiers, citations."""
 import contextlib
 import io
+import json
 import tempfile
 import unittest
 from datetime import date, datetime, timedelta, timezone
@@ -203,6 +204,44 @@ class Batches(unittest.TestCase):
             measure.graphql = real
         self.assertEqual(sorted(out), sorted(repos[:7]))
         self.assertEqual([len(a) for a in asked], [8, 4, 4, 2, 2, 1, 1])
+
+
+class Resume(unittest.TestCase):
+    def test_a_stopped_screen_resumes_under_its_own_day(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "nominees-2026-10-10.json").write_text("[]")
+            self.assertEqual(discover.run_day(cache, date(2026, 10, 12)), date(2026, 10, 10))
+            (cache / "funnel-2026-10-10.json").write_text("{}")
+            self.assertEqual(discover.run_day(cache, date(2026, 10, 12)), date(2026, 10, 12))
+
+    def test_a_run_left_more_than_a_week_ago_is_not_resumed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "nominees-2026-10-01.json").write_text("[]")
+            self.assertEqual(discover.run_day(cache, date(2026, 10, 12)), date(2026, 10, 12))
+
+    def test_old_day_caches_are_swept(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "gharchive").mkdir()
+            for name in ("facts-2026-09-01.json", "facts-2026-10-09.json", "authors.json", "gharchive/2026-09-01.json.gz"):
+                (cache / name).write_text("{}")
+            discover.sweep(cache, 14, date(2026, 10, 10))
+            self.assertEqual(sorted(p.name for p in cache.rglob("*.*")), ["authors.json", "facts-2026-10-09.json"])
+
+    def test_totals_already_read_are_not_read_again(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path, asked = Path(tmp) / "facts.json", []
+            def fetch(part):
+                asked.extend(part)
+                return {r: dict(n=1) for r in part if r != "o/gone"}
+            store = {"o/a": dict(n=1)}
+            with contextlib.redirect_stdout(io.StringIO()):
+                watch.resumable(path, store, ["o/a", "o/b", "o/gone", "o/c"], fetch, 2)
+                watch.resumable(path, json.loads(path.read_text()), ["o/a", "o/b", "o/gone", "o/c"], fetch, 2)
+            self.assertEqual(asked, ["o/b", "o/gone", "o/c"])
+            self.assertEqual(json.loads(path.read_text()), {"o/a": dict(n=1), "o/b": dict(n=1), "o/gone": None, "o/c": dict(n=1)})
 
 
 class Links(unittest.TestCase):
