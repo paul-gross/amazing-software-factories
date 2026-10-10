@@ -1,0 +1,147 @@
+# Every threshold the pipeline applies. Change a number here, not in code.
+
+[window]
+# Four whole weeks, so four weekly snapshots tile the window exactly and the weekly run never rereads a month.
+days = 28
+week_days = 7
+# At most this many default-branch commits are read per window; beyond it, totals are extrapolated.
+max_commits = 1000
+# The weekly measurement's window ends this many days before the run. Work still on a local branch, or a pushed
+# branch not yet merged, would otherwise read as days off at the window's end.
+lag_days = 2
+
+[discover.gharchive]
+# Hours of GH Archive streamed per run, ending at the most recent complete UTC day.
+days = 7
+# A repository is nominated when its push events reach these floors.
+min_push_events = 15
+min_active_days = 3
+# Share of non-bot push events made by the busiest pusher. Loose on purpose: on a busy project the pusher is often
+# whoever clicks merge, so authorship is checked properly by the screen.
+min_lead_pusher_share = 0.5
+parallel_downloads = 4
+
+[screen]
+# Layer 1, totals: commits per day on the default branch over the window; code as GitHub's language statistics count
+# it, which leaves out data-only repositories; and sustained work, at least the daily floor in this many of the last
+# four weeks. Forks and archived repositories stop here too.
+min_commits_per_day = 10
+min_code_kb = 100
+min_active_weeks = 3
+# Layer 2, not a team: authors of this many recent commits, with a loose margin for sample noise.
+author_sample = 20
+author_slack = 0.6
+# Layer 4, varied changes by one person: the newest this-many commits of the last week, no line counts. Variety is
+# distinct messages per message once counters, dates and hashes are blanked; a scheduled job scores near zero. Fewer
+# commits than the minimum cannot be judged, and such a week is too quiet to admit anyway. The one-person test here is
+# the strict one from the admission settings.
+message_sample = 100
+min_message_sample = 20
+min_message_variety = 0.4
+# An author sample stands for this many days, so most nominees are not sampled again each week.
+rescreen_after_days = 28
+# Parallel GitHub queries while screening. Each worker mostly waits on GitHub; the ASF_WORKERS environment variable
+# overrides this, as the scheduled workflow does.
+workers = 2
+
+[admit]
+# The one-person test: one human wrote at least this share of the human commits, or no human wrote any.
+min_lead_human_share = 0.8
+
+[gate]
+# Layer 3, runs without people, over the measured week (window.week_days ending window.lag_days ago), from commit
+# counts in two-hour slots. Loose on purpose: it only stops work that sleeps; the autonomy grade is the strict test.
+# Passing it, and layer 4, puts a repository on the watchlist for good.
+min_night_utilization = 0.4
+min_nights_covered = 5
+# Repositories per query, and the most time one run spends checking the ones waiting.
+batch = 10
+minutes = 20
+
+[measure]
+# Every watched repository is measured once a day; one run measures what is due until this many minutes pass.
+minutes = 30
+workers = 4
+
+[judge]
+top_n = 25
+rejudge_after_days = 28
+# Re-judge sooner when source size moved by at least this fraction.
+rejudge_on_source_change = 0.25
+judges = 2
+# A third judge breaks the tie when two judges differ by more than this on any dimension.
+tiebreak_gap = 1
+model = "claude-opus-5-5"
+concurrency = 3
+timeout_minutes = 45
+# Share of a judgment's citations that must resolve to a real file and line.
+min_valid_citations = 0.8
+
+# Letter grades on three axes. On each, a repository earns the highest letter whose every requirement it meets, and
+# F when it meets none. Thresholds are first guesses until calibrated against measured repositories.
+#
+# night_utilization is how fully a week's quietest six hours of the day are used: the share of commits landing in
+# them, against the quarter an even spread would put there. 1.0 is work landing round the clock; near 0 is a daily gap,
+# like a person asleep. day_utilization is the same across the week: how fully its quietest 24 hours in a row are used,
+# against an even spread; near 0 is a day off. Below D's floor (F) the work stops for part of each day or for whole
+# days: run overnight or on weekdays at most, not round the clock. nights_missed counts the week's nights (its
+# quietest six hours, each day) with no commit at all. All three read the commits that changed code.
+
+# Output: lines of code (source and tests) added on the median day of the week, each file netted per day so
+# regenerated files count once; a day with none counts as zero, so one large drop cannot carry a week. Below E's floor
+# (F) includes a project no longer being worked on.
+[grades.output.A]
+code_added_daily_median = 40000
+[grades.output.B]
+code_added_daily_median = 20000
+[grades.output.C]
+code_added_daily_median = 10000
+[grades.output.D]
+code_added_daily_median = 5000
+[grades.output.E]
+code_added_daily_median = 1000
+
+[grades.autonomy.A]
+night_utilization = 0.9
+day_utilization = 0.9
+nights_missed_max = 0
+[grades.autonomy.B]
+night_utilization = 0.8
+day_utilization = 0.8
+nights_missed_max = 0
+[grades.autonomy.C]
+night_utilization = 0.7
+day_utilization = 0.7
+nights_missed_max = 1
+[grades.autonomy.D]
+night_utilization = 0.6
+day_utilization = 0.6
+nights_missed_max = 1
+
+[grades.discipline.A]
+ci_green = 0.85
+pr_checks = ["tests", "lint", "typecheck"]
+test_ratio = 0.5
+largest_file_kb_max = 500
+[grades.discipline.B]
+ci_green = 0.7
+pr_checks = ["tests"]
+test_ratio = 0.3
+[grades.discipline.C]
+ci_green = 0.5
+test_ratio = 0.1
+[grades.discipline.D]
+test_ratio = 0.05
+[grades.discipline.E]
+ci_runs = 1
+
+[kind]
+# The classifier judges each repository once per classifier version, and again only when asked to refresh.
+model = "claude-sonnet-5-5"
+concurrency = 4
+
+[lines]
+# Lines of code come from a shallow clone of the last week, deleted as soon as it is counted. Repositories larger than
+# this on GitHub are not cloned.
+max_repo_mb = 1024
+timeout_seconds = 600

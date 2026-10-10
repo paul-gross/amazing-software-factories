@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazing software factories</title>
+<meta name="description" content="Software built by autonomous agent fleets: only repositories whose work lands through the night, measured daily from public GitHub data.">
+<style>
+:root {
+  --bg: #fbfaf8; --panel: #ffffff; --ink: #1d1f23; --muted: #5d6470; --line: #e3e1dc; --accent: #2457c5;
+  --t1: #1f7a4d; --t2: #b26a00; --t3: #b3352f; --t4: #6b5ca5; --t5: #6f7782; --hover: #f2f0ec;
+  --gA: #1f7a4d; --gB: #3f8f5f; --gC: #cfe3a8; --gD: #f3d98b; --gE: #f2b8a8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171b; --panel: #1c1f24; --ink: #e8e9ec; --muted: #a2a8b3; --line: #30343b; --accent: #7ea6ff;
+    --t1: #4fc68b; --t2: #f0a53a; --t3: #ff7b72; --t4: #b3a4f5; --t5: #9aa3ad; --hover: #24282e; --gA: #2f9e66; --gB: #2f7d52; --gC: #5d7a2e; --gD: #7a6420; --gE: #7a3a2e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171b; --panel: #1c1f24; --ink: #e8e9ec; --muted: #a2a8b3; --line: #30343b; --accent: #7ea6ff;
+  --t1: #4fc68b; --t2: #f0a53a; --t3: #ff7b72; --t4: #b3a4f5; --t5: #9aa3ad; --hover: #24282e; --gA: #2f9e66; --gB: #2f7d52; --gC: #5d7a2e; --gD: #7a6420; --gE: #7a3a2e; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); }
+header, main, footer { margin: 0 auto; padding: 0 16px; }
+header { padding-top: 28px; display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; }
+.lede { margin: 0; color: var(--muted); max-width: 70ch; }
+button { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.kpi b { display: block; font-size: 22px; }
+.kpi span { color: var(--muted); font-size: 13px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin-bottom: 16px; }
+.card h2 { margin: 0 0 8px; font-size: 17px; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.mark { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: baseline; }
+.s0 { color: var(--t1); } .s1 { color: var(--t2); } .s2 { color: var(--t5); } .s3 { color: var(--t4); } .s4 { color: var(--t3); } .s5 { color: var(--t5); }
+.g { display: inline-block; min-width: 1.6em; padding: 0 4px; border-radius: 4px; text-align: center; font-weight: 600; font-size: 12.5px; }
+.gA { background: var(--gA); color: #fff; } .gB { background: var(--gB); color: #fff; } .gC { background: var(--gC); color: var(--ink); }
+.gD { background: var(--gD); color: var(--ink); } .gE { background: var(--gE); color: var(--ink); } .gF { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
+.controls label { font-size: 13.5px; color: var(--muted); }
+select, input[type=search] { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; }
+.need { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; }
+details.how { margin-top: 8px; } details.how table { width: auto; }
+svg text { fill: var(--muted); font-size: 11px; }
+#map-card { position: relative; }
+#map { display: block; }
+#map .pt { cursor: pointer; }
+#map .pt:hover, #map .pt:focus { fill-opacity: 1; stroke-width: 2; outline: none; }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; box-shadow: 0 4px 16px rgb(0 0 0 / 0.18); min-width: 220px; max-width: 320px; }
+.tip dl { margin: 6px 0 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--muted); margin: -2px 0 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .mark { margin: 0; width: 12px; height: 12px; }
+.tip-grades { margin-top: 4px; }
+#scatter { min-width: 640px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+caption { text-align: left; color: var(--muted); padding-bottom: 6px; }
+th, td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child, th.l, td.l { text-align: left; }
+thead th { position: sticky; top: 0; background: var(--panel); cursor: pointer; user-select: none; }
+thead th[aria-sort] { color: var(--accent); }
+tbody tr { cursor: pointer; }
+tbody tr:hover, tbody tr:focus { background: var(--hover); outline: none; }
+.muted { color: var(--muted); }
+#detail { display: none; }
+#detail.open { display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+dl { margin: 0; display: grid; grid-template-columns: auto auto; gap: 2px 12px; font-size: 13.5px; }
+dt { color: var(--muted); } dd { margin: 0; text-align: right; }
+.spark { width: 100%; height: 48px; }
+.spark path { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.judge p { margin: 4px 0 10px; }
+footer { color: var(--muted); font-size: 13px; padding: 12px 16px 32px; }
+@media print { button, .filters { display: none; } thead th { position: static; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Amazing software factories</h1>
+    <p class="lede">Software built by autonomous agent fleets. A repository is listed only once its work lands through
+      the night, night after night; from then on it is measured daily from public GitHub data and gets three letter
+      grades (output, autonomy, discipline) and a kind. Sort by whatever you care about.
+      <a href="https://github.com/paul-gross/amazing-software-factories#readme">How it works</a>.</p>
+  </div>
+  <button id="theme" type="button" aria-label="Toggle colour theme">Theme</button>
+</header>
+<main>
+  <section class="kpis" id="kpis" aria-label="Summary"></section>
+
+  <section class="card" id="map-card" aria-labelledby="map-title">
+    <h2 id="map-title">Map</h2>
+    <p class="muted" style="margin:0 0 8px">Any two measurements against each other. Shape and colour mark the kind. Hover a point for its numbers; select it for detail.</p>
+    <div class="controls" id="map-controls"></div>
+    <div class="legend" id="map-legend" aria-label="Legend"></div>
+    <svg id="map" role="img" width="100%" height="440"></svg>
+    <div id="map-tip" class="tip" role="tooltip" hidden></div>
+  </section>
+
+  <section class="card" id="detail" aria-live="polite"></section>
+
+  <section class="card" aria-labelledby="table-title">
+    <h2 id="table-title">Every measured repository</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter by kind"></div>
+    <div class="controls" id="controls"></div>
+    <div class="scroll"><table id="table"></table></div>
+    <details class="how"><summary>How the grades work</summary><div id="ladders"></div></details>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script src="data.js"></script>
+<script>
+(() => {
+  const D = window.ASF, rows = D.rows, sections = D.sections, axes = D.axes;
+  const SHAPES = ["circle", "square", "triangle", "diamond", "cross", "cross"];
+  const LETTERS = ["A", "B", "C", "D", "E", "F"];
+  const AXIS = {output: "Output", autonomy: "Autonomy", discipline: "Discipline"};
+  const NAMES = {code_added_per_day: "code lines added/day", added_per_day: "lines added/day", night_utilization: "night utilization", day_utilization: "day utilization", nights_missed: "nights without a code commit", active_days: "active days of 7",
+    ci_green: "main CI green", pr_checks: "PRs run", test_ratio: "tests ÷ source", largest_file_kb: "largest file (KB)", ci_runs: "CI runs"};
+  const sidx = s => sections.indexOf(s);
+  const fmt = (x, d = 0) => x == null ? "–" : (Math.abs(x) < 100 && d ? x.toFixed(d) : Math.round(x).toLocaleString());
+  const pct = (x, d = 0) => x == null ? "–" : (x * 100).toFixed(d) + "%";
+  const night = r => { const c = r.aclock || r.clock || {}; return c.night_utilization != null ? c.night_utilization : c.quietest_6h_share == null ? null : c.quietest_6h_share * 4; };
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+  const starDelta = r => r.history.length > 1 ? r.history.at(-1).stars - r.history.at(-2).stars : null;
+  const letter = (r, a) => r.grades[a].grade;
+  const rank = g => g == null ? null : 6 - LETTERS.indexOf(g);            // A sorts highest
+  const badge = g => `<span class="g g${g}" title="Grade ${g}">${g}</span>`;
+  const judged = r => r.judgment ? r.judgment.final.architecture.score : null;
+  const anyJudged = rows.some(r => r.judgment);
+
+  // Theme toggle, remembered per viewer.
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("asf-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").onclick = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("asf-theme", root.dataset.theme); } catch (e) {}
+  };
+
+  // Summary.
+  const count = f => rows.filter(f).length;
+  const C = D.counts || {};
+  const kpis = [[rows.length, "listed: passed the gate"], [count(r => r.section === sections[0]), "assembly lines"],
+    [count(r => r.section === sections[1]), "built by an assembly line"],
+    ...(count(r => r.section === sections[2]) ? [[count(r => r.section === sections[2]), "awaiting classification"]] : []),
+    [count(r => letter(r, "output") === "A"), "output A: 40k+ code lines a day"],
+    [count(r => letter(r, "autonomy") <= "B"), "autonomy A or B"],
+    ...(C.waiting != null ? [[C.waiting.toLocaleString(), "waiting at the gate, checked daily"]] : []),
+    ...(anyJudged ? [[count(r => r.judgment), "cold-read by judges"]] : [])];
+  document.getElementById("kpis").innerHTML = kpis.map(([n, l]) => `<div class="kpi"><b>${n}</b><span>${l}</span></div>`).join("");
+
+  function shape(kind, x, y, r) {
+    if (kind === "square") return `<rect x="${x - r}" y="${y - r}" width="${2 * r}" height="${2 * r}"/>`;
+    if (kind === "triangle") return `<path d="M${x},${y - r * 1.2} L${x + r * 1.1},${y + r} L${x - r * 1.1},${y + r} Z"/>`;
+    if (kind === "diamond") return `<path d="M${x},${y - r * 1.3} L${x + r * 1.3},${y} L${x},${y + r * 1.3} L${x - r * 1.3},${y} Z"/>`;
+    if (kind === "cross") return `<path d="M${x - r},${y - r} L${x + r},${y + r} M${x + r},${y - r} L${x - r},${y + r}" stroke-width="2.2"/>`;
+    return `<circle cx="${x}" cy="${y}" r="${r}"/>`;
+  }
+  function legendMark(i) {
+    return `<svg class="mark" viewBox="0 0 10 10" aria-hidden="true"><g class="s${i}" fill="currentColor" stroke="currentColor">${shape(SHAPES[i], 5, 5, 4)}</g></svg>`;
+  }
+
+  // Map: any two measurements against each other, chosen by the viewer.
+  const clockOf = r => r.aclock || r.clock || {};
+  const METRICS = {
+    code: ["Code lines/day", r => r.lines.code, "log", v => fmt(v)],
+    all: ["All lines/day", r => r.lines.all, "log", v => fmt(v)],
+    prs: ["PRs/day", r => r.volume.merged_prs_per_day, "log", v => fmt(v, 1)],
+    commits: ["Commits/day", r => r.volume.commits_per_day, "log", v => fmt(v, 1)],
+    night: ["Night utilization", night, "share", v => pct(v)],
+    day: ["Day utilization", r => clockOf(r).day_utilization, "share", v => pct(v)],
+    nights: ["Nights covered", r => clockOf(r).nights_seen ? clockOf(r).nights_covered : null, "count7", v => `${v} of 7`],
+    ci: ["CI green", r => (r.ci || {}).green_share, "share", v => pct(v)],
+    tests: ["Tests ÷ source", r => (r.structure || {}).test_ratio, "log", v => fmt(v, 2)],
+    largest: ["Largest file (KB)", r => (r.structure || {}).largest_file_kb, "log", v => fmt(v)],
+    stars: ["Stars", r => r.meta.stars, "log", v => fmt(v)],
+    output: ["Output grade", r => rank(letter(r, "output")), "grade", v => LETTERS[6 - v]],
+    autonomy: ["Autonomy grade", r => rank(letter(r, "autonomy")), "grade", v => LETTERS[6 - v]],
+    discipline: ["Discipline grade", r => rank(letter(r, "discipline")), "grade", v => LETTERS[6 - v]],
+  };
+  const short = v => v >= 1e6 ? `${+(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `${+(v / 1e3).toFixed(1)}k` : `${+v.toFixed(2)}`;
+  const jitter = (i, k) => ((Math.sin(i * 12.9898 + k * 78.233) * 43758.5453) % 1) * 0.28;   // spreads points on a grade
+
+  // A scale maps a value to a pixel between a and b (a is the low end), with its ticks.
+  function scale(kind, vals, a, b) {
+    if (kind === "share") return {at: v => a + Math.max(0, Math.min(v, 1.04)) / 1.04 * (b - a), ticks: [0, .2, .4, .6, .8, 1].map(t => [t, pct(t)])};
+    if (kind === "count7") return {at: v => a + (v + 0.3) / 7.6 * (b - a), ticks: [0, 1, 2, 3, 4, 5, 6, 7].map(t => [t, String(t)])};
+    if (kind === "grade") return {at: v => a + (v - 0.5) / 6 * (b - a), ticks: [1, 2, 3, 4, 5, 6].map(t => [t, LETTERS[6 - t]])};
+    // Log: the axis starts just under the smallest value present, so the points fill it; zeros get their own lane.
+    const pos = vals.filter(v => v > 0);
+    if (!pos.length) return {at: () => a, ticks: [[0, "0"]]};
+    const lo = Math.log10(Math.min(...pos) / 1.3), hi = Math.log10(Math.max(...pos) * 1.15);
+    const zeros = vals.some(v => v <= 0), gap = zeros ? Math.sign(b - a) * 16 : 0, span = Math.max(hi - lo, 0.5);
+    const at = v => v <= 0 ? a : a + gap + (Math.log10(v) - lo) / span * (b - a - gap);
+    const decades = hi - lo, steps = decades > 3.5 ? [1] : decades > 1.5 ? [1, 2, 5] : [1, 1.5, 2, 3, 5, 7];
+    const ticks = [];
+    for (let e = Math.floor(lo); e <= Math.ceil(hi); e++) steps.forEach(m => { const t = m * 10 ** e; if (Math.log10(t) >= lo && Math.log10(t) <= hi) ticks.push([t, short(t)]); });
+    if (zeros) ticks.unshift([0, "0"]);
+    return {at, ticks};
+  }
+
+  const mapCard = document.getElementById("map-card"), svg = document.getElementById("map"), tip = document.getElementById("map-tip");
+  let pick = {x: "night", y: "code"};
+  try { Object.assign(pick, JSON.parse(localStorage.getItem("asf-map") || "{}")); } catch (e) {}
+  if (!METRICS[pick.x]) pick.x = "night";
+  if (!METRICS[pick.y]) pick.y = "code";
+  const opts = sel => Object.entries(METRICS).map(([k, m]) => `<option value="${k}"${k === sel ? " selected" : ""}>${m[0]}</option>`).join("");
+  document.getElementById("map-controls").innerHTML =
+    `<label>Across <select id="map-x">${opts(pick.x)}</select></label><label>Up <select id="map-y">${opts(pick.y)}</select></label>`;
+  ["x", "y"].forEach(k => document.getElementById(`map-${k}`).onchange = e => {
+    pick[k] = e.target.value;
+    try { localStorage.setItem("asf-map", JSON.stringify(pick)); } catch (err) {}
+    drawMap();
+  });
+
+  function showTip(r, px, py) {
+    const [xl, xv, , xf] = METRICS[pick.x], [yl, yv, , yf] = METRICS[pick.y], c = clockOf(r);
+    const val = (v, f) => v == null ? "–" : f(v);
+    tip.innerHTML = `<b>${esc(r.repo)}</b><div class="muted">${esc(r.section)}</div>
+      <div class="tip-grades">${axes.map(a => `${AXIS[a]} ${badge(letter(r, a))}`).join(" ")}</div>
+      <dl><dt>${esc(xl)}</dt><dd>${val(xv(r), xf)}</dd><dt>${esc(yl)}</dt><dd>${val(yv(r), yf)}</dd>
+      <dt>Code lines/day</dt><dd>${fmt(r.lines.code)}</dd><dt>Night · day</dt><dd>${pct(night(r))} · ${pct(c.day_utilization)}</dd>
+      <dt>Nights covered</dt><dd>${c.nights_seen ? `${c.nights_covered} of ${c.nights_seen}` : "–"}</dd></dl>`;
+    tip.hidden = false;
+    const box = mapCard.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = px - box.left + 14, top = py - box.top + 14;
+    if (left + w > box.width - 8) left = px - box.left - w - 14;
+    if (top + h > box.height - 8) top = py - box.top - h - 14;
+    tip.style.left = `${Math.max(8, left)}px`;
+    tip.style.top = `${Math.max(8, top)}px`;
+  }
+
+  function drawMap() {
+    const W = Math.max(svg.clientWidth || 900, 320), H = 440, L = 58, B = 42, T = 10, R = 14;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const [xl, xv, xk] = METRICS[pick.x], [yl, yv, yk] = METRICS[pick.y];
+    const pts = rows.map((r, i) => [r, i, xv(r), yv(r)]).filter(([, , x, y]) => x != null && y != null);
+    const sx = scale(xk, pts.map(p => p[2]), L, W - R), sy = scale(yk, pts.map(p => p[3]), H - B, T);
+    let s = "";
+    sx.ticks.forEach(([t, label]) => { const x = sx.at(t); s += `<line x1="${x}" x2="${x}" y1="${T}" y2="${H - B}" stroke="var(--line)"/><text x="${x}" y="${H - B + 15}" text-anchor="middle">${label}</text>`; });
+    sy.ticks.forEach(([t, label]) => { const y = sy.at(t); s += `<line x1="${L}" x2="${W - R}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${L - 6}" y="${y + 4}" text-anchor="end">${label}</text>`; });
+    s += `<text x="${(W + L) / 2}" y="${H - 6}" text-anchor="middle">${esc(xl)}${xk === "log" ? " (log scale)" : ""}</text>`;
+    s += `<text transform="translate(13 ${(H - B) / 2}) rotate(-90)" text-anchor="middle">${esc(yl)}${yk === "log" ? " (log scale)" : ""}</text>`;
+    pts.forEach(([r, i, x, y]) => {
+      const k = sidx(r.section);
+      const px = sx.at(x) + (xk === "grade" ? jitter(i, 1) * (sx.at(2) - sx.at(1)) : 0);
+      const py = sy.at(y) + (yk === "grade" ? jitter(i, 2) * (sy.at(2) - sy.at(1)) : 0);
+      s += `<g class="s${k} pt" fill="currentColor" stroke="currentColor" fill-opacity="0.75" data-i="${i}" tabindex="0" role="button" aria-label="${esc(r.repo)}">` +
+        `<circle cx="${px}" cy="${py}" r="11" fill="transparent" stroke="none"/>${shape(SHAPES[k], px, py, 7)}</g>`;
+    });
+    svg.innerHTML = s;
+    svg.setAttribute("aria-label", `Scatter plot of ${yl} against ${xl}`);
+    svg.querySelectorAll(".pt").forEach(g => {
+      const r = rows[+g.dataset.i];
+      g.onclick = () => show(r);
+      g.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(r); } };
+      g.onmousemove = e => showTip(r, e.clientX, e.clientY);
+      g.onmouseleave = g.onblur = () => { tip.hidden = true; };
+      g.onfocus = () => { const b = g.getBoundingClientRect(); showTip(r, b.right, b.bottom); };
+    });
+  }
+  let resizing;
+  addEventListener("resize", () => { clearTimeout(resizing); resizing = setTimeout(drawMap, 120); });
+  drawMap();
+  document.getElementById("map-legend").innerHTML = sections.map((name, i) => [name, i, count(r => r.section === name)])
+    .filter(([, , n]) => n).map(([name, i]) => `<span>${legendMark(i)}${esc(name)}</span>`).join("");
+
+  // Table.
+  // [heading, value, class, format, tooltip]
+  const COLS = [
+    ["Repository", r => r.repo.toLowerCase(), "l"],
+    ["Kind", r => sidx(r.section), "l"],
+    ['<span aria-label="Night utilization">🌙</span>', night, "", v => pct(v),
+     "Night utilization: how fully a week's quietest six hours of the day are used, against an even spread of commits. 100% is work landing round the clock; under 60% the work stops for part of each day. Counts commits that changed code."],
+    ['<span aria-label="Day utilization">📅</span>', r => (r.aclock || r.clock || {}).day_utilization, "", v => pct(v),
+     "Day utilization: how fully a week's quietest 24 hours in a row are used, against an even spread of commits. 100% is work landing every day; under 60% the work stops for whole days. Counts commits that changed code."],
+    ["Nights", r => { const c = r.aclock || {}; return c.nights_seen ? c.nights_covered / c.nights_seen : null; }, "",
+     (v, r) => v == null ? "–" : `${r.aclock.nights_covered}/${r.aclock.nights_seen}`,
+     "Nights covered: how many of the week's nights (its quietest six hours, each day) had a code commit land."],
+    ...axes.map(a => [AXIS[a], r => rank(letter(r, a)), "", (v, r) => badge(letter(r, a))]),
+    ["Stars", r => r.meta.stars, "", (v, r) => { const d = starDelta(r); return fmt(v) + (d ? ` <span class="muted">(${d > 0 ? "+" : ""}${d})</span>` : ""); }],
+    ["Judged", judged, "", v => v == null ? "–" : v.toFixed(1), "Architecture score from the LLM judges' cold read, 1 to 5"],
+    ["Code lines/day", r => r.lines.code, "", v => fmt(v), "Lines of source and test code added per day over the last week, each file netted per day so regenerated files count once. Output is graded on this."],
+    ["All lines/day", r => r.lines.all, "", v => fmt(v), "Lines added per day across every file, docs and data included"],
+    ["PRs/day", r => r.volume.merged_prs_per_day, "", v => fmt(v, 1)],
+    ["Commits/day", r => r.volume.commits_per_day, "", v => fmt(v, 1)],
+    ["CI green", r => (r.ci || {}).green_share, "", v => pct(v)],
+    ["Tests ÷ source", r => (r.structure || {}).test_ratio, "", v => v == null ? "–" : v.toFixed(2)],
+    ["Largest file", r => (r.structure || {}).largest_file_kb, "", v => v == null ? "–" : fmt(v) + " KB"],
+  ].filter(c => c[0] !== "Judged" || anyJudged);   // judges have not run yet: no column of dashes
+  const state = {col: COLS.findIndex(c => c[0] === "Code lines/day"), dir: -1, kind: null, min: {}, q: ""};
+  function visible() {
+    return rows.filter(r => (!state.kind || r.section === state.kind) &&
+      axes.every(a => !state.min[a] || rank(letter(r, a)) >= rank(state.min[a])) &&
+      (!state.q || r.repo.toLowerCase().includes(state.q)));
+  }
+  function drawTable() {
+    const c = COLS[state.col];
+    const list = visible().sort((a, b) => {
+      const va = c[1](a), vb = c[1](b);
+      if (va == null) return 1; if (vb == null) return -1;
+      return (typeof va === "string" ? va.localeCompare(vb) : va - vb) * state.dir;
+    });
+    const head = COLS.map((c, i) => `<th scope="col" class="${c[2]}"${c[4] ? ` title="${esc(c[4])}"` : ""}${i === state.col ? ` aria-sort="${state.dir > 0 ? "ascending" : "descending"}"` : ""} data-i="${i}" tabindex="0">${c[0]}${i === state.col ? (state.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("");
+    const body = list.map(r => `<tr tabindex="0" data-repo="${esc(r.repo)}">` + COLS.map((c, i) => {
+      const v = c[1](r);
+      if (i === 0) return `<th scope="row" class="l">${esc(r.repo)}${r.judgment ? ' <span class="muted" title="Cold-read by judges">◆</span>' : ""}</th>`;
+      if (i === 1) return `<td class="l">${legendMark(sidx(r.section))}${esc(r.section)}</td>`;
+      return `<td class="${c[2]}">${c[3] ? c[3](v, r) : esc(v)}</td>`;
+    }).join("") + "</tr>").join("");
+    const t = document.getElementById("table");
+    t.innerHTML = `<caption>${list.length} of ${rows.length} repositories, measured ${D.asof} over ${D.window_days} days; clock and code lines over the week ending ${D.lag_days} days before. Select a column to sort, a row for detail.${anyJudged ? " ◆ marks a cold read." : ""}</caption><thead><tr>${head}</tr></thead><tbody>${body}</tbody>`;
+    t.querySelectorAll("thead th").forEach(th => {
+      const go = () => { const i = +th.dataset.i; state.dir = i === state.col ? -state.dir : (i < 2 ? 1 : -1); state.col = i; drawTable(); };
+      th.onclick = go; th.onkeydown = e => { if (e.key === "Enter") go(); };
+    });
+    t.querySelectorAll("tbody tr").forEach(tr => {
+      const go = () => show(rows.find(r => r.repo === tr.dataset.repo));
+      tr.onclick = go; tr.onkeydown = e => { if (e.key === "Enter") go(); };
+    });
+  }
+  const filters = document.getElementById("filters");
+  filters.innerHTML = `<button type="button" aria-pressed="true" data-s="">All (${rows.length})</button>` +
+    sections.map((s, i) => [s, i]).filter(([s]) => count(r => r.section === s))
+      .map(([s, i]) => `<button type="button" aria-pressed="false" data-s="${esc(s)}">${legendMark(i)}${esc(s)} (${count(r => r.section === s)})</button>`).join("");
+  filters.querySelectorAll("button").forEach(b => b.onclick = () => {
+    state.kind = b.dataset.s || null;
+    filters.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    drawTable();
+  });
+  const controls = document.getElementById("controls");
+  controls.innerHTML = axes.map(a => `<label>${AXIS[a]} at least <select data-a="${a}"><option value="">any</option>${LETTERS.slice(0, 5).map(l => `<option>${l}</option>`).join("")}</select></label>`).join("") +
+    `<label>Find <input type="search" id="q" placeholder="owner/repo"></label>`;
+  controls.querySelectorAll("select").forEach(sel => sel.onchange = () => { state.min[sel.dataset.a] = sel.value || null; drawTable(); });
+  document.getElementById("q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); drawTable(); };
+  drawTable();
+
+  // How the grades work: the ladders, straight from the configuration.
+  const isPct = k => k.includes("share") || k === "ci_green" || k.endsWith("_utilization");
+  const want = (k, v) => k === "pr_checks" ? v.join(", ") : k.endsWith("_max") ? `≤ ${v}` : isPct(k) ? `≥ ${pct(v, k.endsWith("_utilization") ? 0 : 1)}` : `≥ ${fmt(v)}`;
+  document.getElementById("ladders").innerHTML = axes.map(a => `<h3>${AXIS[a]}</h3><div class="scroll"><table><thead><tr><th scope="col">Grade</th><th scope="col" class="l">Every one of these</th></tr></thead><tbody>` +
+    Object.entries(D.ladders[a]).map(([l, req]) => `<tr><th scope="row">${badge(l)}</th><td class="l">${Object.entries(req).map(([k, v]) => `${esc(NAMES[k.replace(/_max$/, "")] || k)} ${want(k, v)}`).join(" · ")}</td></tr>`).join("") +
+    `<tr><th scope="row">${badge("F")}</th><td class="l">none of the above</td></tr></tbody></table></div>`).join("");
+
+  // Detail.
+  function spark(points, key, label) {
+    const vals = points.map(p => p[key] ?? 0);
+    if (vals.length < 2) return `<p class="muted">${label}: ${fmt(vals[0] ?? null, 1)} (one snapshot so far)</p>`;
+    const max = Math.max(...vals, 1), w = 240, h = 44;
+    const d = vals.map((v, i) => `${i ? "L" : "M"}${(i / (vals.length - 1) * w).toFixed(1)},${(h - v / max * (h - 4) - 2).toFixed(1)}`).join(" ");
+    return `<div><span class="muted">${label}: ${fmt(vals.at(-1), 1)}</span><svg class="spark" viewBox="0 0 ${w} ${h}" role="img" aria-label="${label} over ${vals.length} snapshots"><path d="${d}"/></svg></div>`;
+  }
+  const DIMS = [["architecture", "Architecture"], ["code_quality", "Code quality"], ["test_substance", "Test substance"],
+    ["product_reality", "Product reality"], ["change_discipline", "Change discipline"], ["factory_harness", "Factory harness"]];
+  function dl(pairs) { return `<dl>${pairs.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>`; }
+  function needs(g) {
+    const items = Object.entries(g.missing);
+    if (!items.length) return `<p class="muted" style="margin:4px 0 0">Top letter.</p>`;
+    return `<ul class="need">${items.map(([k, m]) => `<li>${esc(NAMES[k.replace(/_max$/, "")] || k)}: needs ${want(k, m.want)}, has ${Array.isArray(m.has) ? (m.has.join(", ") || "none") : isPct(k) ? pct(m.has, k.endsWith("_utilization") ? 0 : 1) : fmt(m.has)}</li>`).join("")}</ul>`;
+  }
+  function show(r) {
+    const v = r.volume, s = r.structure || {}, g = r.gates || {}, c = r.ci || {}, p = r.prs || {}, h = r.habits || {}, k = r.clock || {};
+    let html = `<h2>${legendMark(sidx(r.section))}<a href="https://github.com/${esc(r.repo)}">${esc(r.repo)}</a></h2>
+      <p class="muted" style="margin-top:0">${esc(r.meta.description)}</p>
+      <p><b>${esc(r.section)}</b>${r.reason ? " — " + esc(r.reason) : ""}</p>
+      <div class="grid">${axes.map(a => `<div><h3>${AXIS[a]} ${badge(letter(r, a))}</h3>${needs(r.grades[a])}</div>`).join("")}</div>
+      <div class="grid">
+        <div><h3>Output</h3>${dl([["Code lines added/day", fmt(r.lines.code)], ["Net code lines/day", fmt(r.lines.code_net)], ["All lines added/day", fmt(r.lines.all)], ["Lines from", esc(r.lines.source) + (r.lines.missing ? ` (no clone: ${esc(r.lines.missing)})` : "")], ["Merged PRs/day", fmt(v.merged_prs_per_day, 1)], ["Commits/day", fmt(v.commits_per_day, 1)], ["Stars / forks", `${fmt(r.meta.stars)} / ${fmt(r.meta.forks)}`]])}</div>
+        <div><h3>People and clock</h3>${dl([["Lead human", esc(v.lead_human || "–")], ["Lead's share of human commits", pct(v.lead_human_share)], ["Human authors", fmt(v.human_authors)], ["Bots and unclaimed identities wrote", pct(v.bot_commit_share)], ["Night utilization", pct(night(r))], ["Day utilization", pct((r.aclock || k).day_utilization)], ["Nights covered", r.aclock && r.aclock.nights_seen ? `${r.aclock.nights_covered} of ${r.aclock.nights_seen}` : "–"], ["Quietest six hours start (UTC)", (r.aclock || {}).quietest_6h_starts_utc || "–"], ["Active days, last week", k.active_days == null ? "–" : `${k.active_days}/7`], ["Most PRs open at once", fmt(p.peak_open_prs)], ["Median minutes to merge", fmt(p.median_minutes_to_merge, 1)]])}</div>
+        <div><h3>Discipline</h3>${dl([["Main CI green", `${pct(c.green_share)} of ${fmt(c.ci_runs)} runs`], ["PRs run tests / lint / types", [g.pr_runs_tests, g.pr_runs_lint, g.pr_runs_typecheck].map(x => x ? "yes" : "no").join(" / ")], ["Tests ÷ source", s.test_ratio == null ? "–" : s.test_ratio.toFixed(2)], ["Largest source file", s.largest_file_kb == null ? "–" : `${fmt(s.largest_file_kb)} KB`], ["10th-largest file", s.tenth_largest_file_kb == null ? "–" : `${fmt(s.tenth_largest_file_kb)} KB`], ["Boundary tools", esc((g.boundary_tools || []).join(", ") || "none")], ["Pushed without a PR", pct(h.direct_push_share)]])}</div>
+        <div><h3>Over time</h3>${spark(r.history, "added", "Code lines/day")}${spark(r.history, "prs", "Merged PRs/day")}${spark(r.history, "stars", "Stars")}</div>
+      </div>
+      <p class="muted">Largest file: <code>${esc(s.largest_file || "–")}</code></p>`;
+    const j = r.judgment;
+    if (j) {
+      html += `<h3>Cold read, ${esc(j.date)} — ${j.judges.length} judges, rubric ${esc(j.rubric)}</h3><div class="scroll"><table><caption>Median score of the judges, 1 to 5, with each judge's score.</caption><thead><tr><th scope="col">Dimension</th><th scope="col">Median</th><th scope="col">Judges</th></tr></thead><tbody>` +
+        DIMS.map(([key, label]) => `<tr><th scope="row">${label}</th><td>${j.final[key].score ?? "–"}</td><td>${j.final[key].scores.join(", ")}</td></tr>`).join("") + `</tbody></table></div>`;
+      j.judges.filter(x => x.valid).forEach(x => {
+        html += `<div class="judge"><h4>Judge ${x.index}</h4><p>${esc(x.final.summary)}</p>` +
+          ((x.final.revisions || []).length ? `<p class="muted">After seeing the measurements: ${x.final.revisions.map(rv => `${esc(rv.dimension)} ${rv.from}→${rv.to}: ${esc(rv.why)}`).join(" · ")}</p>` : "") + `</div>`;
+      });
+    }
+    const el = document.getElementById("detail");
+    el.innerHTML = html + `<button type="button" id="close">Close</button>`;
+    el.classList.add("open");
+    document.getElementById("close").onclick = () => el.classList.remove("open");
+    el.scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  document.getElementById("footer").textContent = `Snapshot ${D.asof}. Grades defined in config.toml; data CC BY 4.0, code MIT.`;
+})();
+</script>
+</body>
+</html>

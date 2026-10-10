@@ -1,0 +1,88 @@
+# Judgment calls the measurements cannot make, each with its reason. These are the only hand-edited facts.
+#
+# kind = "not-software": a fleet's cadence without a codebase (proofs, records, generated content, data).
+# kind = "copy": a copy of another listed repository's history that GitHub does not mark as a fork.
+
+[repo."CBirkbeck/tauceti-explorer"]
+kind = "not-software"
+reason = "Formal mathematics atlas (Lean)"
+
+[repo."the-omega-institute/trureturing"]
+kind = "not-software"
+reason = "Mathematical theory documents (Lean)"
+
+[repo."chboishabba/dashi_agda"]
+kind = "not-software"
+reason = "Physics and mathematics formalisation (Agda)"
+
+[repo."flamingoponderado/flapjack"]
+kind = "not-software"
+reason = "Proof-system port (Lean and SML)"
+
+[repo."SimonVitzethum/Gabbro"]
+kind = "not-software"
+reason = "Formal grammar research (Lean) with measurement notes"
+
+[repo."benbaichmankass/Metis-Insights"]
+kind = "not-software"
+reason = "Research-queue records and trading data"
+
+[repo."OmniNode-ai/onex_change_control"]
+kind = "not-software"
+reason = "Governance evidence records"
+
+[repo."DWR-debug/trading-agent-public"]
+kind = "not-software"
+reason = "Trading-agent run data"
+
+[repo."valerielinc-ops/frontaliere-si-o-no"]
+kind = "not-software"
+reason = "Crawled data and a generated site"
+
+[repo."BradleyBrewington/ArmFarm_Agent_Tools"]
+kind = "not-software"
+reason = "Robot-arm tool snapshots and logs"
+
+[repo."keys-exe/global-manual-ai"]
+kind = "not-software"
+reason = "Generated manual content"
+
+[repo."Unjuno/agent-interface"]
+kind = "not-software"
+reason = "Research and rescue artefact records"
+
+[repo."litlfred/folio-assistant"]
+kind = "not-software"
+reason = "Notebook and skills content"
+
+[repo."kevinrhaas/chicago-tickets"]
+kind = "not-software"
+reason = "Ticket ledger"
+
+[repo."silasfelinus/conductor"]
+kind = "not-software"
+reason = "Project bookkeeping and generated art"
+
+[repo."GarrettPetersen/records-of-the-grand-historian"]
+kind = "not-software"
+reason = "Translation of a classical history"
+
+[repo."carlo8884/carloOS"]
+kind = "not-software"
+reason = "Citation-sourced content site"
+
+[repo."kevinrhaas/chicago"]
+kind = "not-software"
+reason = "Historical research and worldbuilding with a renderer"
+
+[repo."anomalyco/models.dev"]
+kind = "not-software"
+reason = "Bot-synced model catalog"
+
+[repo."stjepanvrbic/Fusion"]
+kind = "copy"
+reason = "Copy of Runfusion/Fusion's history"
+
+[repo."ischindl/Fusion"]
+kind = "copy"
+reason = "Copy of Runfusion/Fusion's history"

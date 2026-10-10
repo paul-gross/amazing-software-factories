@@ -1,0 +1,2 @@
+# Curated lists whose READMEs are read each run; every GitHub repository they link to is nominated.
+varun1505/awesome-software-factories

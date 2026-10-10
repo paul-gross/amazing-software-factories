@@ -1,0 +1,47 @@
+name: Weekly measurement
+
+# Runs by hand only while the cycles run on a local machine (context/run-cycle.md); restore the schedule to move the
+# weekly cycle here:
+#   schedule:
+#     - cron: "0 6 * * 1"
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The screen keeps its author samples for four weeks, so most nominees are not sampled again each week.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/authors.json
+          key: authors-${{ github.run_id }}
+          restore-keys: authors-
+      - name: Unit tests
+        run: python -m unittest discover -s tests
+      - name: Find, measure, render
+        run: python -u -m asf weekly
+        env:
+          # A fine-grained token with read access to public repositories. The default Actions token's rate limit is
+          # too low for a full week's measurement.
+          GH_TOKEN: ${{ secrets.ASF_TOKEN }}
+          ASF_WORKERS: "5"
+      - name: Commit the snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data reports docs README.md
+          git diff --cached --quiet || git commit -m "data: weekly snapshot $(date -u +%F)"
+          git push
