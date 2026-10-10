@@ -83,10 +83,10 @@ min_valid_citations = 0.8
 #
 # night_utilization is how fully a week's quietest six hours of the day are used: the share of commits landing in
 # them, against the quarter an even spread would put there. 1.0 is work landing round the clock; near 0 is a daily gap,
-# like a person asleep. day_utilization is the same across the week: how fully its quietest 24 hours in a row are used,
-# against an even spread; near 0 is a day off. Below D's floor (F) the work stops for part of each day or for whole
-# days: run overnight or on weekdays at most, not round the clock. nights_missed counts the week's nights (its
-# quietest six hours, each day) with no commit at all. All three read the commits that changed code.
+# like a person asleep. nights_missed counts the week's nights (its quietest six hours, each day) with no commit at
+# all, so a letter also needs the work every day, weekends included. A to D step down from round the clock; E is the
+# gate's bar, work through most nights; below it (F) the work stops for part of each day. Both read the commits that
+# changed code.
 
 # Output: lines of code (source and tests) added on the median day of the week, each file netted per day so
 # regenerated files count once; a day with none counts as zero, so one large drop cannot carry a week. Below E's floor
@@ -104,20 +104,19 @@ code_added_daily_median = 1000
 
 [grades.autonomy.A]
 night_utilization = 0.9
-day_utilization = 0.9
 nights_missed_max = 0
 [grades.autonomy.B]
 night_utilization = 0.8
-day_utilization = 0.8
 nights_missed_max = 0
 [grades.autonomy.C]
 night_utilization = 0.7
-day_utilization = 0.7
 nights_missed_max = 1
 [grades.autonomy.D]
 night_utilization = 0.6
-day_utilization = 0.6
 nights_missed_max = 1
+[grades.autonomy.E]
+night_utilization = 0.4
+nights_missed_max = 2
 
 [grades.discipline.A]
 ci_green = 0.85

@@ -415,7 +415,7 @@ class Grades(unittest.TestCase):
 
     def test_night_utilization_is_the_quietest_hours_against_an_even_spread(self):
         self.assertEqual(grade.value(self.row(clock=dict(quietest_6h_share=0.25)), "night_utilization"), 1.0)
-        self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.149)), "autonomy")["grade"], "F")
+        self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.149)), "autonomy")["grade"], "E")
         self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.15)), "autonomy")["grade"], "D")
 
     def test_autonomy_needs_every_night(self):
@@ -426,9 +426,13 @@ class Grades(unittest.TestCase):
         row = self.row(code_lines=dict(clock=dict(quietest_6h_share=0.1, day_utilization=0.95, nights_seen=7, nights_covered=7)))
         self.assertEqual(grade.value(row, "night_utilization"), 0.4)
 
-    def test_autonomy_needs_both_round_the_clock_and_every_day(self):
-        g = grade.grade(self.row(clock=dict(day_utilization=0.65)), "autonomy")
-        self.assertEqual(g, dict(grade="D", missing={"day_utilization": dict(want=0.7, has=0.65)}))
+    def test_autonomy_is_graded_on_the_nights_not_the_busiest_day(self):
+        self.assertEqual(grade.grade(self.row(clock=dict(day_utilization=0.1)), "autonomy")["grade"], "A")
+
+    def test_e_is_most_nights_and_below_it_is_f(self):
+        self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.1, nights_covered=5)), "autonomy")["grade"], "E")
+        self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.1, nights_covered=4)), "autonomy")["grade"], "F")
+        self.assertEqual(grade.grade(self.row(clock=dict(quietest_6h_share=0.099)), "autonomy")["grade"], "F")
 
     def test_serial_work_is_not_marked_down_for_one_open_pull_request_at_a_time(self):
         self.assertEqual(grade.grade(self.row(), "autonomy")["grade"], "A")
