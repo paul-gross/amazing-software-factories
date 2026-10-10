@@ -3,6 +3,7 @@
 The token comes from GH_TOKEN or GITHUB_TOKEN, or else from the signed-in GitHub CLI. Calls go straight over HTTP
 rather than through a gh process each, which matters when tens of thousands of queries run in a week.
 """
+import http.client
 import json
 import os
 import subprocess
@@ -54,7 +55,7 @@ def _request(url, body=None, accept="application/vnd.github+json", attempts=8):
                 wait = max(5, int(reset) - time.time() + 5)
             else:
                 wait = 180 if "secondary rate limit" in low else 420 if "rate limit" in low else 5 * (attempt + 1)
-        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+        except (urllib.error.URLError, http.client.HTTPException, TimeoutError, ConnectionError) as exc:
             err = str(exc)
             wait = 5 * (attempt + 1)
         time.sleep(wait)

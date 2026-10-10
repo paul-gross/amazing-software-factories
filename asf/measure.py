@@ -49,12 +49,11 @@ def _aliased(chunks, build, parse, workers):
             if len(chunk) == 1:
                 print(f"graphql {chunk[0]}: {exc}")
                 return {}
-            # One heavy repository can time a whole batch out; retry its members alone so only that one is lost.
-            print(f"graphql batch of {len(chunk)} failed, retrying one by one: {exc}")
-            out = {}
-            for repo in chunk:
-                out.update(run([repo]))
-            return out
+            # One heavy repository can time a whole batch out; retry each half, so only the half holding it keeps
+            # splitting and only that one repository is lost.
+            print(f"graphql batch of {len(chunk)} failed, retrying in halves: {str(exc)[:80]}")
+            half = len(chunk) // 2
+            return {**run(chunk[:half]), **run(chunk[half:])}
         return {repo: parse(data.get(f"r{i}")) for i, repo in enumerate(chunk) if data.get(f"r{i}")}
 
     out = {}

@@ -1,5 +1,7 @@
 """The pure logic: path classification, people, lines, weekly rollups, the clock, link extraction, the screen's totals,
 admission, tiers, citations."""
+import contextlib
+import io
 import tempfile
 import unittest
 from datetime import date, datetime, timedelta, timezone
@@ -181,6 +183,26 @@ class Parallelism(unittest.TestCase):
         pr = lambda opened, merged: dict(createdAt=f"2026-10-08T{opened:02d}:00:00Z", mergedAt=f"2026-10-08T{merged:02d}:00:00Z")
         self.assertEqual(measure.peak_open([pr(1, 5), pr(2, 6), pr(3, 4), pr(7, 8)]), 3)
         self.assertEqual(measure.peak_open([pr(1, 2), pr(3, 4)]), 1)
+
+
+class Batches(unittest.TestCase):
+    def test_a_failed_batch_splits_in_halves_until_only_the_heavy_repository_is_lost(self):
+        asked = []
+        def fake(query):
+            names = [part.split('name: "')[1].split('"')[0] for part in query.split("repository(")[1:]]
+            asked.append(names)
+            if "heavy" in names:
+                raise measure.GhError("HTTP 502")
+            return {f"r{i}": {"name": n} for i, n in enumerate(names)}
+        repos = [f"o/r{i}" for i in range(7)] + ["o/heavy"]
+        real, measure.graphql = measure.graphql, fake
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                out = measure._aliased([repos], lambda i, r: measure._repo(i, r, "name"), lambda r: r, 1)
+        finally:
+            measure.graphql = real
+        self.assertEqual(sorted(out), sorted(repos[:7]))
+        self.assertEqual([len(a) for a in asked], [8, 4, 4, 2, 2, 1, 1])
 
 
 class Links(unittest.TestCase):

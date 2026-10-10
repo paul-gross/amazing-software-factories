@@ -54,8 +54,9 @@ min_lead_human_share = 0.8
 # Passing it, and layer 4, puts a repository on the watchlist for good.
 min_night_utilization = 0.4
 min_nights_covered = 5
-# Repositories per query, and the most time one run spends checking the ones waiting.
-batch = 10
+# Repositories per query (each asks for 84 slot counts; ten at once is more than GitHub finishes before a 502), and
+# the most time one run spends checking the ones waiting.
+batch = 5
 minutes = 20
 
 [measure]
