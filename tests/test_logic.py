@@ -317,6 +317,9 @@ class Gate(unittest.TestCase):
         slots = [3] * 84
         c = measure.slot_clock(slots, end)
         self.assertEqual((c["night_utilization"], c["nights_covered"], c["day_utilization"]), (1.0, 7, 1.0))
+        idle = measure.slot_clock([0] * 84, end)
+        self.assertFalse(watch.runs_unattended(idle))
+        self.assertEqual((idle["night_utilization"], idle["nights_covered"]), (None, 0))
         asleep = [0 if i % 12 in (0, 1, 2) else 3 for i in range(84)]
         self.assertEqual(measure.slot_clock(asleep, end)["nights_covered"], 0)
 

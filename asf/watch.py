@@ -197,7 +197,7 @@ def gate(minutes=None, workers=None):
         for r, v in clock_slots(part, w["lag_days"], w["week_days"], workers, g["batch"]).items():
             c = slot_clock(v["slots"], v["end"], w["week_days"])
             rows[r].update(gate_checked=today(), night_utilization=c["night_utilization"],
-                           nights_covered=c["nights_covered"], nights_seen=c["nights_seen"])
+                           nights_covered=c["nights_covered"], nights_seen=c.get("nights_seen"))
             checked += 1
             if runs_unattended(c):
                 passed.append(r)

@@ -319,7 +319,8 @@ def clock(nodes, days, complete=True, now=None):
     the newest commit.
     """
     if not nodes:
-        return dict(quietest_6h_share=None, activity_commits=0, activity_span_days=0)
+        return dict(quietest_6h_share=None, night_utilization=None, day_utilization=None, nights_covered=0,
+                    activity_commits=0, activity_span_days=0)
     stamps = sorted((parse(n["committedDate"]).astimezone(timezone.utc) for n in nodes), reverse=True)
     newest = stamps[0]
     oldest_allowed = newest - timedelta(days=days)
