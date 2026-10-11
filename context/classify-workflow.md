@@ -38,10 +38,12 @@ Report back how many repositories were classified, the count per kind, and any t
 agent instruction files at their usual paths (AGENTS.md, CLAUDE.md and the like: size and opening), the CI workflows,
 the first 8,000 characters of the README, the newest 20 commits with bodies and authors, and the measured numbers.
 
-The line between a factory and agent-assisted work: exhaustive agent-facing context (a library of instructions,
-conventions, skills or agent definitions, or a companion repository holding them) together with significant automation
-guardrails (CI that gates changes, agent review or verification, enforced rules) point to a factory. A single
-CLAUDE.md or AGENTS.md with no supporting library or repository points to agent-assisted. Repository
+The line between a factory and agent-assisted work: exhaustive agent-facing context (a library of the codebase's
+conventions, architecture, rules and verification, written for agents, or a companion repository holding them)
+together with significant automation guardrails (CI that gates changes, agent review or verification, enforced rules)
+point to a factory. A single CLAUDE.md or AGENTS.md with no supporting library or repository points to agent-assisted,
+and so do customizations of a person's own assistant: .claude/agents, .claude/skills, slash commands, MCP
+configuration. Repository
 text goes to the model as data, from an empty directory, with no tools. Each answer is stored with the classifier's
 `VERSION`; changing the prompt means raising `VERSION`, and the next run classifies everything again.
 

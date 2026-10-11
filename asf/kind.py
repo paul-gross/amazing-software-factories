@@ -56,9 +56,9 @@ agents running overnight. Decide what the repository is, and whether a system or
   formal proofs or mathematics, an archive, configuration backups.
 
 What points to a system (an assembly line, or built by one), most of all the first two together:
-- exhaustive agent-facing context: a library of instructions, conventions, architecture notes, skills or agent
-  definitions well beyond one instructions file, or an instructions file that points to a separate repository
-  holding them;
+- exhaustive agent-facing context: a library of the codebase's own conventions, architecture, rules and how changes
+  are verified, written for agents and well beyond one instructions file, or an instructions file that points to a
+  separate repository holding them;
 - significant automation guardrails: CI that gates changes (tests, lint, type checks), verification or review steps
   run by agents, rules enforced on every change;
 - work items flowing through a loop: ticket or task ids in commits, a queue, claim, handoff, review and merge steps;
@@ -68,6 +68,8 @@ What points to a system (an assembly line, or built by one), most of all the fir
 What points to agent-assisted:
 - a single CLAUDE.md or AGENTS.md (or similar instructions file) with no supporting context library and no companion
   repository: what anyone working with a coding assistant keeps;
+- customizations of a person's own coding assistant: .claude/agents, .claude/skills, slash commands, MCP server
+  configuration. They tune an assistant someone is driving, however many there are;
 - messages that read like requests in a chat ("fix the button", "try again", "update");
 - one author, or one agent acting for one person, with no review step or guardrails;
 - nothing describing how work gets in, only the product; bursts and pivots that follow one person's attention.
