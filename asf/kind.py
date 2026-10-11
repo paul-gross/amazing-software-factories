@@ -55,15 +55,16 @@ agents running overnight. Decide what the repository is, and whether a system or
 - "not software": mainly content rather than code: documents, notes, data, generated reports, a knowledge base,
   formal proofs or mathematics, an archive, configuration backups.
 
-What points to a system (an assembly line, or built by one), most of all the first two together:
+What points to a system (an assembly line, or built by one):
 - exhaustive agent-facing context: a library of the codebase's own conventions, architecture, rules and how changes
   are verified, written for agents and well beyond one instructions file, or an instructions file that points to a
   separate repository holding them;
-- significant automation guardrails: CI that gates changes (tests, lint, type checks), verification or review steps
-  run by agents, rules enforced on every change;
 - work items flowing through a loop: ticket or task ids in commits, a queue, claim, handoff, review and merge steps;
 - several agent identities or roles (builder, reviewer, checker), or pull requests from agent branches merged by bots;
 - orchestration configuration, or a README that describes the autonomous pipeline.
+Automation guardrails (CI that gates changes, verification or review steps run by agents, rules enforced on every
+change) add weight to these, but their absence is not evidence against a system: some factories run without them,
+and how well a repository is guarded is graded separately.
 
 What points to agent-assisted:
 - a single CLAUDE.md or AGENTS.md (or similar instructions file) with no supporting context library and no companion
