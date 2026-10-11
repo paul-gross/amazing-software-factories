@@ -388,6 +388,27 @@ class Rereads(unittest.TestCase):
         self.assertEqual(len(saved), 71)
 
 
+    def test_a_nominee_the_budget_left_unread_keeps_waiting(self):
+        saved = {}
+        waiting = {"o/unread": dict(repo="o/unread", status="waiting"), "o/gone": dict(repo="o/gone", status="waiting")}
+        fakes = dict(ROOT=None, watchlist=lambda: {}, screened=lambda: waiting, save_screened=lambda rows: saved.update(rows),
+                     facts=lambda part, *a, **k: self.fail("read past the budget"), authors=lambda part, *a: {})
+        real = {name: getattr(watch, name) for name in fakes}
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                fakes["ROOT"] = Path(tmp)
+                for name, fake in fakes.items():
+                    setattr(watch, name, fake)
+                with contextlib.redirect_stdout(io.StringIO()), mock.patch.object(watch.time, "monotonic",
+                                                                                  side_effect=[0, 1, 0, 1]):
+                    watch.screen([("o/unread", "gharchive")], "2026-10-20", minutes=0)
+        finally:
+            for name, fn in real.items():
+                setattr(watch, name, fn)
+        self.assertEqual(saved["o/unread"]["status"], "waiting")
+        self.assertEqual(saved["o/gone"]["status"], "out")
+
+
 class Budget(unittest.TestCase):
     def test_calls_wait_for_the_reset_once_the_budget_is_down_to_the_reserve(self):
         slept = []

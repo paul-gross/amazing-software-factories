@@ -120,16 +120,18 @@ def resumable(path, store, todo, fetch, step):
     return store
 
 
-def screen(nominees, day=None, workers=None):
+def screen(nominees, day=None, workers=None, minutes=None):
     """nominees: [(repo, source)]. Layers 1 and 2, daily: what passes waits in data/screened.jsonl for the gate
     (layers 3 and 4), and what no longer passes stops waiting. Returns the repositories now waiting.
 
     day: the run's day. Totals are kept across runs in .cache/totals.json, each with the day it was read, and only the
     new and the stale are read again, saved as they are read; the funnel is saved once the screen is done, which closes
-    the run."""
+    the run. minutes: how long layer 1 may read, and again layer 2, new nominees first, then the stalest; what is left
+    is read the next day, and a nominee nothing has been read for yet keeps whatever status it had."""
     cfg, a, w = CONFIG["screen"], CONFIG["admit"], CONFIG["window"]
     days, week = w["days"], w["week_days"]
     workers = workers or int(os.environ.get("ASF_WORKERS", cfg["workers"]))
+    minutes = cfg["minutes"] if minutes is None else minutes
     funnel = {"nominated": len(nominees)}
     # Author samples stand this long, so most nominees are not sampled again each day.
     fresh = (utc_date() - timedelta(days=cfg["rescreen_after_days"])).isoformat()
@@ -147,13 +149,19 @@ def screen(nominees, day=None, workers=None):
     cut = (date.fromisoformat(day) - timedelta(days=4 * cfg["reread_days"])).isoformat()
     stored = {r: f for r, f in stored.items() if f and f.get("read", "") >= cut}   # long since nominated
     names = [r for r, _ in todo]
-    stale = stale_totals(stored, names, day, cfg["reread_days"])
-    for r in stale:
-        stored.pop(r, None)
-    funnel["totals read"] = len(stale)
-    print(f"screen: reading totals for {len(stale)} of {len(names)} nominees")
-    # A repository GitHub has nothing for is stored with only its read day, and asked for again when next due.
-    resumable(facts_path, stored, names, lambda part: read_totals(part, days, workers, day), 2000)
+    stale = sorted(stale_totals(stored, names, day, cfg["reread_days"]),
+                   key=lambda r: (r in stored, stored.get(r, {}).get("read", "")))   # new first, then the stalest
+    print(f"screen: {len(stale)} of {len(names)} nominees due a totals read; {minutes} minutes to read them")
+    deadline, done = time.monotonic() + minutes * 60, 0
+    for part in batched(stale, 400):
+        if time.monotonic() > deadline:
+            break
+        # A repository GitHub has nothing for is stored with only its read day, and asked for again when next due.
+        stored.update(read_totals(part, days, workers, day))
+        done += len(part)
+        _save(facts_path, stored)
+        print(f"screen: read totals for {done} of {len(stale)}", flush=True)
+    funnel["totals read"], funnel["totals left"] = done, len(stale) - done
     known = {r: stored[r] for r in names if (stored.get(r) or {}).get("canonical")}
     # Totals cached before weekly counts were recorded get them now, but only where the other totals already pass:
     # a weekly count walks history, which is the slow part of the query.
@@ -187,8 +195,12 @@ def screen(nominees, day=None, workers=None):
     author_path, sampled = _cache("authors.json")
     stale = [r for r in busy if sampled.get(r, {}).get("v") != AUTHOR_CACHE_VERSION
              or sampled[r].get("date", "") < fresh]
-    print(f"screen: sampling authors for {len(stale)} repositories")
-    for part in batched(stale, 1000):
+    stale.sort(key=lambda r: (r in sampled, sampled.get(r, {}).get("date", "")))   # never sampled first
+    print(f"screen: sampling authors for {len(stale)} repositories; {minutes} minutes to sample them")
+    deadline = time.monotonic() + minutes * 60
+    for part in batched(stale, 200):
+        if time.monotonic() > deadline:
+            break
         for r, v in authors(part, days, cfg["author_sample"], workers).items():
             sampled[r] = dict(v, date=today(), v=AUTHOR_CACHE_VERSION)
         _save(author_path, sampled)
@@ -204,9 +216,14 @@ def screen(nominees, day=None, workers=None):
         row.update(screened=today(), status="waiting", commits_per_day=round(busy[r]["commits"] / days, 1),
                    lead_human_share=sampled[r]["lead_human_share"])
         waiting[r] = row
+    # Out: what was judged and failed layer 1 or 2, or is no longer nominated. A nominee the budget left unread, or busy
+    # but not yet sampled, is not judged and keeps its status.
     keep = set(solo)
+    unjudged = {r.lower() for r in busy if r not in sampled}
+    judged = {f["canonical"].lower() for f in known.values()} - unjudged
+    nominated = {r.lower() for r in names} | judged
     for r, row in waiting.items():
-        if r not in keep and row.get("status") == "waiting":
+        if r not in keep and row.get("status") == "waiting" and (r.lower() in judged or r.lower() not in nominated):
             row.update(status="out", out_since=today())   # fell below layer 1 or 2; back if it qualifies again
     save_screened(waiting)
     _save(facts_path, stored)

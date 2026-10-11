@@ -15,7 +15,13 @@ commits and pushes its own data through `scripts/publish.sh`, which rebases onto
 1. **Totals** (daily, for the new nominees and the stale): at least 10 commits a day on the default branch over four
    weeks, sustained in three of them, 100 KB of code, not a fork or archived. A nominee's totals are read the day it
    is first nominated, then again one day in every `reread_days` (7), picked by a hash of its name, and kept in
-   `.cache/totals.json` between runs, so each day reads the new nominees and a seventh of the rest.
+   `.cache/totals.json` between runs, so each day reads the new nominees and a seventh of the rest. Reading stops
+   after `[screen] minutes` (30), new nominees first, then the stalest; the rest is read the next day, and a nominee
+   with nothing read yet keeps its status. Layer 2 gets the same budget after it.
+
+   In Actions, `.cache/` is carried between runs in the Actions cache. When none is restored (the first run, or after
+   GitHub evicts it once unused for a week), `daily.yml` seeds totals and author samples from the asset
+   `cache-seed.tar.gz` on the release `cache-seed`, so the first run reads what is due rather than every nominee.
 2. **Not a team** (daily, from author samples kept for 28 days): one person writes most of the human commits.
 3. **Runs without people** (daily, for everything waiting): over the measured week, the quietest six hours of the day
    are at least 40% used and work landed on at least 5 of 7 nights. Commit counts only, a point per five repositories.

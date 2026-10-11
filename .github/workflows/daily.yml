@@ -18,19 +18,29 @@ concurrency:
 jobs:
   daily:
     runs-on: ubuntu-latest
-    timeout-minutes: 340
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - uses: actions/cache/restore@v4
+        id: cache
         with:
           path: |
             .cache
             !.cache/clones
           key: screen-${{ github.run_id }}
           restore-keys: screen-
+      - name: Seed an empty cache
+        # Only when no cache was restored (the first run, or after GitHub evicted it): totals and author samples from
+        # the release `cache-seed`, so the screen reads what is due rather than every nominee.
+        if: steps.cache.outputs.cache-matched-key == ''
+        run: |
+          mkdir -p .cache
+          gh release download cache-seed --pattern cache-seed.tar.gz --output - | tar -xz -C .cache
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Unit tests
         run: python -m unittest discover -s tests -q
       - name: Find and screen

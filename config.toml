@@ -44,6 +44,9 @@ rescreen_after_days = 28
 # name: the daily screen reads the new nominees and a seventh of the rest, and a repository that gets busy is seen
 # within a week, as a weekly screen would.
 reread_days = 7
+# How long the daily screen may read totals (layer 1), and then sample authors (layer 2). What is left waits for the
+# next day, new nominees first, so no run holds up the hourly cycle for long, even one that starts from an empty cache.
+minutes = 30
 # Parallel GitHub queries while screening. Each worker mostly waits on GitHub; the ASF_WORKERS environment variable
 # overrides this, as the scheduled workflow does.
 workers = 2
