@@ -16,8 +16,8 @@ Claude subscription, at roughly the cost of a short conversation.
 From the repository root, with a clean working tree:
 
 1. `git pull --rebase`
-2. `nice -n 15 python3 -m asf classify`: classifies every watched repository whose stored answer is missing or from
-   an older classifier version, twenty at a time: it fetches their evidence, classifies them four at once and saves,
+2. `nice -n 15 python3 -m asf classify`: classifies every watched repository with no stored answer, twenty at a
+   time: it fetches their evidence, classifies them four at once and saves,
    while the next twenty's evidence is fetched, so a stopped run loses at most one chunk and picks up what is left.
    `classify 50` does a fixed random sample of 50 instead, to review a new prompt before running it on everything,
    drawn from repositories no version has read while enough remain, so each review sees new ones. A
@@ -52,7 +52,10 @@ configuration. Both halves must show, the context and the loop; with only one, i
 assembly line at low confidence. The loop must have agents writing code: dependency and package bump bots and
 scheduled data refreshes land work around the clock but are not a factory. Repository
 text goes to the model as data, from an empty directory, with no tools. Each answer is stored with the classifier's
-`VERSION`; changing the prompt means raising `VERSION`, and the next run classifies everything again.
+`VERSION`; changing the prompt means raising `VERSION`. That sends nothing back by itself: answers from an older
+version stand, and `classify redo "assembly line"` (any kinds, quoted) reads again only the answers of those kinds an
+older version gave, the ones the change can move. Start with the listed kind; redo others only when the change is
+about them.
 
 ## Correcting a classification
 

@@ -219,13 +219,18 @@ def kinds():
     return {r["repo"].lower(): r for r in read_jsonl(DATA / "kinds.jsonl")}
 
 
-def classify(repos, refresh=False, rows=None, gates=None, limit=None):
-    """Classify the repositories not yet classified under this version (all of them, with refresh) and store the
-    results. rows: {repo: snapshot row}, the measured activity to weigh, where there is one; gates: {repo: the gate's
-    numbers}, for one not yet measured. limit: classify only this many, a fixed random sample of those due, to review a
-    new prompt before running it on everything; drawn from repositories no version has read while enough remain."""
+def classify(repos, refresh=False, rows=None, gates=None, limit=None, redo=()):
+    """Classify the repositories no version has classified yet (all of them, with refresh) and store the results. A new
+    version does not send everything back: redo names the kinds whose answers from an older version are read again,
+    for the kinds a prompt change can move. rows: {repo: snapshot row}, the measured activity to weigh, where there is
+    one; gates: {repo: the gate's numbers}, for one not yet measured. limit: classify only this many, a fixed random
+    sample of those due, to review a new prompt; drawn from repositories no version has read while enough remain."""
     stored, rows, gates = kinds(), rows or {}, gates or {}
-    todo = [r for r in repos if refresh or (stored.get(r.lower()) or {}).get("version") != VERSION]
+
+    def due(r):
+        row = stored.get(r.lower())
+        return refresh or not row or (row.get("kind") in redo and row.get("version") != VERSION)
+    todo = [r for r in repos if due(r)]
     if limit and len(todo) > limit:
         fresh = [r for r in todo if r.lower() not in stored]   # never read, so each review sees new repositories
         todo = random.Random(VERSION).sample(sorted(fresh if len(fresh) >= limit else todo, key=str.lower), limit)

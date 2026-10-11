@@ -274,6 +274,29 @@ class Kinds(unittest.TestCase):
         stored = {"o/a": dict(repo="o/a", kind="built by an assembly line", version=kind.VERSION)}
         self.assertEqual(kind.kind_of("o/a", stored, {"o/a": dict(kind="agent-assisted")}), "agent-assisted")
 
+    def test_a_new_version_reads_again_only_the_kinds_it_is_asked_to_redo(self):
+        old = "kind-v0"
+        saved = {"o/line": dict(repo="o/line", kind="assembly line", version=old),
+                 "o/helped": dict(repo="o/helped", kind="agent-assisted", version=old),
+                 "o/done": dict(repo="o/done", kind="assembly line", version=kind.VERSION)}
+        asked = []
+        fakes = dict(kinds=lambda: dict(saved), about=lambda chunk: {r: {} for r in chunk},
+                     ask=lambda repo, *a: asked.append(repo) or dict(kind="assembly line", confidence="high", reason=""),
+                     write_jsonl=lambda path, rows: None)
+        real = {name: getattr(kind, name) for name in fakes}
+        try:
+            for name, fake in fakes.items():
+                setattr(kind, name, fake)
+            with contextlib.redirect_stdout(io.StringIO()):
+                kind.classify(["o/line", "o/helped", "o/done", "o/new"])
+                self.assertEqual(asked, ["o/new"])
+                asked.clear()
+                kind.classify(["o/line", "o/helped", "o/done"], redo=("assembly line",))
+        finally:
+            for name, fn in real.items():
+                setattr(kind, name, fn)
+        self.assertEqual(asked, ["o/line"])
+
     def test_a_stopped_run_keeps_its_finished_chunks_and_the_next_run_fetches_only_the_rest(self):
         class Stop(Exception):
             pass
