@@ -48,6 +48,11 @@ workers = 2
 # The one-person test: one human wrote at least this share of the human commits, or no human wrote any.
 min_lead_human_share = 0.8
 
+[github]
+# Each hour's API budget is left at least this much: below it, runs wait for the reset rather than spend the rest, so
+# a token shared with other work is never run dry.
+reserve = { graphql = 1000, core = 1000, search = 5 }
+
 [gate]
 # Layer 3, runs without people, over the measured week (window.week_days ending window.lag_days ago), from commit
 # counts in two-hour slots. Loose on purpose: it only stops work that sleeps; the autonomy grade is the strict test.
@@ -58,6 +63,14 @@ min_nights_covered = 5
 # the most time one run spends checking the ones waiting. Results are saved every ten queries per worker.
 batch = 5
 minutes = 20
+# A repository GitHub has nothing for (deleted, renamed away, made private) stops waiting after this many daily misses.
+max_misses = 7
+
+[dormant]
+# A watched repository whose measured window (four weeks, ending two days back) has no commits goes dormant: not
+# measured, not listed. A daily count of its commits per day over the last week brings it back once work lands on at
+# least this many of the seven days.
+active_days = 3
 
 [measure]
 # Every watched repository is measured once a day; one run measures what is due until this many minutes pass.

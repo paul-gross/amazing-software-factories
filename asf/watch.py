@@ -12,8 +12,11 @@ The screen is a funnel of layers, cheapest first; each sends on only what it can
 4. Varied changes by one person: the newest hundred commits of the last week. A scheduled job that rewrites a data
    file repeats one message; the strict one-person test applies here, since a hundred commits needs no slack.
 
-What passes layer 4 joins the watchlist for good, one way: it is measured every day from then on, however its numbers
-move. What passes layer 2 but not the rest waits in data/screened.jsonl and is checked again the next day.
+What passes layer 4 joins the watchlist for good, one way. Once classified as an assembly line or something built by
+one, it is measured every day, however its numbers move, until it goes quiet: a measured window with no commits at all
+makes it dormant, unmeasured and unlisted, until a cheap daily check sees work on most days of a week again. What passes
+layer 2 but not the rest waits in data/screened.jsonl and is checked again the next day; one GitHub has nothing for,
+deleted or made private, stops waiting after a week of misses.
 
 Every threshold lives in config.toml.
 """
@@ -21,12 +24,12 @@ import json
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import CONFIG, ROOT
 from .gh import GhError, batched
 from .measure import authors, clock_slots, created, facts, parse, recent, slot_clock
-from .store import save_screened, save_watchlist, screened, today, watchlist
+from .store import save_screened, save_watchlist, screened, today, utc_date, watchlist
 
 AUTHOR_CACHE_VERSION = 2  # bump when the meaning of a cached author sample changes
 
@@ -106,7 +109,7 @@ def screen(nominees, day=None, workers=None):
     workers = workers or int(os.environ.get("ASF_WORKERS", cfg["workers"]))
     funnel = {"nominated": len(nominees)}
     # Author samples stand this long, so most nominees are not sampled again each week.
-    fresh = (date.today() - timedelta(days=cfg["rescreen_after_days"])).isoformat()
+    fresh = (utc_date() - timedelta(days=cfg["rescreen_after_days"])).isoformat()
 
     # Whatever is on the watchlist passed the gate for good and is measured instead.
     watched = {r.lower() for r in watchlist()}
@@ -194,11 +197,19 @@ def gate(minutes=None, workers=None):
     for part in batched(due, g["batch"] * workers * 10):
         if time.monotonic() > deadline:
             break
-        for r, v in clock_slots(part, w["lag_days"], w["week_days"], workers, g["batch"]).items():
-            c = slot_clock(v["slots"], v["end"], w["week_days"])
+        found = clock_slots(part, w["lag_days"], w["week_days"], workers, g["batch"])
+        for r in part:
+            checked += 1
+            if r not in found:   # gone, private, or failed this time: checked for today either way
+                misses = rows[r].get("gate_misses", 0) + 1
+                rows[r].update(gate_checked=today(), gate_misses=misses)
+                if misses >= g["max_misses"]:
+                    rows[r].update(status="out", out_since=today(), out_reason="not found")
+                continue
+            c = slot_clock(found[r]["slots"], found[r]["end"], w["week_days"])
+            rows[r].pop("gate_misses", None)
             rows[r].update(gate_checked=today(), night_utilization=c["night_utilization"],
                            nights_covered=c["nights_covered"], nights_seen=c.get("nights_seen"))
-            checked += 1
             if runs_unattended(c):
                 passed.append(r)
         save_screened(rows)
@@ -221,12 +232,47 @@ def gate(minutes=None, workers=None):
 
 
 def update_statuses(rows):
-    """After measuring: mark archived repositories, which are no longer measured. Nothing else leaves the watchlist:
-    passing the gate is for good."""
+    """After measuring: mark archived repositories, and make dormant those whose whole measured window had no commits.
+    Neither is measured again; nothing leaves the watchlist, since passing the gate is for good."""
     wl = watchlist()
     by_lower = {r.lower(): r for r in wl}
     for row in rows:
         key = by_lower.get(row["repo"].lower())
-        if key and row["meta"].get("archived") and wl[key]["status"] != "archived":
+        if not key or wl[key]["status"] != "active":
+            continue
+        if row["meta"].get("archived"):
             wl[key].update(status="archived", status_since=today())
+        elif quiet(row):
+            wl[key].update(status="dormant", status_since=today())
     save_watchlist(wl)
+
+
+def quiet(row):
+    """Whether a measured row saw no commits on the default branch in its whole window (four weeks, ending two days
+    before the measurement)."""
+    return (row.get("volume") or {}).get("commits_per_day") == 0
+
+
+def back_at_work(days):
+    """Whether a dormant repository's commit counts per day of the last week show work on most days again."""
+    return sum(1 for n in days if n) >= CONFIG["dormant"]["active_days"]
+
+
+def revive(workers=None):
+    """The daily check of dormant repositories: commits per day over the last week, counts only, about a point per
+    twenty repositories. Work on most days makes a repository active again, measured from the next run."""
+    workers = workers or int(os.environ.get("ASF_WORKERS", CONFIG["screen"]["workers"]))
+    wl = watchlist()
+    due = [r for r, e in wl.items() if e["status"] == "dormant" and e.get("dormant_checked", "") < today()]
+    if not due:
+        return []
+    counts = clock_slots(due, 0, 7, workers, 20, hours=24)
+    back = []
+    for r in due:
+        wl[r]["dormant_checked"] = today()
+        if r in counts and back_at_work(counts[r]["slots"]):
+            wl[r].update(status="active", status_since=today())
+            back.append(r)
+    save_watchlist(wl)
+    print(f"dormant: checked {len(due)}; {len(back)} back at work")
+    return back

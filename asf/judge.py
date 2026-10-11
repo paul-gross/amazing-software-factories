@@ -12,7 +12,7 @@ import shutil
 import statistics
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, timedelta
+from datetime import timedelta
 from pathlib import Path
 
 from . import CONFIG, DATA, ROOT
@@ -20,7 +20,7 @@ from .gh import GhError, rest
 from .measure import classify
 from .kind import kinds
 from .render import DIMENSIONS, SECTIONS, latest_judgments, lines, listed, section
-from .store import annotations, latest, today
+from .store import annotations, latest, today, utc_date
 
 WORK = ROOT / "judging"
 RUBRIC = "judge-v1"
@@ -68,7 +68,7 @@ def due(row, judged):
     if not last:
         return True
     cfg = CONFIG["judge"]
-    if last["date"] < (date.today() - timedelta(days=cfg["rejudge_after_days"])).isoformat():
+    if last["date"] < (utc_date() - timedelta(days=cfg["rejudge_after_days"])).isoformat():
         return True
     before = last.get("source_kb") or 0
     now = (row.get("structure") or {}).get("source_kb") or 0

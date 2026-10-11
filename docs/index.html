@@ -151,7 +151,6 @@ footer { color: var(--muted); font-size: 13px; padding: 12px 16px 32px; }
   const C = D.counts || {};
   const kpis = [[rows.length, "listed: passed the gate"], [count(r => r.section === sections[0]), "assembly lines"],
     [count(r => r.section === sections[1]), "built by an assembly line"],
-    ...(count(r => r.section === sections[2]) ? [[count(r => r.section === sections[2]), "awaiting classification"]] : []),
     [count(r => letter(r, "output") === "A"), "output A: 40k+ code lines a day"],
     [count(r => letter(r, "autonomy") <= "B"), "autonomy A or B"],
     ...(C.waiting != null ? [[C.waiting.toLocaleString(), "waiting at the gate, checked daily"]] : []),

@@ -96,8 +96,13 @@ def about(repos, workers=2):
     return _aliased(list(batched(repos, 10)), lambda i, r: _repo(i, r, FIELDS), parse, workers)
 
 
-def numbers(row):
-    """The measured activity the classifier weighs, in words, from a snapshot row."""
+def numbers(row, gate=None):
+    """The measured activity the classifier weighs, in words, from a snapshot row; before a repository is measured,
+    from the gate it passed."""
+    if not row and gate:
+        return (f"night utilization {gate['night_utilization']:.0%}: how fully the week's quietest six hours of the day "
+                "were used, against an even spread of commits (100% means work landed evenly round the clock); work "
+                f"landed in those hours on {gate['nights_covered']} of 7 nights")
     if not row:
         return "not measured"
     from .grade import value
@@ -122,10 +127,10 @@ def numbers(row):
     return "; ".join(parts)
 
 
-def ask(repo, info, row=None):
+def ask(repo, info, row=None, gate=None):
     prompt = PROMPT.format(repo=repo, description=info["description"], topics=", ".join(info["topics"]) or "none",
                            homepage=info["homepage"] or "none", language=info["language"] or "none",
-                           entries=", ".join(info["entries"]) or "none", numbers=numbers(row), commit_count=COMMITS,
+                           entries=", ".join(info["entries"]) or "none", numbers=numbers(row, gate), commit_count=COMMITS,
                            commits=info["commits"] or "(none)", chars=README_CHARS, readme=info["readme"] or "(no README)")
     with tempfile.TemporaryDirectory() as empty:
         p = subprocess.run(["claude", "-p", "--model", CONFIG["kind"]["model"], "--tools", "", "--setting-sources",
@@ -142,10 +147,11 @@ def kinds():
     return {r["repo"].lower(): r for r in read_jsonl(DATA / "kinds.jsonl")}
 
 
-def classify(repos, refresh=False, rows=None):
+def classify(repos, refresh=False, rows=None, gates=None):
     """Classify the repositories not yet classified under this version (all of them, with refresh) and store the
-    results. rows: {repo: snapshot row}, the measured activity to weigh, where there is one."""
-    stored, rows = kinds(), rows or {}
+    results. rows: {repo: snapshot row}, the measured activity to weigh, where there is one; gates: {repo: the gate's
+    numbers}, for one not yet measured."""
+    stored, rows, gates = kinds(), rows or {}, gates or {}
     todo = [r for r in repos if refresh or (stored.get(r.lower()) or {}).get("version") != VERSION]
     if not todo:
         return stored
@@ -153,7 +159,7 @@ def classify(repos, refresh=False, rows=None):
 
     def one(repo):
         try:
-            return repo, ask(repo, info[repo], rows.get(repo))
+            return repo, ask(repo, info[repo], rows.get(repo), gates.get(repo))
         except (KeyError, RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
             print(f"kind {repo}: {exc}")
             return repo, None

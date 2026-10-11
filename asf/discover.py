@@ -15,7 +15,7 @@ from datetime import date, timedelta
 
 from . import CONFIG, DATA, ROOT
 from .gh import GhError, rest
-from .store import read_list
+from .store import read_list, utc_date
 
 AGENT = "amazing-software-factories (+https://github.com/paul-gross/amazing-software-factories)"
 BOT_ACTOR = re.compile(r"(\[bot\]|-bot|bot|actions|dependabot|renovate)$", re.I)
@@ -44,7 +44,7 @@ def gharchive(end=None):
     Each day's push counts are saved under .cache/gharchive/ once its 24 hours are read, so a stopped run downloads
     only the days it had not finished."""
     cfg = CONFIG["discover"]["gharchive"]
-    end = end or date.today()
+    end = end or utc_date()
     days = [end - timedelta(days=i) for i in range(1, cfg["days"] + 1)]
     store = ROOT / ".cache" / "gharchive"
     store.mkdir(parents=True, exist_ok=True)
@@ -109,7 +109,7 @@ def run_day(cache=None, today=None):
     """The day of the screen in progress: the newest nomination of the last week whose screen has not finished, else
     today. A stopped screen resumes under its own day, whenever it is restarted."""
     cache = cache or ROOT / ".cache"
-    today = today or date.today()
+    today = today or utc_date()
     started = sorted((p.name[len("nominees-"):-len(".json")] for p in cache.glob("nominees-*.json")), reverse=True)
     for day in started:
         if day >= (today - timedelta(days=6)).isoformat() and not (cache / f"funnel-{day}.json").exists():
@@ -121,7 +121,7 @@ def run_day(cache=None, today=None):
 def sweep(cache=None, keep_days=14, today=None):
     """Remove day caches older than `keep_days`: archive days, nominations, totals and funnels."""
     cache = cache or ROOT / ".cache"
-    cut = ((today or date.today()) - timedelta(days=keep_days)).isoformat()
+    cut = ((today or utc_date()) - timedelta(days=keep_days)).isoformat()
     for path in [*cache.glob("gharchive/*.json.gz"), *cache.glob("*-20??-??-??.json")]:
         day = re.search(r"(\d{4}-\d{2}-\d{2})", path.name)
         if day and day.group(1) < cut:
@@ -133,7 +133,7 @@ def nominate(day=None):
 
     Cached under the run's day in .cache/, so a rerun after an interruption does not stream the archive again.
     """
-    day = day or date.today()
+    day = day or utc_date()
     cache = ROOT / ".cache" / f"nominees-{day.isoformat()}.json"
     if cache.exists():
         return [tuple(x) for x in json.loads(cache.read_text())]

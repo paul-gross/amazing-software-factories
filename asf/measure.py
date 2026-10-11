@@ -97,22 +97,24 @@ def facts(repos, days, workers=2, size=40):
     return _aliased(list(batched(repos, size)), lambda i, r: _repo(i, r, body), parse, workers)
 
 
-def clock_slots(repos, lag=0, days=7, workers=2, size=5):
-    """{repo: commits on the default branch in each two-hour slot of `days` ending `lag` days ago}, oldest slot first.
+def clock_slots(repos, lag=0, days=7, workers=2, size=5, hours=2):
+    """{repo: commits on the default branch in each `hours`-long slot of `days` ending `lag` days ago}, oldest slot
+    first.
 
     Counts only, no commits: one point per query however busy a repository is, so the whole screen can be checked
     every day. Slots start on even UTC hours, so they line up with the hours of the day the clock reads.
     """
     end = since(lag).replace(minute=0, second=0)
     end -= timedelta(hours=end.hour % 2)
-    edges = [iso(end - timedelta(hours=2 * i)) for i in range(days * 12, -1, -1)]
+    n = days * 24 // hours
+    edges = [iso(end - timedelta(hours=hours * i)) for i in range(n, -1, -1)]
     body = ("defaultBranchRef { target { ... on Commit { " + " ".join(
-        f's{i}: history(since: "{edges[i]}", until: "{edges[i + 1]}") {{ totalCount }}' for i in range(days * 12))
+        f's{i}: history(since: "{edges[i]}", until: "{edges[i + 1]}") {{ totalCount }}' for i in range(n))
         + " } } }")
 
     def parse(r):
         target = (r.get("defaultBranchRef") or {}).get("target") or {}
-        return dict(end=iso(end), slots=[(target.get(f"s{i}") or {}).get("totalCount", 0) for i in range(days * 12)])
+        return dict(end=iso(end), slots=[(target.get(f"s{i}") or {}).get("totalCount", 0) for i in range(n)])
 
     return _aliased(list(batched(repos, size)), lambda i, r: _repo(i, r, body), parse, workers)
 

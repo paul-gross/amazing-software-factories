@@ -4,12 +4,14 @@ import contextlib
 import io
 import json
 import tempfile
+import time
 import unittest
+from unittest import mock
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from asf import discover, grade, judge, lines, measure, rubric, watch
-from asf.__main__ import baseline, prior_weeks
+from asf import discover, gh, grade, judge, kind, lines, measure, store, watch
+from asf.__main__ import baseline, hour_of, measurable, prior_weeks
 
 
 def commit(login=None, name=None, adds=10, dels=0, parents=1, when="2026-10-08T12:00:00Z", prs=1, headline="feat: x"):
@@ -244,6 +246,71 @@ class Resume(unittest.TestCase):
             self.assertEqual(json.loads(path.read_text()), {"o/a": dict(n=1), "o/b": dict(n=1), "o/gone": None, "o/c": dict(n=1)})
 
 
+class Schedule(unittest.TestCase):
+    def test_each_repository_has_a_fixed_hour_and_the_hours_share_the_list(self):
+        self.assertEqual(hour_of("Owner/Repo"), hour_of("owner/repo"))
+        hours = [hour_of(f"owner/repo-{i}") for i in range(2400)]
+        self.assertEqual(set(hours), set(range(24)))
+        self.assertTrue(all(60 <= hours.count(h) <= 140 for h in range(24)))
+
+    def test_only_classified_software_factories_are_measured(self):
+        stored = {r: dict(repo=r, kind=k, version=kind.VERSION) for r, k in
+                  (("o/line", "assembly line"), ("o/built", "built by an assembly line"), ("o/docs", "not software"))}
+        notes = {"o/copied": dict(kind="copy")}
+        stored["o/copied"] = dict(repo="o/copied", kind="assembly line", version=kind.VERSION)
+        self.assertEqual([r for r in ("o/line", "o/built", "o/docs", "o/copied", "o/unread") if measurable(r, stored, notes)],
+                         ["o/line", "o/built"])
+
+
+class Dormancy(unittest.TestCase):
+    def test_a_window_without_commits_is_dormant(self):
+        self.assertTrue(watch.quiet(dict(volume=dict(commits_per_day=0))))
+        self.assertFalse(watch.quiet(dict(volume=dict(commits_per_day=0.1))))
+
+    def test_work_on_most_days_of_a_week_brings_it_back(self):
+        self.assertTrue(watch.back_at_work([0, 2, 1, 5, 0, 0, 0]))
+        self.assertFalse(watch.back_at_work([0, 9, 0, 0, 0, 40, 0]))
+
+
+class Missing(unittest.TestCase):
+    def test_a_repository_github_has_nothing_for_is_checked_and_stops_waiting_after_a_week(self):
+        rows = {"o/gone": dict(repo="o/gone", status="waiting"), "o/here": dict(repo="o/here", status="waiting")}
+        saved = {}
+        fakes = dict(screened=lambda: rows, watchlist=lambda: {}, save_screened=lambda r: saved.update(r),
+                     save_watchlist=lambda w: None, recent=lambda *a: {},
+                     clock_slots=lambda part, *a, **k: {r: dict(slots=[0] * 84, end="2026-10-08T10:00:00Z")
+                                                        for r in part if r != "o/gone"})
+        real = {name: getattr(watch, name) for name in fakes}
+        try:
+            for name, fake in fakes.items():
+                setattr(watch, name, fake)
+            with contextlib.redirect_stdout(io.StringIO()):
+                for day in range(7):
+                    rows["o/gone"]["gate_checked"] = rows["o/here"]["gate_checked"] = ""
+                    watch.gate(minutes=1, workers=1)
+        finally:
+            for name, fn in real.items():
+                setattr(watch, name, fn)
+        self.assertEqual(rows["o/here"]["status"], "waiting")
+        self.assertEqual((rows["o/gone"]["status"], rows["o/gone"]["gate_misses"]), ("out", 7))
+
+
+class Budget(unittest.TestCase):
+    def test_calls_wait_for_the_reset_once_the_budget_is_down_to_the_reserve(self):
+        slept = []
+        with mock.patch("asf.gh.time.sleep", slept.append), contextlib.redirect_stdout(io.StringIO()):
+            gh._budget["graphql"] = (5000, time.time() + 600)
+            gh._wait_for_budget("graphql")
+            gh._budget["graphql"] = (10, time.time() + 600)
+            gh._wait_for_budget("graphql")
+        self.assertEqual(len(slept), 1)
+        self.assertAlmostEqual(slept[0], 605, delta=2)
+        self.assertNotIn("graphql", gh._budget)
+
+    def test_dates_are_utc(self):
+        self.assertEqual(store.today(), datetime.now(timezone.utc).date().isoformat())
+
+
 class Links(unittest.TestCase):
     def test_extracts_repositories_and_skips_reserved_paths(self):
         md = ("See [a](https://github.com/acme/factory) and https://github.com/acme/factory.git, "
@@ -334,29 +401,6 @@ class Admission(unittest.TestCase):
     def test_the_author_sample_gets_slack_on_the_one_person_test(self):
         self.assertFalse(watch.not_a_team(0.6, 0.0))
         self.assertTrue(watch.not_a_team(0.6, 0.0, threshold=0.8 * 0.6))
-
-
-class Tiers(unittest.TestCase):
-    def row(self, **over):
-        row = dict(gates=dict(pr_runs_tests=True, pr_runs_lint=True, pr_runs_typecheck=True, boundary_tools=["ast-grep"],
-                              strict_typing=True),
-                   structure=dict(test_ratio=1.2, largest_file_kb=80, tenth_largest_file_kb=40),
-                   ci=dict(ci_runs=100, green_share=0.9))
-        for k, v in over.items():
-            row[k] = dict(row[k], **v)
-        return row
-
-    def test_gated_and_holding(self):
-        self.assertEqual(rubric.tier(self.row())["tier"], "Gated and holding")
-
-    def test_a_red_main_and_a_giant_file_strain_a_gated_repository(self):
-        row = self.row(ci=dict(green_share=0.1), structure=dict(largest_file_kb=2000, tenth_largest_file_kb=300))
-        self.assertEqual(rubric.tier(row)["tier"], "Gated, under strain")
-
-    def test_no_gates_is_lightly_gated(self):
-        row = self.row(gates=dict(pr_runs_tests=False, pr_runs_lint=False, pr_runs_typecheck=False, boundary_tools=[],
-                                  strict_typing=False), structure=dict(test_ratio=0.05))
-        self.assertEqual(rubric.tier(row)["tier"], "Lightly gated")
 
 
 class CodeLines(unittest.TestCase):

@@ -2,8 +2,9 @@
 
 Classification names what each watched repository is: an **assembly line** (a factory building itself), a project
 **built by an assembly line**, or **not software**. Whether a repository runs without people is already settled by the
-gate before it is watched, so the classifier only decides what it is. Until it does, a watched repository is listed as
-"Awaiting classification".
+gate before it is watched, so the classifier only decides what it is. Until it does, a watched repository is neither
+measured nor listed: only assembly lines and what they build are. Run it after the gate has admitted new repositories;
+an unmeasured one is described to the classifier by the numbers it passed the gate with.
 
 It runs on a local machine, not in GitHub Actions: each repository is one call to the `claude` command, signed in to a
 Claude subscription, at roughly the cost of a short conversation.

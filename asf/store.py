@@ -2,7 +2,7 @@
 annotations."""
 import json
 import tomllib
-from datetime import date
+from datetime import date, datetime, timezone
 
 from . import DATA
 
@@ -91,5 +91,10 @@ def save_snapshot(day, rows):
     write_jsonl(DATA / "snapshots" / f"{day}.jsonl", rows)
 
 
+def utc_date():
+    """Today's date in UTC: every date the data records is a UTC date, wherever the run happens."""
+    return datetime.now(timezone.utc).date()
+
+
 def today():
-    return date.today().isoformat()
+    return utc_date().isoformat()

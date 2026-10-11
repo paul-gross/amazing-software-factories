@@ -2,18 +2,26 @@
 
 The token comes from GH_TOKEN or GITHUB_TOKEN, or else from the signed-in GitHub CLI. Calls go straight over HTTP
 rather than through a gh process each, which matters when tens of thousands of queries run in a week.
+
+Every answer says how much of the hour's budget is left. When it falls to the reserve in config.toml ([github]), calls
+wait for the hour to reset rather than spend the rest: the token may be shared, and a spent budget fails every query.
 """
 import http.client
 import json
 import os
 import subprocess
+import threading
 import time
 import urllib.error
 import urllib.request
 
+from . import CONFIG
+
 API = "https://api.github.com"
 AGENT = "amazing-software-factories (+https://github.com/paul-gross/amazing-software-factories)"
 _token = None
+_budget = {}   # resource ("graphql", "core", "search") -> (remaining, reset epoch), from the latest answer
+_lock = threading.Lock()
 
 
 class GhError(RuntimeError):
@@ -28,19 +36,55 @@ def token():
     return _token
 
 
+def _resource(url):
+    return "graphql" if url.endswith("/graphql") else "search" if "/search/" in url else "core"
+
+
+def _note(resource, headers):
+    """Remember the budget an answer reports."""
+    remaining, reset = headers.get("x-ratelimit-remaining"), headers.get("x-ratelimit-reset")
+    if remaining is not None and reset is not None:
+        with _lock:
+            _budget[headers.get("x-ratelimit-resource") or resource] = (int(remaining), int(reset))
+
+
+def _wait_for_budget(resource):
+    """Sleep until the hour resets when this resource's budget is down to the reserve."""
+    reserve = CONFIG["github"]["reserve"].get(resource, 0)
+    with _lock:
+        remaining, reset = _budget.get(resource, (None, 0))
+    wait = reset - time.time() + 5
+    if remaining is not None and remaining <= reserve and wait > 0:
+        print(f"github: {resource} budget down to {remaining}; waiting {wait / 60:.0f} minutes for the reset", flush=True)
+        time.sleep(wait)
+        with _lock:
+            _budget.pop(resource, None)
+
+
 def _request(url, body=None, accept="application/vnd.github+json", attempts=8):
     err = ""
+    resource = _resource(url)
     for attempt in range(attempts):
+        _wait_for_budget(resource)
         req = urllib.request.Request(url, data=json.dumps(body).encode() if body is not None else None, headers={
             "Authorization": f"Bearer {token()}", "Accept": accept, "User-Agent": AGENT,
             "X-GitHub-Api-Version": "2022-11-28"})
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                return resp.read().decode("utf-8", errors="replace")
+                _note(resource, resp.headers)
+                text = resp.read().decode("utf-8", errors="replace")
+            # A spent GraphQL budget answers 200 with a RATE_LIMITED error and no data: wait for the reset and ask again.
+            if resource == "graphql" and '"RATE_LIMITED"' in text:
+                with _lock:
+                    _budget[resource] = (0, _budget.get(resource, (0, int(time.time()) + 60))[1])
+                err = "RATE_LIMITED"
+                continue
+            return text
         except urllib.error.HTTPError as exc:
+            _note(resource, exc.headers)
             text = exc.read().decode("utf-8", errors="replace")
             # GraphQL can answer partial data with an error status; the caller decides what a null alias means.
-            if text.lstrip().startswith("{") and '"data"' in text:
+            if text.lstrip().startswith("{") and '"data"' in text and '"RATE_LIMITED"' not in text:
                 return text
             err = f"HTTP {exc.code}: {text[:300]}"
             if exc.code in (404, 422, 451):

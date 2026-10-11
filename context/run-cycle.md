@@ -7,7 +7,7 @@ from a crontab, or from GitHub Actions, and each commits and pushes its own data
 | Script                | How often | What it does                                                                                       |
 | --------------------- | --------- | -------------------------------------------------------------------------------------------------- |
 | `scripts/weekly.sh`   | Weekly    | Discovers nominees in GH Archive, screens them (layers 1 and 2) into the waiting list, keeps the week's snapshot |
-| `scripts/hourly.sh`   | Hourly    | Gates the waiting repositories not checked today, measures the watched ones due, re-renders         |
+| `scripts/hourly.sh`   | Hourly    | Gates the waiting repositories not checked today, checks the dormant ones, measures the classified ones whose hour has come, re-renders |
 
 ## The funnel
 
@@ -18,8 +18,27 @@ from a crontab, or from GitHub Actions, and each commits and pushes its own data
    are at least 40% used and work landed on at least 5 of 7 nights. Commit counts only, a point per five repositories.
 4. **Varied changes** (when 3 passes): the newest commits are not one repeated message from a scheduled job.
 
-Passing 3 and 4 puts a repository on the watchlist **for good**: it is measured every day from then on, whatever its
-numbers do. Nothing that has not passed is ever listed.
+Passing 3 and 4 puts a repository on the watchlist **for good**. Nothing that has not passed is ever listed.
+
+## After the gate
+
+1. **Classified** ([classify-workflow.md](./classify-workflow.md)), by hand: an assembly line, built by one, or not
+   software. Nothing is measured or listed before this.
+2. **Measured once a day**, if it is an assembly line or built by one, whatever its numbers do. Each repository has a
+   fixed UTC hour (a hash of its name, modulo 24); a run measures those whose hour has come and that were not measured
+   today, so a missed hour is caught up by the next run.
+3. **Dormant** when a measurement sees no commits in the whole four-week window: not measured, not listed, history
+   kept. Each run counts a dormant repository's commits per day over the last week, once a day; work on 3 of 7 days
+   makes it active again.
+
+A waiting repository GitHub has nothing for (deleted, private) counts as checked for the day, and stops waiting after
+seven misses.
+
+## The API budget
+
+Every answer from GitHub reports the hour's remaining budget. When it falls to the reserve in `[github]` of
+config.toml (1,000 GraphQL points by default), the run waits for the reset instead of spending the rest, so a shared
+token is never run dry and a run never spins on rate-limit errors.
 
 ## The measured window
 

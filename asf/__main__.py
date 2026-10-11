@@ -2,22 +2,23 @@
 
   find               discover nominees and screen them (layers 1 and 2) into the waiting list, weekly
   gate [minutes]     layers 3 and 4 for the waiting repositories not checked today; what passes is watched for good
-  measure [minutes]  measure the watched repositories not yet measured today
+  measure [minutes]  measure the classified watched repositories due this hour and not yet measured today
   classify           classify watched repositories the classifier has not seen (runs `claude` locally)
   render             regenerate the README tables, the site data, and the report
-  hourly             gate, measure, render: the hourly job
+  hourly             gate, check the dormant, measure, render: the hourly job
   weekly             find, then keep the week's snapshot
   judge              cold-read the top repositories with LLM judges (run by hand; see rubric/judge-v1.md)
 """
+import hashlib
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, timedelta
+from datetime import datetime, timedelta, timezone
 
 from . import CONFIG, discover, grade, render, watch
 from .gh import GhError
 from .measure import measure
-from .store import (daily, daily_dates, latest, save_daily, save_latest, save_snapshot, screened, today,
+from .store import (daily, daily_dates, latest, save_daily, save_latest, save_snapshot, screened, today, utc_date,
                     watchlist)
 
 
@@ -68,19 +69,38 @@ def record(row):
                 nights=clock.get("nights_covered"))
 
 
-def measure_due(minutes=None, workers=None):
-    """Measure the watched repositories not measured today, least recently measured first, until `minutes` pass.
-    Each row replaces the repository's row in data/latest.jsonl and adds a record to data/daily/."""
+def hour_of(repo):
+    """The UTC hour of the day a repository is measured in, spread evenly by a hash of its name, so each hourly run
+    measures a twenty-fourth of the list."""
+    return int(hashlib.sha1(repo.lower().encode()).hexdigest(), 16) % 24
+
+
+def measurable(repo, stored, notes):
+    """Only software factories are measured: an active repository classified as an assembly line or built by one."""
+    from .kind import KINDS, kind_of
+    note = notes.get(repo.lower()) or {}
+    return note.get("kind") != "copy" and kind_of(repo, stored, notes) in KINDS[:2]
+
+
+def measure_due(minutes=None, workers=None, hour=None):
+    """Measure the classified watched repositories whose hour of the day has come and that were not measured today,
+    earliest hour first, until `minutes` pass. A run that missed an hour catches up on the next one. Each row replaces
+    the repository's row in data/latest.jsonl and adds a record to data/daily/."""
+    from .kind import kinds
+    from .store import annotations
     cfg = CONFIG["measure"]
     minutes = cfg["minutes"] if minutes is None else minutes
     deadline = time.monotonic() + minutes * 60
+    hour = datetime.now(timezone.utc).hour if hour is None else hour
     rows = latest()
     by_lower = {r.lower(): r for r in rows}
     current = lambda repo: rows.get(by_lower.get(repo.lower(), repo)) or {}
-    due = sorted((r for r, e in watchlist().items() if e["status"] == "active" and current(r).get("measured", "") < today()),
-                 key=lambda r: current(r).get("measured", ""))
+    stored, notes = kinds(), annotations()
+    due = sorted((r for r, e in watchlist().items() if e["status"] == "active" and hour_of(r) <= hour
+                  and current(r).get("measured", "") < today() and measurable(r, stored, notes)),
+                 key=lambda r: (hour_of(r), current(r).get("measured", "")))
     print(f"measure: {len(due)} watched repositories due; {minutes} minutes to measure them")
-    day = date.today()
+    day = utc_date()
     oldest = (day - timedelta(days=CONFIG["window"]["days"])).isoformat()
     records = {d: daily(d) for d in daily_dates() if oldest <= d < day.isoformat()}
     screens = screened()
@@ -115,7 +135,7 @@ def measure_due(minutes=None, workers=None):
 
 def snapshot_week():
     """Keep this week's full rows: every watched repository's latest row measured in the last two days."""
-    cut = (date.today() - timedelta(days=2)).isoformat()
+    cut = (utc_date() - timedelta(days=2)).isoformat()
     rows = [r for r in latest().values() if r.get("measured", "") >= cut]
     save_snapshot(today(), rows)
     print(f"snapshot: kept {len(rows)} rows")
@@ -123,9 +143,9 @@ def snapshot_week():
 
 def classify():
     from .kind import classify as run
-    rows = latest()
-    watched = [r for r, e in watchlist().items() if e["status"] != "opted-out"]
-    run(watched, rows={r: rows[r] for r in watched if r in rows})
+    rows, wl = latest(), watchlist()
+    watched = [r for r, e in wl.items() if e["status"] != "opted-out"]
+    run(watched, rows={r: rows[r] for r in watched if r in rows}, gates={r: wl[r]["gate"] for r in watched if wl[r].get("gate")})
 
 
 def main(argv):
@@ -144,6 +164,7 @@ def main(argv):
         render.report()
     elif command == "hourly":
         watch.gate()
+        watch.revive()
         measure_due()
         render.render()
         render.report()
