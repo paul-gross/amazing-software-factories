@@ -39,8 +39,9 @@ agent instruction files at their usual paths (AGENTS.md, CLAUDE.md and the like:
 the first 8,000 characters of the README, the newest 20 commits with bodies and authors, and the measured numbers.
 
 The line between a factory and agent-assisted work: exhaustive agent-facing context (a library of the codebase's
-conventions, architecture, rules and verification, written for agents, or a companion repository holding them), work
-flowing through a loop, and several agent roles point to a factory. Automation guardrails (CI that gates changes,
+conventions, architecture, rules and verification, written for agents, or a companion repository holding them) and
+work flowing through a loop without a person picking each item point to a factory. Agent roles do not: a factory may
+use named roles or none. Automation guardrails (CI that gates changes,
 agent review or verification, enforced rules) add weight, but a factory can run without them; the discipline grade
 measures them. A single CLAUDE.md or AGENTS.md with no supporting library or repository points to agent-assisted,
 and so do customizations of a person's own assistant: .claude/agents, .claude/skills, slash commands, MCP

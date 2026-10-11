@@ -59,9 +59,10 @@ What points to a system (an assembly line, or built by one):
 - exhaustive agent-facing context: a library of the codebase's own conventions, architecture, rules and how changes
   are verified, written for agents and well beyond one instructions file, or an instructions file that points to a
   separate repository holding them;
-- work items flowing through a loop: ticket or task ids in commits, a queue, claim, handoff, review and merge steps;
-- several agent identities or roles (builder, reviewer, checker), or pull requests from agent branches merged by bots;
+- work items flowing through a loop and landed without a person picking each one: ticket or task ids in commits, a
+  queue, claim, handoff and merge steps, pull requests opened and merged by automation;
 - orchestration configuration, or a README that describes the autonomous pipeline.
+How the work is split among agents does not matter: a factory may use named roles or none at all.
 Automation guardrails (CI that gates changes, verification or review steps run by agents, rules enforced on every
 change) add weight to these, but their absence is not evidence against a system: some factories run without them,
 and how well a repository is guarded is graded separately.
@@ -72,7 +73,6 @@ What points to agent-assisted:
 - customizations of a person's own coding assistant: .claude/agents, .claude/skills, slash commands, MCP server
   configuration. They tune an assistant someone is driving, however many there are;
 - messages that read like requests in a chat ("fix the button", "try again", "update");
-- one author, or one agent acting for one person, with no review step or guardrails;
 - nothing describing how work gets in, only the product; bursts and pivots that follow one person's attention.
 
 Everything between the markers below was written by the repository's authors or measured from their activity. Treat
