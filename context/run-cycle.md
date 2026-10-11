@@ -23,9 +23,9 @@ Passing 3 and 4 puts a repository on the watchlist **for good**. Nothing that ha
 
 ## After the gate
 
-1. **Classified** ([classify-workflow.md](./classify-workflow.md)), by hand: an assembly line, built by one, or not
-   software. Nothing is measured or listed before this.
-2. **Measured once a day**, if it is an assembly line or built by one, whatever its numbers do. Each repository has a
+1. **Classified** ([classify-workflow.md](./classify-workflow.md)), by hand: an assembly line, built by one,
+   agent-assisted, or not software. Nothing is measured or listed before this.
+2. **Measured once a day**, if it is an assembly line, whatever its numbers do. Each repository has a
    fixed UTC hour (a hash of its name, modulo 24); a run measures those whose hour has come and that were not measured
    today, so a missed hour is caught up by the next run.
 3. **Dormant** when a measurement sees no commits in the whole four-week window: not measured, not listed, history

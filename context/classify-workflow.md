@@ -4,7 +4,7 @@ Classification names what each watched repository is: an **assembly line** (a fa
 **built by an assembly line**, an **agent-assisted** project (a person building with agents, session by session), or
 **not software**. The gate only shows that work lands through the night, which a person leaving agents running can
 also do, so the classifier decides whether a system or a person drives the work. Until it does, a watched repository is neither
-measured nor listed: only assembly lines and what they build are. Run it after the gate has admitted new repositories;
+measured nor listed, and afterwards only assembly lines are: software that builds other software. Run it after the gate has admitted new repositories;
 an unmeasured one is described to the classifier by the numbers it passed the gate with.
 
 It runs on a local machine, not in GitHub Actions: each repository is one call to the `claude` command, signed in to a

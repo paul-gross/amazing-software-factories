@@ -1,8 +1,8 @@
 """Turn the watched repositories' latest rows into the README tables, the site's data file, and the weekly report.
 
 Only repositories that passed the gate are watched, and of those only software factories are listed: what the
-classifier has read and found to be an assembly line, or something built by one. Nothing that sleeps is ever shown,
-nor anything not yet classified."""
+classifier has read and found to be an assembly line, software that builds other software with agents. What one
+builds is classified but not listed. Nothing that sleeps is ever shown, nor anything not yet classified."""
 import json
 import re
 
@@ -12,7 +12,7 @@ from .store import annotations, daily, daily_dates, latest, screened, snapshot, 
 
 SECTIONS = ("Assembly lines", "Built by an assembly line", "Awaiting classification", "Not software", "Copies and forks",
             "Agent-assisted")
-LISTED = SECTIONS[:2]
+LISTED = SECTIONS[:1]
 BY_KIND = {"assembly line": SECTIONS[0], "built by an assembly line": SECTIONS[1], "not software": SECTIONS[3],
            "agent-assisted": SECTIONS[5]}
 

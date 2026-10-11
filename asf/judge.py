@@ -19,7 +19,7 @@ from . import CONFIG, DATA, ROOT
 from .gh import GhError, rest
 from .measure import classify
 from .kind import kinds
-from .render import DIMENSIONS, SECTIONS, latest_judgments, lines, listed, section
+from .render import DIMENSIONS, LISTED, latest_judgments, lines, listed, section
 from .store import annotations, latest, today, utc_date
 
 WORK = ROOT / "judging"
@@ -54,7 +54,7 @@ SCHEMA = {
 def candidates():
     """The top N software repositories by volume: the best rank on either merged PRs or added lines per day."""
     notes, stored = annotations(), kinds()
-    rows = [r for r in listed(None, notes, stored) if section(r, notes, stored)[0] in SECTIONS[:2]]
+    rows = [r for r in listed(None, notes, stored) if section(r, notes, stored)[0] in LISTED]
     day = max((r.get("measured", "") for r in rows), default=today())
     by_prs = sorted(rows, key=lambda r: -(r["volume"]["merged_prs_per_day"] or 0))
     by_lines = sorted(rows, key=lambda r: -(lines(r)["code"] or 0))

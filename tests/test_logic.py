@@ -255,13 +255,13 @@ class Schedule(unittest.TestCase):
         self.assertEqual(set(hours), set(range(24)))
         self.assertTrue(all(60 <= hours.count(h) <= 140 for h in range(24)))
 
-    def test_only_classified_software_factories_are_measured(self):
+    def test_only_assembly_lines_are_measured(self):
         stored = {r: dict(repo=r, kind=k, version=kind.VERSION) for r, k in
                   (("o/line", "assembly line"), ("o/built", "built by an assembly line"), ("o/docs", "not software"))}
         notes = {"o/copied": dict(kind="copy")}
         stored["o/copied"] = dict(repo="o/copied", kind="assembly line", version=kind.VERSION)
         self.assertEqual([r for r in ("o/line", "o/built", "o/docs", "o/copied", "o/unread") if measurable(r, stored, notes)],
-                         ["o/line", "o/built"])
+                         ["o/line"])
 
 
 class Kinds(unittest.TestCase):

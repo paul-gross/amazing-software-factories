@@ -76,10 +76,10 @@ def hour_of(repo):
 
 
 def measurable(repo, stored, notes):
-    """Only software factories are measured: an active repository classified as an assembly line or built by one."""
+    """Only software factories are measured: an active repository classified as an assembly line."""
     from .kind import KINDS, kind_of
     note = notes.get(repo.lower()) or {}
-    return note.get("kind") != "copy" and kind_of(repo, stored, notes) in KINDS[:2]
+    return note.get("kind") != "copy" and kind_of(repo, stored, notes) in KINDS[:1]
 
 
 def measure_due(minutes=None, workers=None, hour=None):
