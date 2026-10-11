@@ -264,6 +264,17 @@ class Schedule(unittest.TestCase):
                          ["o/line", "o/built"])
 
 
+class Kinds(unittest.TestCase):
+    def test_an_older_answer_stands_until_the_current_classifier_reads_the_repository(self):
+        stored = {"o/a": dict(repo="o/a", kind="assembly line", version="kind-v3")}
+        self.assertEqual(kind.kind_of("o/a", stored, {}), "assembly line")
+        self.assertEqual(kind.kind_of("o/b", stored, {}), None)
+
+    def test_a_hand_annotation_wins(self):
+        stored = {"o/a": dict(repo="o/a", kind="built by an assembly line", version=kind.VERSION)}
+        self.assertEqual(kind.kind_of("o/a", stored, {"o/a": dict(kind="agent-assisted")}), "agent-assisted")
+
+
 class Dormancy(unittest.TestCase):
     def test_a_window_without_commits_is_dormant(self):
         self.assertTrue(watch.quiet(dict(volume=dict(commits_per_day=0))))

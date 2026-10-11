@@ -10,9 +10,11 @@ from . import CONFIG, DATA, ROOT, grade
 from .kind import kind_of, kinds
 from .store import annotations, daily, daily_dates, latest, screened, snapshot, snapshot_dates, today, watchlist
 
-SECTIONS = ("Assembly lines", "Built by an assembly line", "Awaiting classification", "Not software", "Copies and forks")
+SECTIONS = ("Assembly lines", "Built by an assembly line", "Awaiting classification", "Not software", "Copies and forks",
+            "Agent-assisted")
 LISTED = SECTIONS[:2]
-BY_KIND = {"assembly line": SECTIONS[0], "built by an assembly line": SECTIONS[1], "not software": SECTIONS[3]}
+BY_KIND = {"assembly line": SECTIONS[0], "built by an assembly line": SECTIONS[1], "not software": SECTIONS[3],
+           "agent-assisted": SECTIONS[5]}
 
 
 def section(row, notes, stored):

@@ -1,8 +1,9 @@
 # Running classification
 
 Classification names what each watched repository is: an **assembly line** (a factory building itself), a project
-**built by an assembly line**, or **not software**. Whether a repository runs without people is already settled by the
-gate before it is watched, so the classifier only decides what it is. Until it does, a watched repository is neither
+**built by an assembly line**, an **agent-assisted** project (a person building with agents, session by session), or
+**not software**. The gate only shows that work lands through the night, which a person leaving agents running can
+also do, so the classifier decides whether a system or a person drives the work. Until it does, a watched repository is neither
 measured nor listed: only assembly lines and what they build are. Run it after the gate has admitted new repositories;
 an unmeasured one is described to the classifier by the numbers it passed the gate with.
 
@@ -15,8 +16,10 @@ From the repository root, with a clean working tree:
 
 1. `git pull --rebase`
 2. `nice -n 15 python3 -m asf classify`: classifies every watched repository whose stored answer is missing or from
-   an older classifier version, four at a time. A line starting `kind ` is one repository the classifier could not
-   answer for; the next run retries it. With nothing waiting it prints nothing and exits.
+   an older classifier version, four at a time, saving every twenty answers, so a stopped run picks up what is left.
+   `classify 50` does a fixed random sample of 50 instead, to review a new prompt before running it on everything. A
+   line starting `kind ` is one repository the classifier could not answer for; the next run retries it. Until the
+   current version reads a repository, its answer from an older version stands.
 3. `python3 -m asf render`: the README and the site pick up the new kinds.
 4. `python3 -m unittest discover -s tests -q`
 5. `scripts/publish.sh "data: classify watched repositories <date>"`: commits what changed and pushes. If the
@@ -42,7 +45,7 @@ A hand entry in [data/annotations.toml](../data/annotations.toml) always wins ov
 
 ```toml
 [repo."owner/name"]
-kind = "not-software"          # or "assembly line", "built by an assembly line", "copy"
+kind = "not-software"          # or "assembly line", "built by an assembly line", "agent-assisted", "copy"
 reason = "One line a reader will see"
 ```
 

@@ -2,6 +2,7 @@
 #
 # kind = "not-software": a fleet's cadence without a codebase (proofs, records, generated content, data).
 # kind = "copy": a copy of another listed repository's history that GitHub does not mark as a fork.
+# kind = "agent-assisted": software a person builds with agents, session by session, rather than a factory.
 
 [repo."CBirkbeck/tauceti-explorer"]
 kind = "not-software"

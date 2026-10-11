@@ -28,8 +28,11 @@ Most repos that make it past step 2 fail step 3. They're people coding, often wi
 they're just not what this list is about. They never show up here.
 
 A repo that passes is watched for good. Before anything else happens, a model reads it to decide what it is: a
-factory building itself, a project being built by one, or not software at all (docs, data, proofs). This list is only
-about software factories, so only the first two are listed and measured. Until a repo has been read, it isn't shown.
+factory building itself, a project being built by one, a project a person builds with agents, or not software at all
+(docs, data, proofs). Working through the night is necessary for a factory but not proof of one, since anyone can leave
+agents running overnight; what the model looks for is a system that picks up work and lands it on its own. This list
+is only about software factories, so only the first two are listed and measured. Until a repo has been read, it isn't
+shown.
 
 From then on it's measured once a day, even through a slow week, and its grades will say so if it slows down. Each
 repo has its own hour of the day, so the work is spread out instead of landing all at once.

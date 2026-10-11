@@ -3,7 +3,7 @@
   find               discover nominees and screen them (layers 1 and 2) into the waiting list, weekly
   gate [minutes]     layers 3 and 4 for the waiting repositories not checked today; what passes is watched for good
   measure [minutes]  measure the classified watched repositories due this hour and not yet measured today
-  classify           classify watched repositories the classifier has not seen (runs `claude` locally)
+  classify [n]       classify watched repositories the classifier has not seen (runs `claude` locally); n: a sample
   render             regenerate the README tables, the site data, and the report
   hourly             gate, check the dormant, measure, render: the hourly job
   weekly             find, then keep the week's snapshot
@@ -141,11 +141,12 @@ def snapshot_week():
     print(f"snapshot: kept {len(rows)} rows")
 
 
-def classify():
+def classify(limit=None):
     from .kind import classify as run
     rows, wl = latest(), watchlist()
     watched = [r for r, e in wl.items() if e["status"] != "opted-out"]
-    run(watched, rows={r: rows[r] for r in watched if r in rows}, gates={r: wl[r]["gate"] for r in watched if wl[r].get("gate")})
+    run(watched, rows={r: rows[r] for r in watched if r in rows}, gates={r: wl[r]["gate"] for r in watched if wl[r].get("gate")},
+        limit=limit)
 
 
 def main(argv):
@@ -158,7 +159,7 @@ def main(argv):
     elif command == "measure":
         measure_due(minutes)
     elif command == "classify":
-        classify()
+        classify(int(argv[2]) if len(argv) > 2 else None)
     elif command == "render":
         render.render()
         render.report()
