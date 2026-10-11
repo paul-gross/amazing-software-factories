@@ -20,7 +20,7 @@ from .measure import _aliased, _repo
 from .store import annotations, read_jsonl, today, write_jsonl
 
 KINDS = ("assembly line", "built by an assembly line", "not software", "agent-assisted")
-VERSION = "kind-v5"
+VERSION = "kind-v6"
 COMMITS = 20
 CHUNK = 20           # repositories fetched, classified and saved together: a stopped run loses at most one chunk
 README_CHARS = 8000
@@ -44,9 +44,11 @@ through the night on most nights. That is necessary for a software factory but n
 agents running overnight. Decide what the repository is, and whether a system or a person is driving the work.
 
 - "assembly line": its purpose is to produce software with AI coding agents (an orchestrator, agent fleet manager,
-  autonomous coding pipeline, "software factory"), and it is itself developed by agents. A library or plugin for
-  coding agents (prompts, skills, MCP servers, editor add-ons) counts only if it orchestrates agents that write and
-  land code.
+  autonomous coding pipeline, "software factory"), and it is itself built by its own pipeline or by another assembly
+  line's: its work is picked up and landed by a system of agents, as for "built by an assembly line". A factory that
+  does not build itself that way is not ready to be listed: factory software a person steers session by session is
+  "agent-assisted". A library or plugin for coding agents (prompts, skills, MCP servers, editor add-ons) counts only
+  if it orchestrates agents that write and land code.
 - "built by an assembly line": any other software project (app, game, library, service, compiler, website code),
   whose work is picked up and landed by a system of agents rather than steered change by change by a person.
 - "agent-assisted": software written largely with AI coding agents, but steered by a person session by session: the
@@ -69,6 +71,9 @@ The loop must have agents writing the code. Bots that bump dependency or package
 update scripts) and scheduled jobs that refresh data land work around the clock, but they are not a factory: judge
 the repository by its other commits.
 How the work is split among agents does not matter: a factory may use named roles or none at all.
+Who the commits are attributed to does not decide it either: agents often commit under their operator's account, and
+every repository here was admitted because one person's account writes most of its commits. Judge steering from what
+the commits and files say (requests in a chat, a person approving each step), not from a single author.
 Automation guardrails (CI that gates changes, verification or review steps run by agents, rules enforced on every
 change) add weight to these, but their absence is not evidence against a system: some factories run without them,
 and how well a repository is guarded is graded separately.

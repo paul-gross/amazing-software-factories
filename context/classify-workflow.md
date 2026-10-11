@@ -1,6 +1,7 @@
 # Running classification
 
-Classification names what each watched repository is: an **assembly line** (a factory building itself), a project
+Classification names what each watched repository is: an **assembly line** (factory software built by its own
+pipeline or another assembly line's; one a person steers session by session is agent-assisted), a project
 **built by an assembly line**, an **agent-assisted** project (a person building with agents, session by session), or
 **not software**. The gate only shows that work lands through the night, which a person leaving agents running can
 also do, so the classifier decides whether a system or a person drives the work. Until it does, a watched repository is neither

@@ -32,8 +32,9 @@ factory building itself, a project being built by one, a project a person builds
 (docs, data, proofs). Working through the night is necessary for a factory but not proof of one, since anyone can leave
 agents running overnight; what the model looks for is a system that picks up work and lands it on its own. This list
 is only about software factories, software that can be pointed at other software to build it, so only the first is
-listed and measured. A project built by a factory is the factory's product, not a factory. Until a repo has been read,
-it isn't shown.
+listed and measured. A factory also has to be built by its own pipeline, or another factory's: one that isn't
+dogfooding isn't ready for the public. A project built by a factory is the factory's product, not a factory. Until a
+repo has been read, it isn't shown.
 
 From then on it's measured once a day, even through a slow week, and its grades will say so if it slows down. Each
 repo has its own hour of the day, so the work is spread out instead of landing all at once.
