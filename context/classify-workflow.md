@@ -19,8 +19,8 @@ From the repository root, with a clean working tree:
    answer for; the next run retries it. With nothing waiting it prints nothing and exits.
 3. `python3 -m asf render`: the README and the site pick up the new kinds.
 4. `python3 -m unittest discover -s tests -q`
-5. If anything changed, commit `data/kinds.jsonl`, `docs/`, `README.md` and `reports/` with a message like
-   `data: classify watched repositories <date>`, and push.
+5. `scripts/publish.sh "data: classify watched repositories <date>"`: commits what changed and pushes. If the
+   hourly workflow pushed meanwhile, it rebases onto that and renders the README and site again before pushing.
 
 Report back how many repositories were classified, the count per kind, and any that failed.
 

@@ -2,7 +2,8 @@
 
 The list is kept current by two cycles, plus classification, which is run by hand
 ([classify-workflow.md](./classify-workflow.md)). Both cycles run as plain scripts from the repository root, by hand,
-from a crontab, or from GitHub Actions, and each commits and pushes its own data.
+from a crontab, or from GitHub Actions (`.github/workflows/hourly.yml` and `weekly.yml`, one at a time), and each
+commits and pushes its own data through `scripts/publish.sh`, which rebases onto anything pushed meanwhile.
 
 | Script                | How often | What it does                                                                                       |
 | --------------------- | --------- | -------------------------------------------------------------------------------------------------- |
@@ -47,8 +48,13 @@ Code lines come from a shallow clone of that week, deleted at once; every other 
 
 ## Requirements
 
-- `GH_TOKEN`, or a signed-in `gh`. A run makes a few thousand API calls an hour at most; a token of its own (a GitHub
-  App's) keeps it from eating into a personal token's budget.
+- GitHub API access, one of:
+  - the bot: `ASF_APP_ID` and `ASF_APP_PRIVATE_KEY` (the App's PEM key, as text). The code mints the App's
+    installation token with `openssl` and mints a new one before each hour runs out, so the API budget is the bot's
+    own. The workflows pass these from the repository's secrets of the same names.
+  - `GH_TOKEN`, or a signed-in `gh`: a personal token, whose budget is shared with everything else using it.
+- `git`, `openssl`, Python 3.11 or newer, and a few GB of free disk for clones in flight (`.cache/clones`, emptied as
+  it goes).
 - `git`, Python 3.11 or newer, and a few GB of free disk for clones in flight (`.cache/clones`, emptied as it goes).
 
 ## When a run is interrupted

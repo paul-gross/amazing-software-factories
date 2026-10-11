@@ -1,15 +1,20 @@
 """Read-only access to GitHub's APIs over HTTPS, with retries for rate limits and transient failures.
 
-The token comes from GH_TOKEN or GITHUB_TOKEN, or else from the signed-in GitHub CLI. Calls go straight over HTTP
+The token is the bot's when ASF_APP_ID and ASF_APP_PRIVATE_KEY are set: a GitHub App installation token, minted
+from the App's key (signed with openssl) and minted again before its hour runs out, so a run of any length keeps a
+budget of its own. Otherwise it comes from GH_TOKEN or GITHUB_TOKEN, or else from the signed-in GitHub CLI. Calls go straight over HTTP
 rather than through a gh process each, which matters when tens of thousands of queries run in a week.
 
 Every answer says how much of the hour's budget is left. When it falls to the reserve in config.toml ([github]), calls
 wait for the hour to reset rather than spend the rest: the token may be shared, and a spent budget fails every query.
 """
+import base64
+import calendar
 import http.client
 import json
 import os
 import subprocess
+import tempfile
 import threading
 import time
 import urllib.error
@@ -28,11 +33,49 @@ class GhError(RuntimeError):
     pass
 
 
+def _b64(data):
+    return base64.urlsafe_b64encode(data).rstrip(b"=").decode()
+
+
+def app_jwt(app_id, key, now=None):
+    """A ten-minute JWT that authenticates as the App itself, RS256-signed by openssl with the App's private key."""
+    now = int(now or time.time())
+    head = _b64(json.dumps({"alg": "RS256", "typ": "JWT"}).encode())
+    body = _b64(json.dumps({"iat": now - 60, "exp": now + 540, "iss": str(app_id)}).encode())
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, "key.pem")
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT, 0o600)
+        with os.fdopen(fd, "w") as f:
+            f.write(key)
+        sig = subprocess.run(["openssl", "dgst", "-sha256", "-sign", path], input=f"{head}.{body}".encode(),
+                             capture_output=True, check=True).stdout
+    return f"{head}.{body}.{_b64(sig)}"
+
+
+def _app_token(app_id, key, repo):
+    """(token, expiry epoch) for the App's installation on `repo`."""
+    headers = {"Authorization": f"Bearer {app_jwt(app_id, key)}", "Accept": "application/vnd.github+json",
+               "User-Agent": AGENT, "X-GitHub-Api-Version": "2022-11-28"}
+    call = lambda url, data=None: json.loads(urllib.request.urlopen(urllib.request.Request(
+        url, data=data, headers=headers, method="POST" if data is not None else "GET"), timeout=60).read())
+    installation = call(f"{API}/repos/{repo}/installation")["id"]
+    out = call(f"{API}/app/installations/{installation}/access_tokens", b"{}")
+    return out["token"], calendar.timegm(time.strptime(out["expires_at"], "%Y-%m-%dT%H:%M:%SZ"))
+
+
+_expires = None
+
+
 def token():
-    global _token
-    if _token is None:
-        _token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or subprocess.run(
-            ["gh", "auth", "token"], capture_output=True, text=True, check=True).stdout.strip()
+    global _token, _expires
+    with _lock:
+        app_id, key = os.environ.get("ASF_APP_ID"), os.environ.get("ASF_APP_PRIVATE_KEY")
+        if app_id and key and (_token is None or time.time() > _expires - 300):
+            repo = os.environ.get("GITHUB_REPOSITORY", "paul-gross/amazing-software-factories")
+            _token, _expires = _app_token(app_id, key, repo)
+        if _token is None:
+            _token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or subprocess.run(
+                ["gh", "auth", "token"], capture_output=True, text=True, check=True).stdout.strip()
     return _token
 
 

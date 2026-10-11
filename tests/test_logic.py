@@ -1,8 +1,10 @@
 """The pure logic: path classification, people, lines, weekly rollups, the clock, link extraction, the screen's totals,
 admission, tiers, citations."""
+import base64
 import contextlib
 import io
 import json
+import subprocess
 import tempfile
 import time
 import unittest
@@ -309,6 +311,22 @@ class Budget(unittest.TestCase):
 
     def test_dates_are_utc(self):
         self.assertEqual(store.today(), datetime.now(timezone.utc).date().isoformat())
+
+
+class Bot(unittest.TestCase):
+    def test_the_app_jwt_is_signed_with_the_apps_key(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            key, pub = Path(tmp) / "key.pem", Path(tmp) / "pub.pem"
+            subprocess.run(["openssl", "genrsa", "-out", key, "2048"], capture_output=True, check=True)
+            subprocess.run(["openssl", "rsa", "-in", key, "-pubout", "-out", pub], capture_output=True, check=True)
+            jwt = gh.app_jwt(5272814, key.read_text(), now=1_800_000_000)
+            head, body, sig = jwt.split(".")
+            pad = lambda part: base64.urlsafe_b64decode(part + "=" * (-len(part) % 4))
+            self.assertEqual(json.loads(pad(body)), {"iat": 1_799_999_940, "exp": 1_800_000_540, "iss": "5272814"})
+            (Path(tmp) / "sig").write_bytes(pad(sig))
+            ok = subprocess.run(["openssl", "dgst", "-sha256", "-verify", pub, "-signature", Path(tmp) / "sig"],
+                                input=f"{head}.{body}".encode(), capture_output=True)
+            self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
 
 
 class Links(unittest.TestCase):

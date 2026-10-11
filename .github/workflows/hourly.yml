@@ -1,0 +1,39 @@
+name: Hourly cycle
+
+# Gate the waiting repositories, check the dormant ones, measure the classified ones whose hour has come, re-render,
+# and push (context/run-cycle.md). API calls use the bot's installation token, which has a budget of its own.
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# One cycle at a time, hourly and weekly alike, so no two push over each other.
+concurrency:
+  group: cycle
+  cancel-in-progress: false
+
+jobs:
+  hourly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -q
+      - name: Gate, check the dormant, measure, render
+        run: nice -n 15 python -u -m asf hourly
+        env:
+          # The bot's credentials: the code mints its installation token and mints it again before the hour runs out.
+          ASF_APP_ID: ${{ secrets.ASF_APP_ID }}
+          ASF_APP_PRIVATE_KEY: ${{ secrets.ASF_APP_PRIVATE_KEY }}
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          scripts/publish.sh "data: hourly run $(date -u +'%F %H:00')"

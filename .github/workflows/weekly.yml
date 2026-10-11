@@ -1,47 +1,53 @@
-name: Weekly measurement
+name: Weekly screen
 
-# Runs by hand only while the cycles run on a local machine (context/run-cycle.md); restore the schedule to move the
-# weekly cycle here:
-#   schedule:
-#     - cron: "0 6 * * 1"
+# Nominate from GH Archive and the lists, screen layers 1 and 2 into the waiting list, keep the week's snapshot, and
+# push (context/run-cycle.md). The screen saves as it goes under .cache/, which is carried between runs, so one cut
+# off by the time limit continues where it stopped when run again.
 on:
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: weekly
+  group: cycle
   cancel-in-progress: false
 
 jobs:
-  measure:
+  weekly:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      # The screen keeps its author samples for four weeks, so most nominees are not sampled again each week.
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
-          path: .cache/authors.json
-          key: authors-${{ github.run_id }}
-          restore-keys: authors-
+          path: |
+            .cache
+            !.cache/clones
+          key: screen-${{ github.run_id }}
+          restore-keys: screen-
       - name: Unit tests
-        run: python -m unittest discover -s tests
-      - name: Find, measure, render
-        run: python -u -m asf weekly
+        run: python -m unittest discover -s tests -q
+      - name: Find and screen
+        run: nice -n 15 python -u -m asf weekly
         env:
-          # A fine-grained token with read access to public repositories. The default Actions token's rate limit is
-          # too low for a full week's measurement.
-          GH_TOKEN: ${{ secrets.ASF_TOKEN }}
-          ASF_WORKERS: "5"
-      - name: Commit the snapshot
+          # The bot's credentials: the code mints its installation token and mints it again before the hour runs out.
+          ASF_APP_ID: ${{ secrets.ASF_APP_ID }}
+          ASF_APP_PRIVATE_KEY: ${{ secrets.ASF_APP_PRIVATE_KEY }}
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: |
+            .cache
+            !.cache/clones
+          key: screen-${{ github.run_id }}
+      - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data reports docs README.md
-          git diff --cached --quiet || git commit -m "data: weekly snapshot $(date -u +%F)"
-          git push
+          scripts/publish.sh "data: weekly screen $(date -u +%F)"
