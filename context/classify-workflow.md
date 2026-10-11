@@ -16,8 +16,10 @@ From the repository root, with a clean working tree:
 
 1. `git pull --rebase`
 2. `nice -n 15 python3 -m asf classify`: classifies every watched repository whose stored answer is missing or from
-   an older classifier version, four at a time, saving every twenty answers, so a stopped run picks up what is left.
-   `classify 50` does a fixed random sample of 50 instead, to review a new prompt before running it on everything. A
+   an older classifier version, twenty at a time: it fetches their evidence, classifies them four at once and saves,
+   while the next twenty's evidence is fetched, so a stopped run loses at most one chunk and picks up what is left.
+   `classify 50` does a fixed random sample of 50 instead, to review a new prompt before running it on everything,
+   drawn from repositories no version has read while enough remain, so each review sees new ones. A
    line starting `kind ` is one repository the classifier could not answer for; the next run retries it. Until the
    current version reads a repository, its answer from an older version stands.
 3. `python3 -m asf render`: the README and the site pick up the new kinds.
@@ -45,7 +47,9 @@ use named roles or none. Automation guardrails (CI that gates changes,
 agent review or verification, enforced rules) add weight, but a factory can run without them; the discipline grade
 measures them. A single CLAUDE.md or AGENTS.md with no supporting library or repository points to agent-assisted,
 and so do customizations of a person's own assistant: .claude/agents, .claude/skills, slash commands, MCP
-configuration. Repository
+configuration. Both halves must show, the context and the loop; with only one, it is agent-assisted, or built by an
+assembly line at low confidence. The loop must have agents writing code: dependency and package bump bots and
+scheduled data refreshes land work around the clock but are not a factory. Repository
 text goes to the model as data, from an empty directory, with no tools. Each answer is stored with the classifier's
 `VERSION`; changing the prompt means raising `VERSION`, and the next run classifies everything again.
 

@@ -274,6 +274,36 @@ class Kinds(unittest.TestCase):
         stored = {"o/a": dict(repo="o/a", kind="built by an assembly line", version=kind.VERSION)}
         self.assertEqual(kind.kind_of("o/a", stored, {"o/a": dict(kind="agent-assisted")}), "agent-assisted")
 
+    def test_a_stopped_run_keeps_its_finished_chunks_and_the_next_run_fetches_only_the_rest(self):
+        class Stop(Exception):
+            pass
+        repos = [f"o/r{i:02}" for i in range(45)]
+        saved, fetched, stop_at = {}, [], ["o/r25"]
+
+        def ask(repo, *a):
+            if repo in stop_at:
+                raise Stop
+            return dict(kind="agent-assisted", confidence="high", reason="")
+        fakes = dict(kinds=lambda: dict(saved), about=lambda chunk: fetched.append(list(chunk)) or {r: {} for r in chunk},
+                     ask=ask, write_jsonl=lambda path, rows: saved.update({r["repo"].lower(): r for r in rows}))
+        real = {name: getattr(kind, name) for name in fakes}
+        try:
+            for name, fake in fakes.items():
+                setattr(kind, name, fake)
+            with contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaises(Stop):
+                    kind.classify(repos)
+                self.assertEqual(sorted(saved), repos[:20])
+                self.assertTrue(all(len(chunk) <= kind.CHUNK for chunk in fetched))
+                fetched.clear()
+                stop_at.clear()
+                kind.classify(repos)
+        finally:
+            for name, fn in real.items():
+                setattr(kind, name, fn)
+        self.assertEqual(sorted(saved), repos)
+        self.assertEqual(sorted(r for chunk in fetched for r in chunk), repos[20:])
+
 
 class Dormancy(unittest.TestCase):
     def test_a_window_without_commits_is_dormant(self):

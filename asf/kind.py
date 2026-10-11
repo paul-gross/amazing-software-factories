@@ -20,8 +20,9 @@ from .measure import _aliased, _repo
 from .store import annotations, read_jsonl, today, write_jsonl
 
 KINDS = ("assembly line", "built by an assembly line", "not software", "agent-assisted")
-VERSION = "kind-v4"
+VERSION = "kind-v5"
 COMMITS = 20
+CHUNK = 20           # repositories fetched, classified and saved together: a stopped run loses at most one chunk
 README_CHARS = 8000
 INSTRUCTION_CHARS = 2500
 INSTRUCTION_FILES = (("agents", "AGENTS.md"), ("claude", "CLAUDE.md"), ("copilot", ".github/copilot-instructions.md"),
@@ -62,6 +63,11 @@ What points to a system (an assembly line, or built by one):
 - work items flowing through a loop and landed without a person picking each one: ticket or task ids in commits, a
   queue, claim, handoff and merge steps, pull requests opened and merged by automation;
 - orchestration configuration, or a README that describes the autonomous pipeline.
+Call a repository an assembly line or built by one only when both halves show: the agent-facing context and a loop
+landing the work. When only one does, it is agent-assisted, or built by an assembly line at low confidence.
+The loop must have agents writing the code. Bots that bump dependency or package versions (Renovate, Dependabot,
+update scripts) and scheduled jobs that refresh data land work around the clock, but they are not a factory: judge
+the repository by its other commits.
 How the work is split among agents does not matter: a factory may use named roles or none at all.
 Automation guardrails (CI that gates changes, verification or review steps run by agents, rules enforced on every
 change) add weight to these, but their absence is not evidence against a system: some factories run without them,
@@ -136,7 +142,8 @@ def instructions(r, chars=INSTRUCTION_CHARS):
 
 
 def about(repos, workers=2):
-    """{repo: the self-description the classifier reads}, ten repositories per query."""
+    """{repo: the self-description the classifier reads}, five repositories per query: each brings a README,
+    instruction files and commit bodies, and larger queries time out."""
     def parse(r):
         readme = next((r[k]["text"] for k in ("md", "lower", "plain", "rst") if r.get(k) and r[k].get("text")), "")
         history = ((((r.get("defaultBranchRef") or {}).get("target") or {}).get("history") or {}).get("nodes")) or []
@@ -152,7 +159,7 @@ def about(repos, workers=2):
                     layout=layout((r.get("top") or {}).get("entries")), instructions=instructions(r),
                     workflows=", ".join(e["name"] for e in ((r.get("ci") or {}).get("entries") or [])) or "none",
                     readme=readme[:README_CHARS], commits="\n".join(commits))
-    return _aliased(list(batched(repos, 10)), lambda i, r: _repo(i, r, FIELDS), parse, workers)
+    return _aliased(list(batched(repos, 5)), lambda i, r: _repo(i, r, FIELDS), parse, workers)
 
 
 def numbers(row, gate=None):
@@ -211,34 +218,36 @@ def classify(repos, refresh=False, rows=None, gates=None, limit=None):
     """Classify the repositories not yet classified under this version (all of them, with refresh) and store the
     results. rows: {repo: snapshot row}, the measured activity to weigh, where there is one; gates: {repo: the gate's
     numbers}, for one not yet measured. limit: classify only this many, a fixed random sample of those due, to review a
-    new prompt before running it on everything."""
+    new prompt before running it on everything; drawn from repositories no version has read while enough remain."""
     stored, rows, gates = kinds(), rows or {}, gates or {}
     todo = [r for r in repos if refresh or (stored.get(r.lower()) or {}).get("version") != VERSION]
     if limit and len(todo) > limit:
-        todo = random.Random(VERSION).sample(sorted(todo, key=str.lower), limit)
+        fresh = [r for r in todo if r.lower() not in stored]   # never read, so each review sees new repositories
+        todo = random.Random(VERSION).sample(sorted(fresh if len(fresh) >= limit else todo, key=str.lower), limit)
     if not todo:
         return stored
-    info = about(todo)
 
-    def one(repo):
+    def one(repo, info):
         try:
             return repo, ask(repo, info[repo], rows.get(repo), gates.get(repo))
         except (KeyError, RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
             print(f"kind {repo}: {exc}")
             return repo, None
 
-    done = 0
-    with ThreadPoolExecutor(CONFIG["kind"]["concurrency"]) as pool:
-        for repo, result in pool.map(one, todo):
-            if result:
-                stored[repo.lower()] = dict(repo=repo, classified=today(), version=VERSION, model=CONFIG["kind"]["model"],
-                                            **result)
-                done += 1
-                if done % 20 == 0:   # saved as it goes: a stopped run resumes with what is left
-                    write_jsonl(DATA / "kinds.jsonl", stored.values())
-                    print(f"kind: classified {done} of {len(todo)}", flush=True)
-    write_jsonl(DATA / "kinds.jsonl", stored.values())
-    print(f"kind: classified {done} of {len(todo)}")
+    chunks, done = list(batched(todo, CHUNK)), 0
+    with ThreadPoolExecutor(1) as fetcher, ThreadPoolExecutor(CONFIG["kind"]["concurrency"]) as pool:
+        ahead = fetcher.submit(about, chunks[0])
+        for i, chunk in enumerate(chunks):
+            info = ahead.result()
+            if i + 1 < len(chunks):   # the next chunk's evidence arrives while this one is judged
+                ahead = fetcher.submit(about, chunks[i + 1])
+            for repo, result in pool.map(lambda r: one(r, info), chunk):
+                if result:
+                    stored[repo.lower()] = dict(repo=repo, classified=today(), version=VERSION,
+                                                model=CONFIG["kind"]["model"], **result)
+                    done += 1
+            write_jsonl(DATA / "kinds.jsonl", stored.values())   # saved per chunk: a stopped run resumes with the rest
+            print(f"kind: classified {done} of {len(todo)}", flush=True)
     return stored
 
 
