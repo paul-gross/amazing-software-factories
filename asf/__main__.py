@@ -1,12 +1,12 @@
 """python -m asf <command>
 
-  find               discover nominees and screen them (layers 1 and 2) into the waiting list, weekly
+  find               discover nominees and screen them (layers 1 and 2) into the waiting list, daily
   gate [minutes]     layers 3 and 4 for the waiting repositories not checked today; what passes is watched for good
   measure [minutes]  measure the classified watched repositories due this hour and not yet measured today
   classify [n]       classify watched repositories the classifier has not seen (runs `claude` locally); n: a sample
   render             regenerate the README tables, the site data, and the report
   hourly             gate, check the dormant, measure, render: the hourly job
-  weekly             find, then keep the week's snapshot
+  daily              find, then on Mondays keep the week's snapshot: the daily job
   judge              cold-read the top repositories with LLM judges (run by hand; see rubric/judge-v1.md)
 """
 import hashlib
@@ -169,9 +169,10 @@ def main(argv):
         measure_due()
         render.render()
         render.report()
-    elif command == "weekly":
+    elif command == "daily":
         find()
-        snapshot_week()
+        if utc_date().weekday() == 0:   # four weekly snapshots tile the measured month
+            snapshot_week()
     elif command == "judge":
         from . import judge
         judge.run(argv[2:])

@@ -1,11 +1,11 @@
-name: Weekly screen
+name: Daily screen
 
-# Nominate from GH Archive and the lists, screen layers 1 and 2 into the waiting list, keep the week's snapshot, and
-# push (context/run-cycle.md). The screen saves as it goes under .cache/, which is carried between runs, so one cut
+# Nominate from GH Archive and the lists, screen layers 1 and 2 into the waiting list, keep the week's snapshot on
+# Mondays, and push (context/run-cycle.md). It runs at 06:00 UTC, the hour the hourly cycle skips. The screen saves as it goes under .cache/, which is carried between runs, so one cut
 # off by the time limit continues where it stopped when run again.
 on:
   schedule:
-    - cron: "0 6 * * 1"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  weekly:
+  daily:
     runs-on: ubuntu-latest
     timeout-minutes: 340
     steps:
@@ -34,7 +34,7 @@ jobs:
       - name: Unit tests
         run: python -m unittest discover -s tests -q
       - name: Find and screen
-        run: nice -n 15 python -u -m asf weekly
+        run: nice -n 15 python -u -m asf daily
         env:
           # The bot's credentials: the code mints its installation token and mints it again before the hour runs out.
           ASF_APP_ID: ${{ secrets.ASF_APP_ID }}
@@ -50,4 +50,4 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          scripts/publish.sh "data: weekly screen $(date -u +%F)"
+          scripts/publish.sh "data: daily screen $(date -u +%F)"

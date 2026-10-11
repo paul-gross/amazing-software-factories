@@ -312,7 +312,7 @@ _206 repos, last measured 2026-10-11. Sorted by code lines on the median day. Th
 The list is kept up to date by two scripts, each of which pulls, runs, commits and pushes:
 
 ```sh
-scripts/weekly.sh     # find new candidates and screen them (steps 1 and 2)
+scripts/daily.sh      # find new candidates and screen them (steps 1 and 2)
 scripts/hourly.sh     # recheck waiting repos (steps 3 and 4) and measure the listed ones
 ```
 

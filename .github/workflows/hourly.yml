@@ -4,13 +4,14 @@ name: Hourly cycle
 # and push (context/run-cycle.md). API calls use the bot's installation token, which has a budget of its own.
 on:
   schedule:
-    - cron: "17 * * * *"
+    # Every hour but 06:00 UTC, which is the daily screen's.
+    - cron: "17 0-5,7-23 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
-# One cycle at a time, hourly and weekly alike, so no two push over each other.
+# One cycle at a time, hourly and daily alike, so no two push over each other.
 concurrency:
   group: cycle
   cancel-in-progress: false

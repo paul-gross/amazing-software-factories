@@ -338,6 +338,56 @@ class Missing(unittest.TestCase):
         self.assertEqual((rows["o/gone"]["status"], rows["o/gone"]["gate_misses"]), ("out", 7))
 
 
+class Rereads(unittest.TestCase):
+    def test_each_nominee_comes_due_once_a_week_spread_over_the_days(self):
+        repos = [f"o/r{i}" for i in range(700)]
+        week = [(date(2026, 10, 12) + timedelta(days=i)).isoformat() for i in range(7)]
+        due_on = {day: [r for r in repos if watch.reread_due(r, day, 7) == day] for day in week}
+        self.assertEqual(sorted(r for rs in due_on.values() for r in rs), sorted(repos))
+        self.assertTrue(all(60 <= len(rs) <= 140 for rs in due_on.values()))
+
+    def test_only_new_and_stale_totals_are_read_again(self):
+        day = "2026-10-20"
+        due = {r: watch.reread_due(r, day, 7) for r in ("o/a", "o/b")}
+        known = {"o/a": dict(read=due["o/a"]), "o/b": dict(read=(date.fromisoformat(due["o/b"]) - timedelta(days=1)).isoformat())}
+        self.assertEqual(watch.stale_totals(known, ["o/a", "o/b", "o/new"], day, 7), ["o/b", "o/new"])
+
+    def test_a_missed_day_is_caught_up_by_the_next_run(self):
+        repo, day = "o/a", "2026-10-20"
+        due = watch.reread_due(repo, day, 7)
+        before = (date.fromisoformat(due) - timedelta(days=1)).isoformat()
+        later = (date.fromisoformat(due) + timedelta(days=2)).isoformat()
+        self.assertEqual(watch.stale_totals({repo: dict(read=before)}, [repo], later, 7), [repo])
+
+
+    def test_a_daily_screen_reads_totals_only_for_new_and_due_nominees(self):
+        busy = dict(archived=False, fork=False, code_bytes=10 ** 7, commits=10 ** 4, weeks=[10 ** 3] * 4,
+                    created="2020-01-01T00:00:00Z")
+        read, saved = [], {}
+        fakes = dict(ROOT=None, watchlist=lambda: {}, screened=lambda: {}, save_screened=lambda rows: saved.update(rows),
+                     facts=lambda part, *a, **k: read.extend(part) or {r: dict(busy, canonical=r) for r in part},
+                     authors=lambda part, *a: {r: dict(lead_human_share=1.0, machine_share=0.0) for r in part})
+        real = {name: getattr(watch, name) for name in fakes}
+        nominees = [(f"o/r{i}", "gharchive") for i in range(70)]
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                fakes["ROOT"] = Path(tmp)
+                for name, fake in fakes.items():
+                    setattr(watch, name, fake)
+                with contextlib.redirect_stdout(io.StringIO()):
+                    watch.screen(nominees, "2026-10-20")
+                    self.assertEqual(len(read), 70)
+                    read.clear()
+                    watch.screen(nominees + [("o/new", "gharchive")], "2026-10-21")
+        finally:
+            for name, fn in real.items():
+                setattr(watch, name, fn)
+        due = {r for r, _ in nominees if watch.reread_due(r, "2026-10-21", 7) == "2026-10-21"}
+        self.assertEqual(set(read), due | {"o/new"})
+        self.assertTrue(all(row["status"] == "waiting" for row in saved.values()))
+        self.assertEqual(len(saved), 71)
+
+
 class Budget(unittest.TestCase):
     def test_calls_wait_for_the_reset_once_the_budget_is_down_to_the_reserve(self):
         slept = []

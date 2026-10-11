@@ -3,7 +3,8 @@
 The screen is a funnel of layers, cheapest first; each sends on only what it cannot rule out:
 
 1. Totals: not archived, not a fork, enough code, at least the daily commit floor over four weeks, sustained in most
-   of those weeks. Forty repositories per query, one point each.
+   of those weeks. Forty repositories per query, one point each. Read for a new nominee the day it is nominated, and
+   again on one day in every `reread_days`, by a hash of its name, so a daily screen reads a fraction of its nominees.
 2. Not a team: authors of the newest commits. One human writing most of the human commits passes, and so does a
    repository whose commits all come from bots or unclaimed identities.
 3. Runs without people: commits in each two-hour slot of the measured week, counts only, so every repository waiting
@@ -20,11 +21,12 @@ deleted or made private, stops waiting after a week of misses.
 
 Every threshold lives in config.toml.
 """
+import hashlib
 import json
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from . import CONFIG, ROOT
 from .gh import GhError, batched
@@ -86,6 +88,26 @@ def _save(path, data):
     os.replace(tmp, path)
 
 
+def reread_due(repo, day, every):
+    """The latest day on or before `day` when the repository's totals come due: one day in every `every`, by a hash of
+    its name, so rereads spread evenly over the days. Totals read before it are stale."""
+    d = date.fromisoformat(day)
+    slot = int(hashlib.sha1(repo.lower().encode()).hexdigest(), 16) % every
+    return (d - timedelta(days=(d.toordinal() - slot) % every)).isoformat()
+
+
+def stale_totals(known, repos, day, every):
+    """The repositories among `repos` whose stored totals are missing or were read before they last came due."""
+    return [r for r in repos if (known.get(r) or {}).get("read", "") < reread_due(r, day, every)]
+
+
+def read_totals(repos, days, workers, day):
+    """{repo: totals stamped with the day read} for every repository asked for; one GitHub has nothing for gets only
+    the day, so it is not asked for again until it next comes due."""
+    got = facts(repos, days, workers)
+    return {r: dict(got.get(r) or {}, read=day) for r in repos}
+
+
 def resumable(path, store, todo, fetch, step):
     """Fetch what `store` lacks of `todo`, `step` at a time, saving `store` to `path` after each part, so a stopped run
     picks up where it was. A repository GitHub had nothing for is stored as None, and not asked for again."""
@@ -99,16 +121,17 @@ def resumable(path, store, todo, fetch, step):
 
 
 def screen(nominees, day=None, workers=None):
-    """nominees: [(repo, source)]. Layers 1 and 2, weekly: what passes waits in data/screened.jsonl for the gate
+    """nominees: [(repo, source)]. Layers 1 and 2, daily: what passes waits in data/screened.jsonl for the gate
     (layers 3 and 4), and what no longer passes stops waiting. Returns the repositories now waiting.
 
-    day: the run's day, which names its caches: totals are saved as they are read, and the funnel once the screen is
-    done, which closes the run."""
+    day: the run's day. Totals are kept across runs in .cache/totals.json, each with the day it was read, and only the
+    new and the stale are read again, saved as they are read; the funnel is saved once the screen is done, which closes
+    the run."""
     cfg, a, w = CONFIG["screen"], CONFIG["admit"], CONFIG["window"]
     days, week = w["days"], w["week_days"]
     workers = workers or int(os.environ.get("ASF_WORKERS", cfg["workers"]))
     funnel = {"nominated": len(nominees)}
-    # Author samples stand this long, so most nominees are not sampled again each week.
+    # Author samples stand this long, so most nominees are not sampled again each day.
     fresh = (utc_date() - timedelta(days=cfg["rescreen_after_days"])).isoformat()
 
     # Whatever is on the watchlist passed the gate for good and is measured instead.
@@ -120,9 +143,18 @@ def screen(nominees, day=None, workers=None):
 
     # Layer 1: totals, saved as they are read so a rerun after an interruption starts where it stopped.
     day = day or today()
-    facts_path, known = _cache(f"facts-{day}.json")
-    resumable(facts_path, known, [r for r, _ in todo], lambda part: facts(part, days, workers), 2000)
-    known = {r: f for r, f in known.items() if f}
+    facts_path, stored = _cache("totals.json")
+    cut = (date.fromisoformat(day) - timedelta(days=4 * cfg["reread_days"])).isoformat()
+    stored = {r: f for r, f in stored.items() if f and f.get("read", "") >= cut}   # long since nominated
+    names = [r for r, _ in todo]
+    stale = stale_totals(stored, names, day, cfg["reread_days"])
+    for r in stale:
+        stored.pop(r, None)
+    funnel["totals read"] = len(stale)
+    print(f"screen: reading totals for {len(stale)} of {len(names)} nominees")
+    # A repository GitHub has nothing for is stored with only its read day, and asked for again when next due.
+    resumable(facts_path, stored, names, lambda part: read_totals(part, days, workers, day), 2000)
+    known = {r: stored[r] for r in names if (stored.get(r) or {}).get("canonical")}
     # Totals cached before weekly counts were recorded get them now, but only where the other totals already pass:
     # a weekly count walks history, which is the slow part of the query.
     lacking = [f["canonical"] for f in known.values()
@@ -133,7 +165,7 @@ def screen(nominees, day=None, workers=None):
         for f in known.values():
             if f["canonical"] in weekly:
                 f["weeks"] = weekly[f["canonical"]]
-        _save(facts_path, known)
+        _save(facts_path, stored)
     # Totals cached before creation dates were recorded get them where youth could matter: everything else passes
     # and the repository committed at least a week's floor.
     young = [f["canonical"] for f in known.values()
@@ -146,7 +178,7 @@ def screen(nominees, day=None, workers=None):
         for f in known.values():
             if f["canonical"] in born:
                 f["created"] = born[f["canonical"]]
-        _save(facts_path, known)
+        _save(facts_path, stored)
     busy = {f["canonical"]: f for f in known.values() if passes_totals(f, days) and f["canonical"].lower() not in watched}
     funnel["layer 1, totals"] = len(busy)
     print(f"screen: {len(busy)} pass layer 1 (totals)")
@@ -177,6 +209,7 @@ def screen(nominees, day=None, workers=None):
         if r not in keep and row.get("status") == "waiting":
             row.update(status="out", out_since=today())   # fell below layer 1 or 2; back if it qualifies again
     save_screened(waiting)
+    _save(facts_path, stored)
     _save(ROOT / ".cache" / f"funnel-{day}.json", funnel)
     return solo
 

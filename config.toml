@@ -38,8 +38,12 @@ author_slack = 0.6
 message_sample = 100
 min_message_sample = 20
 min_message_variety = 0.4
-# An author sample stands for this many days, so most nominees are not sampled again each week.
+# An author sample stands for this many days, so most nominees are not sampled again each day.
 rescreen_after_days = 28
+# A nominee's totals are read the day it is first nominated, then again one day in this many, spread by a hash of its
+# name: the daily screen reads the new nominees and a seventh of the rest, and a repository that gets busy is seen
+# within a week, as a weekly screen would.
+reread_days = 7
 # Parallel GitHub queries while screening. Each worker mostly waits on GitHub; the ASF_WORKERS environment variable
 # overrides this, as the scheduled workflow does.
 workers = 2
