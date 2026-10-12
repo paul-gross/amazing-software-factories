@@ -297,6 +297,12 @@ class Kinds(unittest.TestCase):
                 setattr(kind, name, fn)
         self.assertEqual(asked, ["o/line"])
 
+    def test_the_command_line_passes_redo_kinds_through(self):
+        import asf.__main__ as cli
+        with mock.patch.object(cli, "classify") as run:
+            self.assertEqual(cli.main(["asf", "classify", "redo", "assembly line"]), 0)
+            run.assert_called_once_with(redo=("assembly line",))
+
     def test_a_stopped_run_keeps_its_finished_chunks_and_the_next_run_fetches_only_the_rest(self):
         class Stop(Exception):
             pass

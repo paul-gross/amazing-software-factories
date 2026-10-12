@@ -152,7 +152,7 @@ def classify(limit=None, redo=()):
 
 def main(argv):
     command = argv[1] if len(argv) > 1 else ""
-    minutes = float(argv[2]) if len(argv) > 2 else None
+    minutes = float(argv[2]) if command in ("gate", "measure") and len(argv) > 2 else None
     if command == "find":
         find()
     elif command == "gate":
