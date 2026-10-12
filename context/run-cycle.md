@@ -7,8 +7,8 @@ commits and pushes its own data through `scripts/publish.sh`, which rebases onto
 
 | Script                | How often | What it does                                                                                       |
 | --------------------- | --------- | -------------------------------------------------------------------------------------------------- |
-| `scripts/daily.sh`    | Daily, 06:00 UTC | Discovers nominees in GH Archive, screens them (layers 1 and 2) into the waiting list, keeps the week's snapshot on Mondays |
-| `scripts/hourly.sh`   | Hourly, but not at 06:00 UTC | Gates the waiting repositories not checked today, checks the dormant ones, measures the classified ones whose hour has come, re-renders |
+| `scripts/daily.sh`    | Daily, 06:23 UTC | Discovers nominees in GH Archive, screens them (layers 1 and 2) into the waiting list, keeps the week's snapshot on Mondays |
+| `scripts/hourly.sh`   | Hourly at :23, but not in the 06 UTC hour | Gates the waiting repositories not checked today, checks the dormant ones, measures the classified ones whose hour has come, re-renders |
 
 ## The funnel
 

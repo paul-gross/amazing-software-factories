@@ -4,8 +4,9 @@ name: Hourly cycle
 # and push (context/run-cycle.md). API calls use the bot's installation token, which has a budget of its own.
 on:
   schedule:
-    # Every hour but 06:00 UTC, which is the daily screen's.
-    - cron: "17 0-5,7-23 * * *"
+    # Every hour but 06 UTC, which is the daily screen's. At :23, off the top of the hour, when GitHub drops the most
+    # scheduled runs.
+    - cron: "23 0-5,7-23 * * *"
   workflow_dispatch:
 
 permissions:
