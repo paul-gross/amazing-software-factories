@@ -28,20 +28,23 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.event.workflow_run.id }}
-      - uses: aws-actions/configure-aws-credentials@v4
-        if: steps.run.outputs.conclusion != 'cancelled' && steps.run.outputs.conclusion != 'neutral'
-        with:
-          role-to-assume: ${{ vars.ASF_ALERTS_ROLE_ARN }}
-          aws-region: us-east-2
+      # The repository allows only GitHub-owned actions, so the AWS CLI assumes the role itself from the OIDC token
+      # rather than through aws-actions/configure-aws-credentials.
       - name: Email
         if: steps.run.outputs.conclusion != 'cancelled' && steps.run.outputs.conclusion != 'neutral'
         run: |
+          export AWS_WEB_IDENTITY_TOKEN_FILE="$RUNNER_TEMP/oidc-token"
+          curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value > "$AWS_WEB_IDENTITY_TOKEN_FILE"
           aws sns publish --topic-arn "$TOPIC" \
             --subject "amazing-software-factories: $WORKFLOW $CONCLUSION" \
             --message "$WORKFLOW ($EVENT, started $STARTED) ended $CONCLUSION.
 
           $URL"
         env:
+          AWS_ROLE_ARN: ${{ vars.ASF_ALERTS_ROLE_ARN }}
+          AWS_ROLE_SESSION_NAME: asf-failure-email
+          AWS_REGION: us-east-2
           TOPIC: ${{ vars.ASF_ALERTS_TOPIC_ARN }}
           WORKFLOW: ${{ github.event.workflow_run.name }}
           EVENT: ${{ github.event.workflow_run.event }}
