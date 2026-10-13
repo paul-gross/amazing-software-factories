@@ -2,11 +2,10 @@ name: Hourly cycle
 
 # Gate the waiting repositories, check the dormant ones, measure the classified ones whose hour has come, re-render,
 # and push (context/run-cycle.md). API calls use the bot's installation token, which has a budget of its own.
+#
+# Started by the bot through workflow_dispatch at :23 every hour but 06 UTC, the daily screen's, from asf-infra's
+# dispatcher on AWS: GitHub's own schedule trigger dropped most of this repository's runs.
 on:
-  schedule:
-    # Every hour but 06 UTC, which is the daily screen's. At :23, off the top of the hour, when GitHub drops the most
-    # scheduled runs.
-    - cron: "23 0-5,7-23 * * *"
   workflow_dispatch:
 
 permissions:

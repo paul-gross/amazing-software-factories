@@ -10,6 +10,12 @@ commits and pushes its own data through `scripts/publish.sh`, which rebases onto
 | `scripts/daily.sh`    | Daily, 06:23 UTC | Discovers nominees in GH Archive, screens them (layers 1 and 2) into the waiting list, keeps the week's snapshot on Mondays |
 | `scripts/hourly.sh`   | Hourly at :23, but not in the 06 UTC hour | Gates the waiting repositories not checked today, checks the dormant ones, measures the classified ones whose hour has come, re-renders |
 
+In Actions, neither workflow has a `schedule:` trigger: GitHub's fired only a few of this repository's slots a day.
+The timer is EventBridge Scheduler in AWS (the private repository `paul-gross/asf-infra`), whose Lambda starts each
+workflow through `workflow_dispatch` as the bot at the times above. Runs started that way notify the bot, not a
+person, so `notify.yml` emails any run of either workflow that fails or times out, through asf-infra's alerts topic.
+To run a cycle by hand, `gh workflow run hourly.yml` (or `daily.yml`).
+
 ## The funnel
 
 1. **Totals** (daily, for the new nominees and the stale): at least 10 commits a day on the default branch over four

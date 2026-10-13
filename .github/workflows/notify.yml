@@ -1,0 +1,50 @@
+name: Failure email
+
+# Emails a cycle that did not succeed. The cycles are started by the bot through workflow_dispatch (asf-infra's
+# dispatcher), so GitHub's own failure notices go to the bot rather than a person; this publishes to asf-infra's
+# alerts topic instead, which emails the maintainer. It signs in to AWS through GitHub's OIDC provider, as a role only
+# this workflow on main can assume.
+on:
+  workflow_run:
+    workflows: ["Hourly cycle", "Daily screen"]
+    types: [completed]
+
+permissions:
+  actions: read
+  id-token: write
+
+jobs:
+  notify:
+    # A run cancelled while still pending (a third queued behind the shared `cycle` group) never started and is not
+    # worth an email; a timeout reads as cancelled here too, so the run's REST conclusion decides below.
+    if: github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read the run's conclusion
+        id: run
+        run: echo "conclusion=$(gh api "repos/$REPO/actions/runs/$RUN_ID" -q .conclusion)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+      - uses: aws-actions/configure-aws-credentials@v4
+        if: steps.run.outputs.conclusion != 'cancelled' && steps.run.outputs.conclusion != 'neutral'
+        with:
+          role-to-assume: ${{ vars.ASF_ALERTS_ROLE_ARN }}
+          aws-region: us-east-2
+      - name: Email
+        if: steps.run.outputs.conclusion != 'cancelled' && steps.run.outputs.conclusion != 'neutral'
+        run: |
+          aws sns publish --topic-arn "$TOPIC" \
+            --subject "amazing-software-factories: $WORKFLOW $CONCLUSION" \
+            --message "$WORKFLOW ($EVENT, started $STARTED) ended $CONCLUSION.
+
+          $URL"
+        env:
+          TOPIC: ${{ vars.ASF_ALERTS_TOPIC_ARN }}
+          WORKFLOW: ${{ github.event.workflow_run.name }}
+          EVENT: ${{ github.event.workflow_run.event }}
+          STARTED: ${{ github.event.workflow_run.run_started_at }}
+          CONCLUSION: ${{ steps.run.outputs.conclusion }}
+          URL: ${{ github.event.workflow_run.html_url }}

@@ -1,11 +1,10 @@
 name: Daily screen
 
 # Nominate from GH Archive and the lists, screen layers 1 and 2 into the waiting list, keep the week's snapshot on
-# Mondays, and push (context/run-cycle.md). It runs at 06:23 UTC, in the hour the hourly cycle skips. The screen saves as it goes under .cache/, which is carried between runs, so one cut
-# off by the time limit continues where it stopped when run again.
+# Mondays, and push (context/run-cycle.md). It runs at 06:23 UTC, in the hour the hourly cycle skips, started by the
+# bot through workflow_dispatch from asf-infra's dispatcher on AWS. The screen saves as it goes under .cache/, which is
+# carried between runs, so one cut off by the time limit continues where it stopped when run again.
 on:
-  schedule:
-    - cron: "23 6 * * *"
   workflow_dispatch:
 
 permissions:
