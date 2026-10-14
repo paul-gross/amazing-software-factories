@@ -196,11 +196,11 @@ _173 repos, last measured 2026-10-14. Sorted by code lines on the median day. Th
 | [sainteye/clawdline](https://github.com/sainteye/clawdline) | D E B | 6,825 | 31,416 | 0.0 | 56% | 41% | 99% | 398 KB | 1 |
 | [beadhive/beadhive](https://github.com/beadhive/beadhive) | D F D | 6,721 | 24,612 | 0.0 | 12% | 0% | – | 189 KB | 26 (+0) |
 | [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | D B B | 6,616 | 9,668 | 29.4 | 88% | 13% | 96% | 1,499 KB | 70,001 (+60) |
+| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | D E D | 6,594 | 7,955 | 0.0 | 70% | 0% | – | 108 KB | 0 (+0) |
 | [mobasak/fabrik](https://github.com/mobasak/fabrik) | D E C | 6,540 | 21,299 | 0.0 | 55% | 0% | 100% | 435 KB | 1 (+0) |
 | [hurttlocker/o8](https://github.com/hurttlocker/o8) | D F B | 6,530 | 12,058 | 17.4 | 54% | 0% | 87% | 385 KB | 19 (+0) |
 | [Small-Tale/hotsheet2](https://github.com/Small-Tale/hotsheet2) | D E D | 6,430 | 14,642 | 0.0 | 70% | 42% | 12% | 200 KB | 0 (+0) |
 | [mixpeek/amux](https://github.com/mixpeek/amux) | D F C | 6,335 | 11,862 | 1.7 | 42% | 32% | 74% | 3,086 KB | 533 (+4) |
-| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | D E D | 6,183 | 9,763 | 0.0 | 75% | 0% | – | 108 KB | 0 (+0) |
 | [shuhei-suzuki/rururunx](https://github.com/shuhei-suzuki/rururunx) | D E C | 6,133 | 29,180 | 1.1 | 52% | 0% | 68% | 290 KB | 0 (+0) |
 | [sbluemin/fleet-harness](https://github.com/sbluemin/fleet-harness) | D E C | 6,016 | 10,865 | 23.2 | 43% | 0% | 97% | 514 KB | 17 (+0) |
 | [James3014/Nexus-new](https://github.com/James3014/Nexus-new) | D D B | 5,846 | 10,078 | 13.7 | 63% | 34% | 100% | 994 KB | 0 (+0) |
@@ -225,7 +225,7 @@ _173 repos, last measured 2026-10-14. Sorted by code lines on the median day. Th
 | [newsdayads/tigeriq-ai-lab](https://github.com/newsdayads/tigeriq-ai-lab) | E E B | 2,664 | 4,659 | 42.5 | 59% | 29% | 99% | 285 KB | 2 (+0) |
 | [5throck/ai-workspace-standards](https://github.com/5throck/ai-workspace-standards) | E E C | 2,503 | 13,822 | 19.8 | 71% | 0% | 89% | 302 KB | 22 (+0) |
 | [nexus-substrate/nexus-agents](https://github.com/nexus-substrate/nexus-agents) | E F A | 2,366 | 7,045 | 27.5 | 63% | 0% | 100% | 129 KB | 21 (+1) |
-| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E F D | 2,318 | 5,675 | 26.0 | 47% | 0% | 47% | 94 KB | 0 |
+| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E F D | 2,318 | 6,320 | 26.9 | 53% | 0% | 47% | 94 KB | 0 (+0) |
 | [devbasex/ai-plugins](https://github.com/devbasex/ai-plugins) | E F B | 2,244 | 9,207 | 28.3 | 36% | 15% | 100% | 617 KB | 1 (+0) |
 | [itsOmidKarami/kraft](https://github.com/itsOmidKarami/kraft) | E F B | 2,100 | 9,255 | 24.2 | 27% | 24% | 98% | 123 KB | 1 (+0) |
 | [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox) | E F B | 2,075 | 9,619 | 24.4 | 0% | 0% | 100% | 489 KB | 27 (+0) |
@@ -263,7 +263,7 @@ _173 repos, last measured 2026-10-14. Sorted by code lines on the median day. Th
 | [gastownhall/gascity](https://github.com/gastownhall/gascity) | F D B | – | – | 29.7 | 62% | 49% | 87% | 1,997 KB | 1,370 (+6) |
 | [nateprich-projects/command-center](https://github.com/nateprich-projects/command-center) | F F B | – | – | 22.0 | 33% | 12% | 100% | 1,068 KB | 0 (+0) |
 | [Simple-With-Us/BotFleet](https://github.com/Simple-With-Us/BotFleet) | F E B | – | – | 19.8 | 49% | 21% | 93% | 892 KB | 4 |
-| [parsoFish/forge-studio](https://github.com/parsoFish/forge-studio) | F E B | – | – | 15.5 | 61% | 0% | 98% | 723 KB | 5 (+0) |
+| [parsoFish/forge-studio](https://github.com/parsoFish/forge-studio) | F F B | – | – | 16.1 | 57% | 0% | 98% | 723 KB | 5 (+0) |
 | [sabbour/agentweaver](https://github.com/sabbour/agentweaver) | F F B | 0 | 1,720 | 13.9 | 0% | 0% | 91% | 306 KB | 7 (+0) |
 | [automagik-dev/genie](https://github.com/automagik-dev/genie) | F F A | 0 | 5 | 6.8 | 0% | 0% | 95% | 150 KB | 346 (+0) |
 | [OpenAgentsInc/openagents](https://github.com/OpenAgentsInc/openagents) | F D D | – | – | 3.4 | 64% | 82% | 0% | 1,061 KB | 457 (+2) |
