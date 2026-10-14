@@ -1,5 +1,6 @@
 {"added": "2026-10-13", "gate": {"night_utilization": 0.622, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "07Rinat07/GEOLOG_GASRATIO_Pixler", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.48, "nights_covered": 6}, "gate_passed": "2026-10-13", "repo": "0916habutaro/kokosimnew", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.669, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "0xsuneel/meshport", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.43, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "125337/ios", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.769, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "1377385356/openxiangda", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.548, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "1525745393/EmbyTok-Flutter", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -11,6 +12,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.895, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "21bcarlisle-arch/synthetic-enterprise", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.786, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "254684589-max/ooglex-site", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.731, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "287113535qq-cmyk/sg-capture-runner", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.699, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "2AMLogic/gf180-parasynth", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.822, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "2AMLogic/gf180-pll", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.521, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "2AMLogic/klayout-tools", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.427, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "2ty9p66r46-del/english-practice", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -33,6 +35,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.543, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "a0953883367/wude-ai-stock-v6", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.508, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "a11ign/a11ign", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.539, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "a11ign/agent-org", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.4, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "a1flecke/conquestoria", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.558, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "a3ka/dev-harness", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.855, "nights_covered": 6}, "gate_passed": "2026-10-11", "repo": "a91453/railway-game-ios", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.568, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "aakshintala/fiber", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -78,6 +81,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.656, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "AH100-1/skylens-stream-rs", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.701, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "AhmedPeaRL/maximal-one", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.429, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "ahmetrasit/prose_generation", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.508, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "Ahoo-Wang/Wow", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.487, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "ahrav/eidnara", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.523, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "ai-2070/net", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.689, "nights_covered": 6}, "gate_passed": "2026-10-13", "repo": "ai-ecoverse/slicc-bios", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
@@ -132,6 +136,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.748, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "and1truong/phpun", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.51, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "andikune-ux/Masjid.io", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.497, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "andrewboudreau/motocross-madness-2-decomp", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.588, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "andrewgark/interoves_django", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.464, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "andromarces/agent-loops", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.528, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "andyflinn/SpiritOS", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.607, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "andygmassey/CM051-Home-Hub-Installer", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -145,9 +150,11 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.62, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "anon987654321/pub4", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.484, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "AnonymousKoo/avuhz-infra", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.914, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "antallusion/pirates", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.698, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "anthony-chaudhary/fak", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.766, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "antoniovairo-rgb/Carrier-manager-", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.814, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "AntPAllen/js-wf", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.755, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "antpan5608-san/game-fengshen", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.625, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "antropos17/Aegis", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.733, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "anurag-duddu/specimen-digitization-app", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.623, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "aosama/astronomical", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.529, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "aowvn-10diem/aowvn-monika", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -203,6 +210,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.65, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "augments-labs/crucible-code", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.432, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "aurigax-ai/ostia", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.573, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "aurlooij-afk/AI-INFINITY", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.821, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "Aurtechmx/openlidarviewer", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "automagik-dev/genie", "source": "manual", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.722, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "automaster5013/AgentTrust", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "autonomous-ai/openharness", "source": "manual", "status": "active", "status_since": "2026-10-10"}
@@ -211,6 +219,7 @@
 {"added": "2026-10-11", "gate": {"night_utilization": 0.638, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "awaissulhry/nexus-commerce", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.563, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "awaku7/agentcli", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.787, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "awslabs/aidlc-workflows", "source": "source-list", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.509, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "AyalewGM/ai-tutor", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.482, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "aydinbt/Karine", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.822, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "ayukyo/icode", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.52, "nights_covered": 6}, "gate_passed": "2026-10-13", "repo": "azumag/docich", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
@@ -254,6 +263,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.864, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "benswift/slop-university", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.777, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "beorn/yrd", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.611, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "berkmancenter/keyring-wallet", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.596, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "bettersoftware-io/ReactiveTraderCloudClone", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.709, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "Bewinxed/cawco", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.409, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "bex-co/bex", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.448, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "BFi-AI-247/bfi-ai-247.github.io", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -262,6 +272,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.425, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "bi421/QROS", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.421, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "bichikim/web", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.756, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "big-dimple/dachoupai", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.448, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "bigbeartechworld/big-bear-universal-apps", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.569, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "BigBIueWhale/rustdesk_fork", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.501, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "bigduu/Bamboo-agent", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.668, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "bigfarts/nettai", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -269,6 +280,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.891, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "BigRain-11122/BigDomain", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.887, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "BigRain-11122/Bigmedia", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.846, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "BigRain-11122/BigMoney", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.423, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "BigSimmo/PsychSift", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.591, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "billradar/rustdesk-custom", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.516, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "bilo-io/midnite-studio", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.407, "nights_covered": 6}, "gate_passed": "2026-10-11", "repo": "bimaakbar-dev/yukionime", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
@@ -292,6 +304,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.696, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "BlueSkyz-Labs/SGPS-Marketing", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.439, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "BlueTeam-OU/agent-fabric", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.538, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "bmedeiros1987/crewcheck", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.736, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "bobaekimboae/bobaedream", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.715, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "bobmatnyc/trusty-tools", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.549, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "boburning/portcove", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.603, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "bogdan-alexandrescu/SwarmCloud", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -301,6 +314,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.52, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "boomytc/AmazMe", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.739, "nights_covered": 6}, "gate_passed": "2026-10-13", "repo": "botassembly/thinkthen", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.647, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "botiverse/antiproton", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.856, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "boundring/hngh", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.534, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "boxabirds/awesome-local-ai", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.622, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "bpeppersjr/datahub", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.429, "nights_covered": 6}, "gate_passed": "2026-10-11", "repo": "bracke/model_runner", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
@@ -317,6 +331,7 @@
 {"added": "2026-10-11", "gate": {"night_utilization": 0.407, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "BrucePerens/hams_shared", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.474, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "BryceCurran86/PlanReader-3D", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.507, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "brycejmurrin/f1-game", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-14", "gate": {"night_utilization": 0.45, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "bryceroche/mycelium", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.611, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "bsikar/ra8-firmware", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.477, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "BTmedyajans/Btmedya-db", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.446, "nights_covered": 5}, "gate_passed": "2026-10-11", "repo": "budgie-at/budgie", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
