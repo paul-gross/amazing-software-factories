@@ -224,10 +224,13 @@ def classify(repos, refresh=False, rows=None, gates=None, limit=None, redo=()):
     version does not send everything back: redo names the kinds whose answers from an older version are read again,
     for the kinds a prompt change can move. rows: {repo: snapshot row}, the measured activity to weigh, where there is
     one; gates: {repo: the gate's numbers}, for one not yet measured. limit: classify only this many, a fixed random
-    sample of those due, to review a new prompt; drawn from repositories no version has read while enough remain."""
-    stored, rows, gates = kinds(), rows or {}, gates or {}
+    sample of those due, to review a new prompt; drawn from repositories no version has read while enough remain. A
+    repository with a hand annotation is never sent: the annotation wins whatever the classifier says."""
+    stored, rows, gates, notes = kinds(), rows or {}, gates or {}, annotations()
 
     def due(r):
+        if (notes.get(r.lower()) or {}).get("kind"):
+            return False
         row = stored.get(r.lower())
         return refresh or not row or (row.get("kind") in redo and row.get("version") != VERSION)
     todo = [r for r in repos if due(r)]

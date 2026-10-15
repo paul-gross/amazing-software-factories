@@ -59,7 +59,8 @@ about them.
 
 ## Correcting a classification
 
-A hand entry in [data/annotations.toml](../data/annotations.toml) always wins over the classifier:
+A hand entry in [data/annotations.toml](../data/annotations.toml) always wins over the classifier, and `classify`
+never sends an annotated repository to it, so this is also how to settle one the classifier keeps failing on:
 
 ```toml
 [repo."owner/name"]
@@ -68,3 +69,7 @@ reason = "One line a reader will see"
 ```
 
 Render again (`python3 -m asf render`) and commit the annotation with the rendered files.
+
+A repository that keeps failing because GitHub answers 404 (`gh api repos/owner/name`) has been deleted or made
+private. It is not a kind: set its watchlist row's `status` to `"gone"`, with `status_since` and a `gone_reason`, and
+classification, measurement and the list all pass it by. Setting it back to `"active"` brings it back if it returns.

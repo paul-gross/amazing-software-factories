@@ -280,7 +280,7 @@ class Kinds(unittest.TestCase):
                  "o/helped": dict(repo="o/helped", kind="agent-assisted", version=old),
                  "o/done": dict(repo="o/done", kind="assembly line", version=kind.VERSION)}
         asked = []
-        fakes = dict(kinds=lambda: dict(saved), about=lambda chunk: {r: {} for r in chunk},
+        fakes = dict(kinds=lambda: dict(saved), about=lambda chunk: {r: {} for r in chunk}, annotations=lambda: {},
                      ask=lambda repo, *a: asked.append(repo) or dict(kind="assembly line", confidence="high", reason=""),
                      write_jsonl=lambda path, rows: None)
         real = {name: getattr(kind, name) for name in fakes}
@@ -296,6 +296,26 @@ class Kinds(unittest.TestCase):
             for name, fn in real.items():
                 setattr(kind, name, fn)
         self.assertEqual(asked, ["o/line"])
+
+    def test_an_annotated_repository_is_never_sent_to_the_classifier(self):
+        saved = {"o/old": dict(repo="o/old", kind="assembly line", version="kind-v0")}
+        asked = []
+        fakes = dict(kinds=lambda: dict(saved), about=lambda chunk: {r: {} for r in chunk},
+                     annotations=lambda: {"o/new": dict(kind="not-software"), "o/old": dict(kind="agent-assisted")},
+                     ask=lambda repo, *a: asked.append(repo) or dict(kind="assembly line", confidence="high", reason=""),
+                     write_jsonl=lambda path, rows: None)
+        real = {name: getattr(kind, name) for name in fakes}
+        try:
+            for name, fake in fakes.items():
+                setattr(kind, name, fake)
+            with contextlib.redirect_stdout(io.StringIO()):
+                kind.classify(["O/New", "o/old", "o/plain"])
+                kind.classify(["O/New", "o/old"], refresh=True)
+                kind.classify(["O/New", "o/old"], redo=("assembly line",))
+        finally:
+            for name, fn in real.items():
+                setattr(kind, name, fn)
+        self.assertEqual(asked, ["o/plain"])
 
     def test_the_command_line_passes_redo_kinds_through(self):
         import asf.__main__ as cli

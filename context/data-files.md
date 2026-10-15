@@ -4,7 +4,7 @@ Everything under `data/` is committed. `.cache/` is not: it holds a day's screen
 
 | File                         | Holds                                                                                                   |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `watchlist.jsonl`            | Repositories that passed the gate, one row each, for good: when, from which source, and status (`active`, `dormant`: no commits in its measured window, `archived`, `opted-out`) |
+| `watchlist.jsonl`            | Repositories that passed the gate, one row each, for good: when, from which source, and status (`active`, `dormant`: no commits in its measured window, `archived`, `opted-out`, `gone`: deleted or made private, set by hand with a `gone_reason`) |
 | `screened.jsonl`             | Repositories that passed layers 1 and 2: `waiting` for the gate (with the last gate check's numbers), `admitted`, or `out` (`out_reason: not found` after a week of misses) |
 | `latest.jsonl`               | Every watched repository's newest full measurement, rewritten as each is measured                       |
 | `daily/<date>.jsonl`         | A compact record per repository per day: grades, headline numbers, the week's commit tally (four-week figures sum these) |

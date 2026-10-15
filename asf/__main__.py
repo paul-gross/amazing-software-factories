@@ -145,7 +145,7 @@ def snapshot_week():
 def classify(limit=None, redo=()):
     from .kind import classify as run
     rows, wl = latest(), watchlist()
-    watched = [r for r, e in wl.items() if e["status"] != "opted-out"]
+    watched = [r for r, e in wl.items() if e["status"] not in ("opted-out", "gone")]
     run(watched, rows={r: rows[r] for r in watched if r in rows}, gates={r: wl[r]["gate"] for r in watched if wl[r].get("gate")},
         limit=limit, redo=redo)
 
