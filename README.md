@@ -3,6 +3,11 @@
 An open analysis of software factory repos on GitHub: projects built by fleets of AI coding agents rather than a
 person at a keyboard, tracked over time to see which concepts are emerging and where they're heading.
 
+**[Browse the list on the site →](https://paul-gross.github.io/amazing-software-factories/)** It has every repo on a
+map of night against day activity, a table you can sort by any column and search, and a page per repo with its grades,
+what it's missing for the next one up, its commit clock and how it has changed over time. It's updated every hour from
+the same data as [the table below](#the-list).
+
 The list is measured from public GitHub data by the code in this repo, and every repo goes through the same checks.
 The main one is simple: work has to keep landing while its owner is asleep, night after night. Commit volume alone
 doesn't count, since anyone with a few agent terminals open can make hundreds of commits in a day.
@@ -92,6 +97,9 @@ this list under the same rules as everyone else. The code and every raw number a
 Open an issue asking for your repo to be removed and it will be, no questions asked. It won't be added back.
 
 ## The list
+
+The same list is easier to explore on [the site](https://paul-gross.github.io/amazing-software-factories/), with each
+repo's grade breakdown and history.
 
 <!-- BEGIN GENERATED -->
 _208 repos, last measured 2026-10-15. Sorted by code lines on the median day. The [site](https://paul-gross.github.io/amazing-software-factories/) has the same data and sorts by anything._
@@ -319,7 +327,7 @@ scripts/daily.sh      # find new candidates and screen them (steps 1 and 2)
 scripts/hourly.sh     # recheck waiting repos (steps 3 and 4) and measure the listed ones
 ```
 
-Classifying newly listed repos is run by hand with `python -m asf classify`, which needs the `claude` CLI signed in;
+Classifying newly watched repos is run by hand with `python -m asf classify`, which needs the `claude` CLI signed in;
 [context/classify-workflow.md](context/classify-workflow.md) has the steps.
 
 You need Python 3.11 or newer, git, and a GitHub token (`GH_TOKEN`, or a signed-in `gh`). There are no other
