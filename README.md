@@ -243,7 +243,6 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [Sfaiug/agentkit](https://github.com/Sfaiug/agentkit) | E F D | 3,949 | 4,905 | 28.2 | 60% | 30% | – | 343 KB | 2 (+0) |
 | [beadhive/beadhive](https://github.com/beadhive/beadhive) | E E D | 3,920 | 22,767 | 0.0 | 59% | 0% | – | 189 KB | 28 (+0) |
 | [itsOmidKarami/kraft](https://github.com/itsOmidKarami/kraft) | E F B | 3,780 | 7,523 | 25.8 | 17% | 10% | 96% | 125 KB | 1 (+0) |
-| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | E E D | 3,730 | 8,812 | 0.0 | 66% | 0% | – | 108 KB | 0 (+0) |
 | [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox) | E F B | 3,716 | 12,332 | 24.6 | 8% | 0% | 92% | 489 KB | 28 (+1) |
 | [djimit/djimitflo](https://github.com/djimit/djimitflo) | E F A | 3,677 | 6,364 | 19.1 | 18% | 13% | 100% | 386 KB | 1 (+0) |
 | [floor/teamcli](https://github.com/floor/teamcli) | E F B | 3,624 | 8,370 | 10.7 | 21% | 3% | 97% | 77 KB | 2 (+0) |
@@ -253,7 +252,6 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [kurone-kito/idd-skill](https://github.com/kurone-kito/idd-skill) | E B E | 3,076 | 24,468 | 20.9 | 83% | 43% | 99% | 613 KB | 11 (+0) |
 | [pom11/hscc](https://github.com/pom11/hscc) | E F B | 3,019 | 5,351 | 0.3 | 50% | 0% | 100% | 142 KB | 7 (+0) |
 | [stranske/Workflows](https://github.com/stranske/Workflows) | E F C | 2,953 | 19,199 | 11.0 | 57% | 0% | 95% | 314 KB | 2 (+0) |
-| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E F D | 2,890 | 7,690 | 29.2 | 56% | 0% | 47% | 97 KB | 0 (+0) |
 | [fmanimashaun/claude-skills](https://github.com/fmanimashaun/claude-skills) | E D E | 2,758 | 6,844 | 20.3 | 66% | 6% | 94% | 549 KB | 0 (+0) |
 | [saymyname-app/agent-factory](https://github.com/saymyname-app/agent-factory) | E E C | 2,723 | 14,892 | 19.1 | 54% | 40% | 98% | 403 KB | 1 (+1) |
 | [sinsan-develop/Anvil](https://github.com/sinsan-develop/Anvil) | E F D | 2,648 | 8,372 | 1.0 | 58% | 0% | – | 92 KB | 0 (+0) |
@@ -263,6 +261,7 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [MoonLadderStudios/MoonMind](https://github.com/MoonLadderStudios/MoonMind) | E F B | 2,462 | 11,836 | 13.6 | 58% | 0% | 92% | 1,196 KB | 13 (+0) |
 | [Claudfather/Claudlobby](https://github.com/Claudfather/Claudlobby) | E E B | 2,417 | 6,015 | 9.7 | 47% | 5% | 98% | 329 KB | 0 (+0) |
 | [MattFlower/limitless](https://github.com/MattFlower/limitless) | E C C | 2,405 | 5,301 | 11.0 | 71% | 0% | 92% | 115 KB | 1 (+0) |
+| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E F D | 2,318 | 6,130 | 28.8 | 55% | 0% | 47% | 97 KB | 0 (+0) |
 | [nikhilsoman/synlynk](https://github.com/nikhilsoman/synlynk) | E F B | 2,170 | 4,986 | 12.9 | 35% | 21% | 79% | 225 KB | 1 (+0) |
 | [devbasex/ai-plugins](https://github.com/devbasex/ai-plugins) | E F B | 2,139 | 6,761 | 29.1 | 3% | 17% | 100% | 617 KB | 1 (+0) |
 | [trung-via/AIOS-renew](https://github.com/trung-via/AIOS-renew) | E E D | 1,932 | 4,872 | 0.2 | 49% | 17% | 0% | 435 KB | 0 (+0) |
@@ -274,6 +273,7 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [Zennay/zCloud](https://github.com/Zennay/zCloud) | E F C | 1,578 | 4,581 | 19.1 | 11% | 0% | 98% | 271 KB | 0 (+0) |
 | [Round-Block/bisellium](https://github.com/Round-Block/bisellium) | E F A | 1,543 | 6,346 | 16.7 | 40% | 0% | 100% | 210 KB | 0 (+0) |
 | [ArcavenAE/marvel](https://github.com/ArcavenAE/marvel) | E F B | 1,456 | 4,738 | 14.0 | 39% | 0% | 98% | 129 KB | 0 (+0) |
+| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | E F D | 1,353 | 6,987 | 0.0 | 54% | 0% | – | 108 KB | 0 (+0) |
 | [kriscendobot/garden](https://github.com/kriscendobot/garden) | E F D | 1,348 | 1,667 | 0.2 | 41% | 29% | 0% | 633 KB | 3 (+0) |
 | [nexus-substrate/nexus-agents](https://github.com/nexus-substrate/nexus-agents) | E F A | 1,299 | 3,595 | 23.0 | 46% | 0% | 98% | 129 KB | 23 (+1) |
 | [leshchenko1979/agent-factories](https://github.com/leshchenko1979/agent-factories) | E F D | 1,272 | 4,280 | 0.0 | 61% | 0% | – | 475 KB | 2 (+0) |
@@ -310,7 +310,7 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [Simple-With-Us/BotFleet](https://github.com/Simple-With-Us/BotFleet) | F E B | – | – | 20.6 | 45% | 32% | 94% | 947 KB | 4 (+0) |
 | [nateprich-projects/command-center](https://github.com/nateprich-projects/command-center) | F F B | – | – | 20.2 | 25% | 22% | 99% | 1,104 KB | 0 (+0) |
 | [marcogallotta/switchstand](https://github.com/marcogallotta/switchstand) | F F A | 0 | 1,003 | 19.9 | 8% | 0% | 95% | 82 KB | 0 (+0) |
-| [parsoFish/forge-studio](https://github.com/parsoFish/forge-studio) | F F B | – | – | 16.2 | 22% | 0% | 98% | 723 KB | 5 (+0) |
+| [parsoFish/forge-studio](https://github.com/parsoFish/forge-studio) | F F B | – | – | 16.3 | 22% | 0% | 98% | 723 KB | 5 (+0) |
 | [aphrollo/aphrollo-tools](https://github.com/aphrollo/aphrollo-tools) | F F A | 0 | 4,387 | 12.2 | 30% | 0% | 98% | 149 KB | 0 (+0) |
 | [sabbour/agentweaver](https://github.com/sabbour/agentweaver) | F F B | 0 | 2 | 12.1 | 0% | 0% | 91% | 306 KB | 7 (+0) |
 | [fontanierh/atelier](https://github.com/fontanierh/atelier) | F F C | – | – | 7.7 | 56% | 0% | 100% | 341 KB | 4 (+0) |
