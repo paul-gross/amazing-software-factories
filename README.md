@@ -145,13 +145,13 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [Volpestyle/clankie](https://github.com/Volpestyle/clankie) | C C C | 19,099 | 29,859 | 0.2 | 77% | 44% | 100% | 322 KB | 2 (+2) |
 | [thefrederiksen/devthrottle](https://github.com/thefrederiksen/devthrottle) | C F D | 19,083 | 48,450 | 23.7 | 34% | 49% | 34% | 3,082 KB | 96 (+0) |
 | [MeloMar-IT/spaghetti-code-foundry](https://github.com/MeloMar-IT/spaghetti-code-foundry) | C D D | 18,616 | 25,039 | 0.5 | 67% | 59% | – | 161 KB | 0 (+0) |
-| [TheCrimsonKing92/mcg-agent-orchestrator](https://github.com/TheCrimsonKing92/mcg-agent-orchestrator) | C A D | 18,495 | 22,300 | 0.0 | 90% | 40% | – | 226 KB | 0 (+0) |
 | [portpowered/you-agent-factory](https://github.com/portpowered/you-agent-factory) | C F A | 18,440 | 27,089 | 19.2 | 56% | 0% | 97% | 94 KB | 16 (+0) |
+| [TheCrimsonKing92/mcg-agent-orchestrator](https://github.com/TheCrimsonKing92/mcg-agent-orchestrator) | C C D | 18,247 | 18,957 | 0.0 | 87% | 23% | – | 226 KB | 0 (+0) |
 | [mickeyyaya/evolve-loop](https://github.com/mickeyyaya/evolve-loop) | C F B | 18,107 | 21,819 | 8.4 | 52% | 0% | 85% | 86 KB | 6 (+0) |
 | [jikig-ai/soleur](https://github.com/jikig-ai/soleur) | C E C | 17,992 | 42,480 | 27.6 | 52% | 37% | 97% | 454 KB | 18 (+0) |
 | [zajca/pohunek](https://github.com/zajca/pohunek) | C F B | 17,936 | 28,573 | 17.9 | 67% | 16% | 94% | 808 KB | 4 (+0) |
-| [leodearden/dark-factory](https://github.com/leodearden/dark-factory) | C C D | 17,760 | 44,300 | 0.0 | 72% | 62% | – | 1,193 KB | 3 (+0) |
 | [michal-ciechan/Antiphon](https://github.com/michal-ciechan/Antiphon) | C E C | 17,081 | 39,134 | 0.0 | 61% | 13% | 50% | 461 KB | 1 (+0) |
+| [leodearden/dark-factory](https://github.com/leodearden/dark-factory) | C C D | 16,995 | 41,685 | 0.0 | 73% | 64% | – | 1,192 KB | 3 (+0) |
 | [BlueTeam-OU/agent-fabric](https://github.com/BlueTeam-OU/agent-fabric) | C E C | 16,805 | 22,727 | 9.1 | 59% | 34% | 96% | 109 KB | 0 (+0) |
 | [arul28/ADE](https://github.com/arul28/ADE) | C F B | 16,441 | 25,056 | 12.4 | 29% | 8% | 91% | 2,913 KB | 117 (+1) |
 | [rxm7706/local-recipes](https://github.com/rxm7706/local-recipes) | C C A | 15,224 | 47,206 | 29.2 | 72% | 18% | 100% | 393 KB | 0 (+0) |
@@ -243,7 +243,7 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [vilmire/adhdev](https://github.com/vilmire/adhdev) | E F D | 4,141 | 14,652 | 0.0 | 18% | 60% | 49% | 143 KB | 108 (+1) |
 | [Sfaiug/agentkit](https://github.com/Sfaiug/agentkit) | E F D | 3,949 | 4,905 | 28.2 | 60% | 30% | – | 343 KB | 2 (+0) |
 | [beadhive/beadhive](https://github.com/beadhive/beadhive) | E E D | 3,920 | 22,767 | 0.0 | 59% | 0% | – | 189 KB | 28 (+0) |
-| [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox) | E F B | 3,716 | 12,332 | 24.6 | 8% | 0% | 92% | 489 KB | 28 (+1) |
+| [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox) | E F B | 3,716 | 8,669 | 24.4 | 0% | 0% | 95% | 489 KB | 28 (+0) |
 | [djimit/djimitflo](https://github.com/djimit/djimitflo) | E F A | 3,677 | 6,364 | 19.1 | 18% | 13% | 100% | 386 KB | 1 (+0) |
 | [floor/teamcli](https://github.com/floor/teamcli) | E F B | 3,624 | 8,370 | 10.7 | 21% | 3% | 97% | 77 KB | 2 (+0) |
 | [Cheekyfellastef/stephan-os](https://github.com/Cheekyfellastef/stephan-os) | E F C | 3,542 | 4,650 | 23.8 | 48% | 18% | 95% | 544 KB | 0 (+0) |
@@ -293,9 +293,9 @@ _219 repos, last measured 2026-10-17. Sorted by code lines on the median day. Th
 | [orbi-build/orbi](https://github.com/orbi-build/orbi) | F E B | 481 | 1,588 | 8.5 | 73% | 0% | 100% | 173 KB | 220 (+1) |
 | [shuhei-suzuki/rururunx](https://github.com/shuhei-suzuki/rururunx) | F F C | 443 | 2,757 | 1.3 | 0% | 0% | 68% | 290 KB | 0 (+0) |
 | [ekayaprod/jules-agent-roster](https://github.com/ekayaprod/jules-agent-roster) | F F B | 323 | 25,471 | 14.1 | 15% | 17% | 93% | 66 KB | 3 (+0) |
+| [ilgyu-yi/gitjig-pi](https://github.com/ilgyu-yi/gitjig-pi) | F E A | 315 | 964 | 2.6 | 71% | 0% | 100% | 59 KB | 1 (+0) |
 | [automagik-dev/genie](https://github.com/automagik-dev/genie) | F F A | 296 | 30,820 | 6.5 | 0% | 0% | 88% | 151 KB | 345 (+0) |
 | [unxed/lunobot](https://github.com/unxed/lunobot) | F F C | 149 | 934 | 2.4 | 32% | 0% | 98% | 122 KB | 2 (+0) |
-| [ilgyu-yi/gitjig-pi](https://github.com/ilgyu-yi/gitjig-pi) | F F A | 141 | 909 | 2.8 | 65% | 0% | 100% | 59 KB | 1 (+0) |
 | [a3ka/dev-harness](https://github.com/a3ka/dev-harness) | F F E | 92 | 8,038 | 1.7 | 58% | 26% | 73% | 149 KB | 0 (+0) |
 | [MoRen9527/TriMetaverse](https://github.com/MoRen9527/TriMetaverse) | F F E | 82 | 3,249 | 0.0 | 24% | 0% | 0% | 473 KB | 0 (+0) |
 | [ShiroDoromoto/amenbo](https://github.com/ShiroDoromoto/amenbo) | F F C | 58 | 374 | 32.0 | 31% | 0% | 100% | 847 KB | 3 (+0) |
