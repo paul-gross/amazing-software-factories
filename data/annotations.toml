@@ -115,3 +115,19 @@ reason = "Land-listings map site; one CLAUDE.md, and commits answer the owner's 
 [repo."xMrMathx/shortz-tv"]
 kind = "agent-assisted"
 reason = "Short-drama streaming app; code commits are made \"at his word\" from the owner's phone tests"
+
+[repo."austery/thought-foundry-content"]
+kind = "not-software"
+reason = "Digital-garden content: articles generated from video subtitles"
+
+[repo."billbisco/swccg-wiki"]
+kind = "not-software"
+reason = "Preservation copy of a fan wiki's text, with scheduled archive runs"
+
+[repo."GuSoder/sff-taxonomy-browser"]
+kind = "not-software"
+reason = "Science-fiction and fantasy taxonomy data curated by an agent"
+
+[repo."Learning-Design-Alliance/learning-wiki"]
+kind = "not-software"
+reason = "LLM-maintained learning-design knowledge base"
