@@ -212,11 +212,11 @@ _268 repos, last measured 2026-10-21. Sorted by code lines on the median day. Th
 | [rxm7706/local-recipes](https://github.com/rxm7706/local-recipes) | D D A | 8,555 | 37,411 | 24.8 | 66% | 17% | 99% | 393 KB | 0 (+0) |
 | [agent-sh/tower-crane](https://github.com/agent-sh/tower-crane) | D D D | 8,486 | 11,104 | 13.6 | 62% | 14% | 30% | 129 KB | 0 (+0) |
 | [handarbeit/fabrik](https://github.com/handarbeit/fabrik) | D F D | 8,455 | 19,994 | 10.5 | 44% | 5% | 0% | 285 KB | 24 (+0) |
+| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D E B | 8,364 | 13,878 | 0.0 | 48% | 42% | 100% | 414 KB | 0 (+0) |
 | [griffinwork40/agent-afk](https://github.com/griffinwork40/agent-afk) | D F A | 8,122 | 10,437 | 46.6 | 0% | 44% | 85% | 67 KB | 61 (+0) |
 | [HJewkes/agent-chat](https://github.com/HJewkes/agent-chat) | D D C | 8,040 | 13,447 | 36.8 | 67% | 11% | 100% | 220 KB | 0 (+0) |
 | [MoonLadderStudios/MoonMind](https://github.com/MoonLadderStudios/MoonMind) | D F B | 8,015 | 13,485 | 14.2 | 32% | 0% | 83% | 1,188 KB | 13 (+0) |
 | [takecchi/alteroid](https://github.com/takecchi/alteroid) | D C B | 7,872 | 8,373 | 76.4 | 74% | 11% | 100% | 752 KB | 0 (+0) |
-| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D E B | 7,845 | 13,878 | 0.0 | 48% | 48% | 100% | 414 KB | 0 (+0) |
 | [syntropic137/syntropic137](https://github.com/syntropic137/syntropic137) | D F A | 7,823 | 14,783 | 12.7 | 39% | 0% | 94% | 236 KB | 5 (+0) |
 | [itkadr-git/myrmidon](https://github.com/itkadr-git/myrmidon) | D D B | 7,656 | 25,699 | 32.8 | 67% | 8% | 91% | 1,430 KB | 0 (+0) |
 | [volkb79-2/vbpub](https://github.com/volkb79-2/vbpub) | D F D | 7,512 | 23,259 | 0.0 | 59% | 0% | – | 813 KB | 0 (+0) |
@@ -290,7 +290,6 @@ _268 repos, last measured 2026-10-21. Sorted by code lines on the median day. Th
 | [devbasex/ai-plugins](https://github.com/devbasex/ai-plugins) | E F B | 2,355 | 7,340 | 29.5 | 33% | 0% | 100% | 617 KB | 1 (+0) |
 | [kamilkreiser/Wednesday](https://github.com/kamilkreiser/Wednesday) | E F F | 2,273 | 107,649 | 0.0 | 36% | 0% | – | 8,190 KB | 0 (+0) |
 | [jacobhausler/hermes-workflows](https://github.com/jacobhausler/hermes-workflows) | E F C | 2,216 | 9,921 | 11.3 | 17% | 20% | 71% | 527 KB | 1 (+0) |
-| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E E D | 2,200 | 6,230 | 27.2 | 57% | 0% | 47% | 97 KB | 0 (+0) |
 | [andromarces/agent-loops](https://github.com/andromarces/agent-loops) | E F D | 2,179 | 3,904 | 15.8 | 36% | 0% | – | 48 KB | 3 (+0) |
 | [ptr727/ProjectTemplate](https://github.com/ptr727/ProjectTemplate) | E F B | 2,100 | 3,416 | 20.2 | 5% | 41% | 97% | 624 KB | 1 (+0) |
 | [euron8/ai-dlc](https://github.com/euron8/ai-dlc) | E F E | 2,054 | 10,439 | 13.9 | 56% | 0% | 100% | 1,007 KB | 0 (+0) |
@@ -305,12 +304,13 @@ _268 repos, last measured 2026-10-21. Sorted by code lines on the median day. Th
 | [saymyname-app/agent-factory](https://github.com/saymyname-app/agent-factory) | E D C | 1,425 | 8,369 | 17.2 | 64% | 6% | 98% | 407 KB | 1 (+0) |
 | [kriscendobot/garden](https://github.com/kriscendobot/garden) | E E D | 1,348 | 1,517 | 0.1 | 60% | 28% | 0% | 634 KB | 3 (+0) |
 | [fmanimashaun/claude-skills](https://github.com/fmanimashaun/claude-skills) | E E E | 1,319 | 3,525 | 20.6 | 55% | 0% | 94% | 555 KB | 0 (+0) |
+| [popcre/ai-devops](https://github.com/popcre/ai-devops) | E F D | 1,318 | 5,823 | 27.4 | 42% | 0% | 47% | 97 KB | 0 (+0) |
 | [vamseeachanta/workspace-hub](https://github.com/vamseeachanta/workspace-hub) | E F C | 1,308 | 3,710 | 4.9 | 43% | 25% | 94% | 7,014 KB | 18 (+0) |
 | [ArcavenAE/marvel](https://github.com/ArcavenAE/marvel) | E F B | 1,303 | 2,817 | 14.9 | 0% | 0% | 99% | 132 KB | 0 (+0) |
 | [DraconDev/pi-goal-list-loop-audit](https://github.com/DraconDev/pi-goal-list-loop-audit) | E F C | 1,251 | 4,658 | 0.0 | 29% | 0% | 63% | 554 KB | 27 (+0) |
 | [melvenac/Self-Improving-Agent](https://github.com/melvenac/Self-Improving-Agent) | E F B | 1,160 | 10,598 | 26.4 | 15% | 0% | 100% | 122 KB | 0 (+0) |
 | [ArtVsMark/Engineering-Pipeline-Mechanisms](https://github.com/ArtVsMark/Engineering-Pipeline-Mechanisms) | E F A | 1,149 | 4,704 | 26.3 | 60% | 0% | 100% | 148 KB | 1 (+0) |
-| [dronrider/devkit](https://github.com/dronrider/devkit) | E F D | 1,130 | 3,946 | 0.0 | 62% | 0% | 0% | 1,120 KB | 0 (+0) |
+| [dronrider/devkit](https://github.com/dronrider/devkit) | E F D | 1,130 | 3,972 | 0.0 | 46% | 0% | 0% | 1,120 KB | 0 (+0) |
 | [asklokesh/loki-mode](https://github.com/asklokesh/loki-mode) | E F C | 1,074 | 29,332 | 0.3 | 78% | 0% | 90% | 1,468 KB | 1,100 (+0) |
 | [teststuffstash/homelab](https://github.com/teststuffstash/homelab) | E F C | 1,068 | 6,374 | 27.1 | 0% | 16% | 100% | 526 KB | 0 (+0) |
 | [unxed/lunobot](https://github.com/unxed/lunobot) | F D C | 954 | 2,539 | 6.2 | 63% | 5% | 100% | 140 KB | 2 (+0) |
@@ -324,8 +324,8 @@ _268 repos, last measured 2026-10-21. Sorted by code lines on the median day. Th
 | [Claudfather/Claudlobby](https://github.com/Claudfather/Claudlobby) | F F B | 511 | 1,123 | 9.5 | 57% | 0% | 94% | 330 KB | 0 (+0) |
 | [orbi-build/orbi](https://github.com/orbi-build/orbi) | F F B | 481 | 6,478 | 7.5 | 77% | 0% | 100% | 175 KB | 225 (+3) |
 | [drmoisan/drm-copilot](https://github.com/drmoisan/drm-copilot) | F F C | 424 | 33,156 | 6.0 | 26% | 0% | 100% | 24 KB | 0 (+0) |
-| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | F F D | 397 | 7,406 | 0.0 | 70% | 0% | – | 108 KB | 0 (+0) |
 | [racecraft-lab/racecraft-plugins-public](https://github.com/racecraft-lab/racecraft-plugins-public) | F F A | 392 | 4,243 | 13.2 | 52% | 0% | 99% | 298 KB | 5 (+0) |
+| [Khyretos/kreative-kompanion](https://github.com/Khyretos/kreative-kompanion) | F F D | 350 | 6,957 | 0.0 | 66% | 0% | – | 108 KB | 0 (+0) |
 | [CodySwannGT/lisa](https://github.com/CodySwannGT/lisa) | F F C | 293 | 34,404 | 3.5 | 37% | 0% | 100% | 1,116 KB | 5 (+0) |
 | [AviGopal/substrate](https://github.com/AviGopal/substrate) | F F C | 283 | 1,133 | 0.0 | 13% | 0% | 98% | 384 KB | 0 (+0) |
 | [5throck/ai-workspace-standards](https://github.com/5throck/ai-workspace-standards) | F F C | 170 | 3,132 | 18.8 | 42% | 0% | 88% | 303 KB | 23 (+0) |
