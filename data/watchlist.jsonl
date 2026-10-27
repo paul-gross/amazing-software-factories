@@ -5817,7 +5817,7 @@
 {"added": "2026-10-13", "gate": {"night_utilization": 0.671, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "xerj-org/xerj", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.557, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "XHanos141/SV_APP", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-27", "gate": {"night_utilization": 0.824, "nights_covered": 5}, "gate_passed": "2026-10-27", "repo": "xianghui/daily-app2", "source": "gharchive", "status": "active", "status_since": "2026-10-27"}
-{"added": "2026-10-20", "gate": {"night_utilization": 0.538, "nights_covered": 6}, "gate_passed": "2026-10-20", "repo": "xianxu/ariadne", "source": "gharchive", "status": "active", "status_since": "2026-10-20"}
+{"added": "2026-10-20", "gate": {"night_utilization": 0.538, "nights_covered": 6}, "gate_passed": "2026-10-20", "repo": "xianxu/ariadne", "source": "gharchive", "status": "archived", "status_since": "2026-10-27"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.622, "nights_covered": 5}, "gate_passed": "2026-10-19", "repo": "xianxu/pair", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.485, "nights_covered": 6}, "gate_passed": "2026-10-19", "repo": "xiaocongyu66/rustcreate", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.484, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "xiaolongbao0709/ai-virtual-phone-share", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
