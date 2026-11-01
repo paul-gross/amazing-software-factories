@@ -2249,7 +2249,7 @@
 {"added": "2026-10-15", "gate": {"night_utilization": 0.427, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "gnorium/web-tests", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-17", "gate": {"night_utilization": 0.679, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "gnoviawan/termul", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.683, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "go-to-k/cdkd", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
-{"added": "2026-10-22", "gate": {"night_utilization": 0.438, "nights_covered": 7}, "gate_passed": "2026-10-22", "repo": "goat-si/goat", "source": "gharchive", "status": "active", "status_since": "2026-10-22"}
+{"added": "2026-10-22", "gate": {"night_utilization": 0.438, "nights_covered": 7}, "gate_passed": "2026-10-22", "repo": "goat-si/goat", "source": "gharchive", "status": "dormant", "status_since": "2026-11-01"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.671, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "GodModeAI2025/MDMDMD", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-29", "gate": {"night_utilization": 0.754, "nights_covered": 5}, "gate_passed": "2026-10-29", "repo": "godofecht/FlowStudio", "source": "gharchive", "status": "active", "status_since": "2026-10-29"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.414, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "godsun108/The-portal", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
