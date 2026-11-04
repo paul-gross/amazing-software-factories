@@ -2210,6 +2210,7 @@
 {"added": "2026-10-19", "gate": {"night_utilization": 0.435, "nights_covered": 5}, "gate_passed": "2026-10-19", "repo": "ghost80076-cmyk/bao-lab", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.626, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "ghosteeeeeeee/ATM", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.609, "nights_covered": 6}, "gate_passed": "2026-10-26", "repo": "ghostship-io/ghostship-config", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
+{"added": "2026-11-04", "gate": {"night_utilization": 0.623, "nights_covered": 5}, "gate_passed": "2026-11-04", "repo": "ghuntley/overalls", "source": "source-list", "status": "active", "status_since": "2026-11-04"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.661, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "ghywel/placego", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-22", "gate": {"night_utilization": 0.867, "nights_covered": 5}, "gate_passed": "2026-10-22", "repo": "giampierofiorelli/Crawler", "source": "gharchive", "status": "active", "status_since": "2026-10-22"}
 {"added": "2026-10-17", "gate": {"night_utilization": 0.475, "nights_covered": 6}, "gate_passed": "2026-10-17", "repo": "giantswarm/agent-platform", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
