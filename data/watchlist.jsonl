@@ -2626,6 +2626,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.77, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "infinityabundance/openssl-rs", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-24", "gate": {"night_utilization": 0.675, "nights_covered": 6}, "gate_passed": "2026-10-24", "repo": "inflatable-cookie/effigy", "source": "gharchive", "status": "active", "status_since": "2026-10-24"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.673, "nights_covered": 6}, "gate_passed": "2026-10-26", "repo": "ingenatic-arch/zeus", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
+{"added": "2026-11-07", "gate": {"night_utilization": 0.567, "nights_covered": 5}, "gate_passed": "2026-11-07", "repo": "ingforme82-commits/trend-lab", "source": "gharchive", "status": "active", "status_since": "2026-11-07"}
 {"added": "2026-10-23", "gate": {"night_utilization": 0.988, "nights_covered": 6}, "gate_passed": "2026-10-23", "repo": "InGrokWeTrust/missioned-souls-tracker", "source": "gharchive", "status": "active", "status_since": "2026-10-23"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.916, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "inhahe/SlateOS", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-17", "gate": {"night_utilization": 0.629, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "InjustFr/kelta", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
@@ -2901,6 +2902,7 @@
 {"added": "2026-10-12", "gate": {"night_utilization": 0.774, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "JohnAndrewsX/jax-seldon", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.705, "nights_covered": 6}, "gate_passed": "2026-10-16", "repo": "JohnDeved/populous-new-dawn", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-20", "gate": {"night_utilization": 0.611, "nights_covered": 6}, "gate_passed": "2026-10-20", "repo": "Johnlon/openisd", "source": "gharchive", "status": "active", "status_since": "2026-10-20"}
+{"added": "2026-11-07", "gate": {"night_utilization": 0.706, "nights_covered": 6}, "gate_passed": "2026-11-07", "repo": "johnmarktaylor91/torchlens", "source": "gharchive", "status": "active", "status_since": "2026-11-07"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.64, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "johnnyelwailer/t3code", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.415, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "Johnprempeh2/gs-agentic-manager", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-24", "gate": {"night_utilization": 0.471, "nights_covered": 5}, "gate_passed": "2026-10-24", "repo": "johnwick2921-cyber/vl", "source": "gharchive", "status": "active", "status_since": "2026-10-24"}
@@ -4989,6 +4991,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.711, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "RobTand/prismabuild", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.574, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "RobTand/prismaquant", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.489, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "RobTand/tessera", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-11-07", "gate": {"night_utilization": 0.554, "nights_covered": 5}, "gate_passed": "2026-11-07", "repo": "RobTand/trustladderiii", "source": "gharchive", "status": "active", "status_since": "2026-11-07"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.731, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "roc-lang/roc", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.549, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "roc-ops/Portrayal", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.786, "nights_covered": 6}, "gate_passed": "2026-10-15", "repo": "rock3r/remozio", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
@@ -5468,6 +5471,7 @@
 {"added": "2026-10-25", "gate": {"night_utilization": 0.745, "nights_covered": 5}, "gate_passed": "2026-10-25", "repo": "solidDoWant/vault-sync", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
 {"added": "2026-10-29", "gate": {"night_utilization": 0.656, "nights_covered": 5}, "gate_passed": "2026-10-29", "repo": "solmyr1980/ucr-pathways", "source": "gharchive", "status": "active", "status_since": "2026-10-29"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.455, "nights_covered": 7}, "gate_passed": "2026-10-18", "repo": "solpbc/solstone-journal", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
+{"added": "2026-11-07", "gate": {"night_utilization": 0.708, "nights_covered": 7}, "gate_passed": "2026-11-07", "repo": "solrenning-llc/marktmorgen", "source": "gharchive", "status": "active", "status_since": "2026-11-07"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.866, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "Somainer/remuda", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-23", "gate": {"night_utilization": 0.925, "nights_covered": 5}, "gate_passed": "2026-10-23", "repo": "Some-random/bio-evaluation", "source": "gharchive", "status": "active", "status_since": "2026-10-23"}
 {"added": "2026-10-27", "gate": {"night_utilization": 0.434, "nights_covered": 5}, "gate_passed": "2026-10-27", "repo": "somesh-ks/knowledge-hub", "source": "gharchive", "status": "active", "status_since": "2026-10-27"}
