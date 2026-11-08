@@ -1103,7 +1103,7 @@
 {"added": "2026-10-14", "gate": {"night_utilization": 0.604, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "CodySwannGT/lisa", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.973, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "coffeethencode/masstech-notices-evidence", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-21", "gate": {"night_utilization": 0.458, "nights_covered": 5}, "gate_passed": "2026-10-21", "repo": "coghex/hetoimasia", "source": "gharchive", "status": "active", "status_since": "2026-10-21"}
-{"added": "2026-10-11", "gate": {"night_utilization": 0.415, "nights_covered": 7}, "gate_passed": "2026-10-11", "repo": "cogito5170/baseline", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
+{"added": "2026-10-11", "gate": {"night_utilization": 0.415, "nights_covered": 7}, "gate_passed": "2026-10-11", "repo": "cogito5170/baseline", "source": "gharchive", "status": "dormant", "status_since": "2026-11-08"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.804, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "cognica-io/uqa-engine", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-11", "gate": {"night_utilization": 0.432, "nights_covered": 7}, "gate_passed": "2026-10-11", "repo": "coherence-energy-labs/hazardpulse", "source": "gharchive", "status": "active", "status_since": "2026-10-11"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.806, "nights_covered": 6}, "gate_passed": "2026-10-25", "repo": "cokeenet/zve10-qemu", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
