@@ -768,6 +768,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.788, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "bllshttng/footnote", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.768, "nights_covered": 5}, "gate_passed": "2026-10-19", "repo": "blobberus/straight-bussing", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.437, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "Blockether/vis", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
+{"added": "2026-11-09", "gate": {"night_utilization": 0.509, "nights_covered": 7}, "gate_passed": "2026-11-09", "repo": "blocknine0/geomacro", "source": "gharchive", "status": "active", "status_since": "2026-11-09"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.4, "nights_covered": 5}, "gate_passed": "2026-10-25", "repo": "blogminhquy/javis-os", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.742, "nights_covered": 7}, "gate_passed": "2026-10-16", "repo": "blue45f/toonstudio", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.594, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "BlueAzur-Hub/erith-ia-memory", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -783,6 +784,7 @@
 {"added": "2026-10-22", "gate": {"night_utilization": 0.71, "nights_covered": 5}, "gate_passed": "2026-10-22", "repo": "bnsd55/openscion", "source": "gharchive", "status": "active", "status_since": "2026-10-22"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.598, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "boardsesh/boardsesh", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.736, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "bobaekimboae/bobaedream", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
+{"added": "2026-11-09", "gate": {"night_utilization": 0.655, "nights_covered": 5}, "gate_passed": "2026-11-09", "repo": "Bobcribb/Bobcribb.github.io", "source": "gharchive", "status": "active", "status_since": "2026-11-09"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.48, "nights_covered": 6}, "gate_passed": "2026-10-25", "repo": "BobertNeek/A-Life", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.489, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "Boblebol/slay_the_gba", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-29", "gate": {"night_utilization": 0.533, "nights_covered": 5}, "gate_passed": "2026-10-29", "repo": "bobleesj/quantem.gpu", "source": "gharchive", "status": "active", "status_since": "2026-10-29"}
