@@ -2149,6 +2149,7 @@
 {"added": "2026-10-27", "gate": {"night_utilization": 0.623, "nights_covered": 5}, "gate_passed": "2026-10-27", "repo": "garrimajo5/DeepDive", "source": "gharchive", "status": "active", "status_since": "2026-10-27"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.451, "nights_covered": 7}, "gate_passed": "2026-10-16", "repo": "garrytan/gbrain", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.688, "nights_covered": 7}, "gate_passed": "2026-10-18", "repo": "garrytan/gbrain-evals", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
+{"added": "2026-11-10", "gate": {"night_utilization": 0.671, "nights_covered": 7}, "gate_passed": "2026-11-10", "repo": "garrytan/gstack", "source": "source-list", "status": "active", "status_since": "2026-11-10"}
 {"added": "2026-10-17", "gate": {"night_utilization": 0.596, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "gastownhall/beads", "source": "source-list", "status": "active", "status_since": "2026-10-17"}
 {"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "gastownhall/gascity", "source": "manual", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.744, "nights_covered": 5}, "gate_passed": "2026-10-19", "repo": "gaulatti/orchard", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
@@ -6598,6 +6599,7 @@
 {"added": "2026-10-24", "gate": {"night_utilization": 0.454, "nights_covered": 5}, "gate_passed": "2026-10-24", "repo": "zavanton123/tayra-languages", "source": "gharchive", "status": "active", "status_since": "2026-10-24"}
 {"added": "2026-10-28", "gate": {"night_utilization": 0.508, "nights_covered": 7}, "gate_passed": "2026-10-28", "repo": "zavora-ai/adk-rust", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.549, "nights_covered": 6}, "gate_passed": "2026-10-19", "repo": "zax0rz/darkpawns", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
+{"added": "2026-11-10", "gate": {"night_utilization": 0.534, "nights_covered": 6}, "gate_passed": "2026-11-10", "repo": "ZaxbyHub/opencode-swarm", "source": "gharchive", "status": "active", "status_since": "2026-11-10"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.819, "nights_covered": 7}, "gate_passed": "2026-10-15", "repo": "zayenz/zincite", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.447, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "zazoomtek-coder/zazoomtek-site", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.531, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "zbynekdrlik/fohmixer", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
