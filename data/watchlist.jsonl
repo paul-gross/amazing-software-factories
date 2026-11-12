@@ -3006,7 +3006,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.832, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "Ju-unn/Campus_mate_compose", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.601, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "ju1337/shootout", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.542, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "JuanjoAvila/Aely", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.615, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "jubbydev/tandem", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate": {"night_utilization": 0.615, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "jubbydev/tandem", "source": "gharchive", "status": "dormant", "status_since": "2026-11-12"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.424, "nights_covered": 6}, "gate_passed": "2026-10-13", "repo": "juice0402/fanza-ranking", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-28", "gate": {"night_utilization": 0.658, "nights_covered": 5}, "gate_passed": "2026-10-28", "repo": "Julian-Dasilva/ArchiveOcellusTrainer", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.609, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "juliankang4/owngit", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
