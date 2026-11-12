@@ -4465,6 +4465,7 @@
 {"added": "2026-10-16", "gate": {"night_utilization": 0.654, "nights_covered": 6}, "gate_passed": "2026-10-16", "repo": "ormastes/simple", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.643, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "orneryd/NornicDB", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.466, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "ornew/hff", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
+{"added": "2026-11-12", "gate": {"night_utilization": 0.623, "nights_covered": 7}, "gate_passed": "2026-11-12", "repo": "OrriBogdan2/project-boki", "source": "gharchive", "status": "active", "status_since": "2026-11-12"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.746, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "Orthic-Labs/pulse", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.708, "nights_covered": 6}, "gate_passed": "2026-10-15", "repo": "Orthic-Labs/rightkit", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-23", "gate": {"night_utilization": 0.602, "nights_covered": 7}, "gate_passed": "2026-10-23", "repo": "Orthic-Labs/swiftright", "source": "gharchive", "status": "active", "status_since": "2026-10-23"}
