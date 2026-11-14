@@ -1099,7 +1099,7 @@
 {"added": "2026-10-16", "gate": {"night_utilization": 0.777, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "codemod/tsr", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "coder/xum", "source": "manual", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.595, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "codethread/hive", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
-{"added": "2026-10-17", "gate": {"night_utilization": 0.603, "nights_covered": 7}, "gate_passed": "2026-10-17", "repo": "CodexOperator/AGI", "source": "gharchive", "status": "dormant", "status_since": "2026-11-14"}
+{"added": "2026-10-17", "dormant_checked": "2026-11-14", "gate": {"night_utilization": 0.603, "nights_covered": 7}, "gate_passed": "2026-10-17", "repo": "CodexOperator/AGI", "source": "gharchive", "status": "dormant", "status_since": "2026-11-14"}
 {"added": "2026-10-27", "gate": {"night_utilization": 0.626, "nights_covered": 6}, "gate_passed": "2026-10-27", "repo": "coding-hermes/task-router", "source": "gharchive", "status": "active", "status_since": "2026-10-27"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.678, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "CodingAnarchy/pigeonhole", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.425, "nights_covered": 5}, "gate_passed": "2026-10-25", "repo": "CodyBontecou/health-md", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
