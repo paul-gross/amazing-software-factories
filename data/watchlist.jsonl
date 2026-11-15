@@ -2622,7 +2622,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.73, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "ikihsan/think-free", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.615, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "ikst2512-eng/boat-edge", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-19", "gate": {"night_utilization": 0.56, "nights_covered": 5}, "gate_passed": "2026-10-19", "repo": "ilblackdragon/near-proof-arena", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
-{"added": "2026-10-12", "gate": {"night_utilization": 0.932, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "ilgyu-yi/gitjig-pi", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
+{"added": "2026-10-12", "gate": {"night_utilization": 0.932, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "ilgyu-yi/gitjig-pi", "source": "gharchive", "status": "dormant", "status_since": "2026-11-15"}
 {"added": "2026-10-28", "gate": {"night_utilization": 0.793, "nights_covered": 6}, "gate_passed": "2026-10-28", "repo": "iljazsalihi95-wq/Earn-Together.-Z", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.702, "nights_covered": 6}, "gate_passed": "2026-10-15", "repo": "iljazsalihi95-wq/LazyTV-Android", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.526, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "IllegalCreed/type-pal", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
