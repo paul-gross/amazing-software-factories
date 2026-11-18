@@ -2398,6 +2398,7 @@
 {"added": "2026-10-26", "gate": {"night_utilization": 0.471, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "haglio/origenerator", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.607, "nights_covered": 5}, "gate_passed": "2026-10-25", "repo": "haiku-pi/haiku-rpi", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.542, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "haji84/-AI", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
+{"added": "2026-11-18", "gate": {"night_utilization": 0.589, "nights_covered": 6}, "gate_passed": "2026-11-18", "repo": "haji84/RACE-AI", "source": "gharchive", "status": "active", "status_since": "2026-11-18"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.569, "nights_covered": 5}, "gate_passed": "2026-10-12", "repo": "halashaor/CraftStudio", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.733, "nights_covered": 6}, "gate_passed": "2026-10-26", "repo": "halbritt/agent-ee", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-25", "gate": {"night_utilization": 0.644, "nights_covered": 5}, "gate_passed": "2026-10-25", "repo": "halbritt/cairn", "source": "gharchive", "status": "active", "status_since": "2026-10-25"}
