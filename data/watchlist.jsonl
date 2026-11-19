@@ -1328,7 +1328,7 @@
 {"added": "2026-10-28", "gate": {"night_utilization": 0.518, "nights_covered": 5}, "gate_passed": "2026-10-28", "repo": "darad11/fitness-app", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-20", "gate": {"night_utilization": 0.557, "nights_covered": 5}, "gate_passed": "2026-10-20", "repo": "dari-design-web/kite-fishing", "source": "gharchive", "status": "active", "status_since": "2026-10-20"}
 {"added": "2026-10-21", "gate": {"night_utilization": 0.549, "nights_covered": 6}, "gate_passed": "2026-10-21", "repo": "dariodeoli/MobOS", "source": "gharchive", "status": "active", "status_since": "2026-10-21"}
-{"added": "2026-10-16", "gate": {"night_utilization": 0.451, "nights_covered": 6}, "gate_passed": "2026-10-16", "repo": "dark-factory-build/dark-factory", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
+{"added": "2026-10-16", "gate": {"night_utilization": 0.451, "nights_covered": 6}, "gate_passed": "2026-10-16", "repo": "dark-factory-build/dark-factory", "source": "gharchive", "status": "dormant", "status_since": "2026-11-19"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.493, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "darkapoparka/cars", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-20", "gate": {"night_utilization": 0.442, "nights_covered": 6}, "gate_passed": "2026-10-20", "repo": "DarkKnight6499/job-scrap", "source": "gharchive", "status": "active", "status_since": "2026-10-20"}
 {"added": "2026-10-22", "gate": {"night_utilization": 0.409, "nights_covered": 6}, "gate_passed": "2026-10-22", "repo": "darknight11ish/Epic-Jarvis", "source": "gharchive", "status": "active", "status_since": "2026-10-22"}
