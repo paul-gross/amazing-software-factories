@@ -5957,7 +5957,7 @@
 {"added": "2026-10-10", "dormant_checked": "2026-11-20", "gate_passed": "seeded: known factory", "repo": "thisisjun786/codex-relay-workflow", "source": "manual", "status": "dormant", "status_since": "2026-11-17"}
 {"added": "2026-10-27", "gate": {"night_utilization": 0.409, "nights_covered": 5}, "gate_passed": "2026-10-27", "repo": "thisisjun786/devflow", "source": "gharchive", "status": "active", "status_since": "2026-10-27"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.549, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "Thmsnrtn/AcreOS", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.755, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "thoerwink8/fleet-dao", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate": {"night_utilization": 0.755, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "thoerwink8/fleet-dao", "source": "gharchive", "status": "archived", "status_since": "2026-11-20"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.444, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "thomascassidyzm/ssi-dashboard-v7", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.548, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "ThomasHeinThura/ticketing", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.561, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "ThomasHendrickx/aeolus-fleet", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
