@@ -3865,6 +3865,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.846, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "mgd34msu/goodvibes-jev", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.635, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "mgd34msu/Quake-Anthology", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.754, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "mgd34msu/Quake-Anthology-Rust", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-11-20", "gate": {"night_utilization": 0.599, "nights_covered": 7}, "gate_passed": "2026-11-20", "repo": "mgh3326/panewire", "source": "gharchive", "status": "active", "status_since": "2026-11-20"}
 {"added": "2026-10-21", "gate": {"night_utilization": 0.753, "nights_covered": 7}, "gate_passed": "2026-10-21", "repo": "mgradwohl/tasksmack", "source": "gharchive", "status": "active", "status_since": "2026-10-21"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.629, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "mguttmann/bothy", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.743, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "mhismail3/tron", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
