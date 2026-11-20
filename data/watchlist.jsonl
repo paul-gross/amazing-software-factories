@@ -5402,7 +5402,7 @@
 {"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "shubhodeep1/coding-workflows", "source": "manual", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-17", "gate": {"night_utilization": 0.474, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "ShuChun2024/tw-stock-tracker", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.739, "nights_covered": 6}, "gate_passed": "2026-10-15", "repo": "Shufflewick/BoardSmith", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.442, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "shuhei-suzuki/rururunx", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate": {"night_utilization": 0.442, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "shuhei-suzuki/rururunx", "source": "gharchive", "status": "dormant", "status_since": "2026-11-20"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.506, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "shuhei1101/mindstella", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-23", "gate": {"night_utilization": 0.53, "nights_covered": 7}, "gate_passed": "2026-10-23", "repo": "Shuiei/valheim-world-editor", "source": "gharchive", "status": "active", "status_since": "2026-10-23"}
 {"added": "2026-10-30", "gate": {"night_utilization": 0.689, "nights_covered": 5}, "gate_passed": "2026-10-30", "repo": "shumpmaster/Service-Desk", "source": "gharchive", "status": "active", "status_since": "2026-10-30"}
