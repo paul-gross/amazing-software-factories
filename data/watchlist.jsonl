@@ -3727,6 +3727,7 @@
 {"added": "2026-10-17", "gate": {"night_utilization": 0.879, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "markjspivey-xwisee/hallowmarch", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.431, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "Markology-agency/pages", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-11-01", "gate": {"night_utilization": 0.573, "nights_covered": 5}, "gate_passed": "2026-11-01", "repo": "Marksmon/Aria", "source": "gharchive", "status": "active", "status_since": "2026-11-01"}
+{"added": "2026-11-21", "gate": {"night_utilization": 0.733, "nights_covered": 6}, "gate_passed": "2026-11-21", "repo": "MarkTripoli/bakery", "source": "gharchive", "status": "active", "status_since": "2026-11-21"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.546, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "markup-carve/carve", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.544, "nights_covered": 6}, "gate_passed": "2026-10-15", "repo": "markup-carve/carve-js", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.494, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "markup-carve/carve-php", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
@@ -4017,6 +4018,7 @@
 {"added": "2026-10-23", "gate": {"night_utilization": 0.525, "nights_covered": 5}, "gate_passed": "2026-10-23", "repo": "Moonwalker1307/PdfPecker", "source": "gharchive", "status": "active", "status_since": "2026-10-23"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.469, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "moooon-B-V/motir-core", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.665, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "Moorelouis3/biblebuddy", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-11-21", "gate": {"night_utilization": 0.69, "nights_covered": 7}, "gate_passed": "2026-11-21", "repo": "moos-labs/borsagator", "source": "gharchive", "status": "active", "status_since": "2026-11-21"}
 {"added": "2026-10-21", "gate": {"night_utilization": 0.408, "nights_covered": 6}, "gate_passed": "2026-10-21", "repo": "moozilla/boktai3-decomp", "source": "gharchive", "status": "active", "status_since": "2026-10-21"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.461, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "MoRen9527/TriMetaverse", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.787, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "MorenoLand/Moreno.Go-TrinityCore", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
@@ -4553,6 +4555,7 @@
 {"added": "2026-10-19", "gate": {"night_utilization": 0.507, "nights_covered": 7}, "gate_passed": "2026-10-19", "repo": "oxc-project/tsrs", "source": "gharchive", "status": "active", "status_since": "2026-10-19"}
 {"added": "2026-10-28", "gate": {"night_utilization": 0.524, "nights_covered": 6}, "gate_passed": "2026-10-28", "repo": "oxdingzg/miao", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.422, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "OxReD112/der-die-das", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
+{"added": "2026-11-21", "gate": {"night_utilization": 0.831, "nights_covered": 5}, "gate_passed": "2026-11-21", "repo": "oxstack/ox-llm", "source": "gharchive", "status": "active", "status_since": "2026-11-21"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.552, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "oxsteed/old-file", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.78, "nights_covered": 7}, "gate_passed": "2026-10-26", "repo": "OxyHQ/Mention", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.436, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "OxyHQ/oxy", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
