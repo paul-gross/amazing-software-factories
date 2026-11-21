@@ -1708,7 +1708,7 @@
 {"added": "2026-10-28", "gate": {"night_utilization": 0.468, "nights_covered": 6}, "gate_passed": "2026-10-28", "repo": "eaucoin/alasio", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.58, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "ebnbin/warmoji", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-20", "gate": {"night_utilization": 0.418, "nights_covered": 5}, "gate_passed": "2026-10-20", "repo": "echoesofhumanity/Echoes-5", "source": "gharchive", "status": "active", "status_since": "2026-10-20"}
-{"added": "2026-10-18", "gate": {"night_utilization": 0.692, "nights_covered": 6}, "gate_passed": "2026-10-18", "repo": "EchoRaven/env-gen", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
+{"added": "2026-10-18", "gate": {"night_utilization": 0.692, "nights_covered": 6}, "gate_passed": "2026-10-18", "repo": "EchoRaven/env-gen", "source": "gharchive", "status": "dormant", "status_since": "2026-11-21"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.732, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "EchoTools/nevr-runtime", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.583, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "ecoma-io/ecoma-io", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.489, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "ecryptoguru/lyrashield-ai", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
