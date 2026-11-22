@@ -4066,7 +4066,7 @@
 {"added": "2026-10-16", "gate": {"night_utilization": 0.614, "nights_covered": 6}, "gate_passed": "2026-10-16", "repo": "mrcalzon02/HB-TTRPG-tools", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.718, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "mrcwalshe-wq/Gayze-App-V3", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.52, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "mrdata007/botolago-foundation", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
-{"added": "2026-10-17", "gate": {"night_utilization": 0.639, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "mrflxxxme/wizard", "source": "gharchive", "status": "active", "status_since": "2026-10-17"}
+{"added": "2026-10-17", "gate": {"night_utilization": 0.639, "nights_covered": 5}, "gate_passed": "2026-10-17", "repo": "mrflxxxme/wizard", "source": "gharchive", "status": "dormant", "status_since": "2026-11-22"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.716, "nights_covered": 6}, "gate_passed": "2026-10-12", "repo": "mrinaldi2/gravity", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-29", "gate": {"night_utilization": 0.533, "nights_covered": 5}, "gate_passed": "2026-10-29", "repo": "MrJackSpade/KairoTowns", "source": "gharchive", "status": "active", "status_since": "2026-10-29"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.781, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "MrJackSpade/SuperMetroidDecomp", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
