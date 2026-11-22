@@ -2067,7 +2067,7 @@
 {"added": "2026-10-10", "gate": {"night_utilization": 0.45, "nights_covered": 7}, "gate_passed": "2026-10-10", "repo": "flox/floxenvs", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-12", "gate": {"night_utilization": 0.531, "nights_covered": 5}, "gate_passed": "2026-10-12", "repo": "FluentRead/FluentRead", "source": "gharchive", "status": "active", "status_since": "2026-10-12"}
 {"added": "2026-10-30", "gate": {"night_utilization": 0.402, "nights_covered": 6}, "gate_passed": "2026-10-30", "repo": "flyweb123-code/pokemon-meadow", "source": "gharchive", "status": "active", "status_since": "2026-10-30"}
-{"added": "2026-10-14", "gate": {"night_utilization": 0.662, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "fmanimashaun/claude-skills", "source": "gharchive", "status": "dormant", "status_since": "2026-11-22"}
+{"added": "2026-10-14", "dormant_checked": "2026-11-22", "gate": {"night_utilization": 0.662, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "fmanimashaun/claude-skills", "source": "gharchive", "status": "dormant", "status_since": "2026-11-22"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.78, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "Fmarzochi/EGC", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.675, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "fmogensen/ASF", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.521, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "fo4sf/fo4-to-starfield", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
@@ -5163,7 +5163,7 @@
 {"added": "2026-10-28", "gate": {"night_utilization": 0.425, "nights_covered": 6}, "gate_passed": "2026-10-28", "repo": "rudvh1016-gif/retailpulse-korea", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.841, "nights_covered": 5}, "gate_passed": "2026-10-16", "repo": "rui-h-a/dams-simulation", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.579, "nights_covered": 5}, "gate_passed": "2026-10-14", "repo": "RunbotRobot/higglehaven", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
-{"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "Runfusion/Fusion", "source": "manual", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate_passed": "seeded: known factory", "repo": "Runfusion/Fusion", "source": "manual", "status": "dormant", "status_since": "2026-11-22"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.604, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "Runitupshawty/keel", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.662, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "RunlaiDeng/rldcoin", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-16", "gate": {"night_utilization": 0.571, "nights_covered": 7}, "gate_passed": "2026-10-16", "repo": "RuralUtahSports/rural-utah-sports", "source": "gharchive", "status": "active", "status_since": "2026-10-16"}
