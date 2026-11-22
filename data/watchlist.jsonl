@@ -5569,7 +5569,7 @@
 {"added": "2026-10-13", "gate": {"night_utilization": 0.729, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "snowch/digital-design", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.426, "nights_covered": 7}, "gate_passed": "2026-10-18", "repo": "snowdamiz/incant", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
 {"added": "2026-10-30", "gate": {"night_utilization": 0.573, "nights_covered": 5}, "gate_passed": "2026-10-30", "repo": "snowdamiz/mixer", "source": "gharchive", "status": "active", "status_since": "2026-10-30"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.497, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "SnowsonZ/delivery-harness", "source": "gharchive", "status": "dormant", "status_since": "2026-11-22"}
+{"added": "2026-10-10", "dormant_checked": "2026-11-22", "gate": {"night_utilization": 0.497, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "SnowsonZ/delivery-harness", "source": "gharchive", "status": "dormant", "status_since": "2026-11-22"}
 {"added": "2026-10-18", "gate": {"night_utilization": 0.722, "nights_covered": 5}, "gate_passed": "2026-10-18", "repo": "snowwhite10/MyERP", "source": "gharchive", "status": "active", "status_since": "2026-10-18"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.4, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "SNURhythm/AsoBMaShow", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.567, "nights_covered": 7}, "gate_passed": "2026-10-26", "repo": "SocialGouv/iterion", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
