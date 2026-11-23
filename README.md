@@ -173,7 +173,6 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [paul-gross/blizzard](https://github.com/paul-gross/blizzard) | D E A | 9,898 | 33,870 | 19.5 | 63% | 18% | 91% | 155 KB | 4 (+0) |
 | [kasofsk/chuggy](https://github.com/kasofsk/chuggy) | D F D | 9,835 | 20,879 | 23.0 | 57% | 12% | – | 122 KB | 2 (+0) |
 | [mobasak/fabrik](https://github.com/mobasak/fabrik) | D F C | 9,648 | 40,290 | 0.0 | 40% | 25% | 100% | 550 KB | 1 (+0) |
-| [yotamleo-org/Himmel](https://github.com/yotamleo-org/Himmel) | D F C | 9,645 | 12,410 | 0.0 | 64% | 0% | 100% | 4,357 KB | 15 (+0) |
 | [smithersai/smithers](https://github.com/smithersai/smithers) | D E B | 9,429 | 33,726 | 0.0 | 74% | 0% | 71% | 5,368 KB | 450 (+0) |
 | [jikig-ai/soleur](https://github.com/jikig-ai/soleur) | D F C | 9,316 | 17,675 | 21.4 | 11% | 0% | 89% | 523 KB | 21 (+0) |
 | [Eden-Sun/agents-manager](https://github.com/Eden-Sun/agents-manager) | D E C | 9,287 | 12,686 | 0.0 | 60% | 4% | 86% | 376 KB | 2 (+0) |
@@ -187,6 +186,7 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [Dicklesworthstone/ntm](https://github.com/Dicklesworthstone/ntm) | D F D | 8,974 | 17,762 | 0.0 | 0% | 0% | 33% | 1,692 KB | 465 (+0) |
 | [gbvraju/agk](https://github.com/gbvraju/agk) | D E A | 8,876 | 10,640 | 24.3 | 55% | 20% | 90% | 247 KB | 1 (+0) |
 | [volkb79-2/vbpub](https://github.com/volkb79-2/vbpub) | D E D | 8,677 | 40,434 | 0.0 | 67% | 0% | – | 1,119 KB | 0 (+0) |
+| [yotamleo-org/Himmel](https://github.com/yotamleo-org/Himmel) | D F C | 8,517 | 19,645 | 8.7 | 53% | 0% | 100% | 4,357 KB | 15 (+0) |
 | [Richards-LLC/cassy](https://github.com/Richards-LLC/cassy) | D F C | 8,176 | 10,497 | 5.1 | 66% | 0% | 100% | 2,284 KB | 0 (+0) |
 | [hisamekms/dagq](https://github.com/hisamekms/dagq) | D C D | 8,140 | 11,382 | 0.0 | 81% | 8% | 4% | 474 KB | 0 (+0) |
 | [swarmgraph/yoyodyne](https://github.com/swarmgraph/yoyodyne) | D D B | 8,049 | 16,200 | 28.3 | 67% | 4% | 94% | 646 KB | 1 (+0) |
@@ -208,7 +208,7 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [medici-finance/assay](https://github.com/medici-finance/assay) | D F B | 6,308 | 14,025 | 42.8 | 12% | 4% | 100% | 237 KB | 7 (+0) |
 | [genaforvena/mishe-tauftauf](https://github.com/genaforvena/mishe-tauftauf) | D C B | 6,237 | 8,854 | 0.0 | 73% | 49% | 90% | 401 KB | 3 (+0) |
 | [preloop/preloop](https://github.com/preloop/preloop) | D F B | 6,171 | 14,795 | 11.2 | 19% | 6% | 98% | 577 KB | 95 (+0) |
-| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D E B | 6,157 | 26,545 | 0.0 | 41% | 8% | 97% | 712 KB | 0 (+0) |
+| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D E B | 6,157 | 26,390 | 0.0 | 42% | 4% | 97% | 713 KB | 0 (+0) |
 | [coleam00/Archon](https://github.com/coleam00/Archon) | D F A | 6,099 | 11,057 | 15.4 | 48% | 0% | 98% | 49 KB | 23,980 (+10) |
 | [VargaFoundation/choregos](https://github.com/VargaFoundation/choregos) | D F B | 5,901 | 24,640 | 27.6 | 33% | 0% | 76% | 270 KB | 0 (+0) |
 | [CartagoGit/DelendAI](https://github.com/CartagoGit/DelendAI) | D D B | 5,731 | 9,060 | 49.8 | 65% | 0% | 84% | 59 KB | 1 (+0) |
@@ -269,12 +269,12 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [widoriezebos/agentic-tools](https://github.com/widoriezebos/agentic-tools) | E D D | 1,803 | 15,518 | 0.0 | 66% | 21% | 42% | 268 KB | 0 (+0) |
 | [thefrederiksen/devthrottle](https://github.com/thefrederiksen/devthrottle) | E F D | 1,789 | 33,186 | 23.4 | 56% | 6% | 50% | 3,082 KB | 110 (+0) |
 | [xiechimon/pacman](https://github.com/xiechimon/pacman) | E F A | 1,762 | 7,082 | 24.2 | 27% | 0% | 93% | 121 KB | 3 (+0) |
-| [dronrider/devkit](https://github.com/dronrider/devkit) | E F C | 1,748 | 15,314 | 0.1 | 3% | 0% | 67% | 1,295 KB | 0 (+0) |
 | [TrebuchetDynamics/autowork](https://github.com/TrebuchetDynamics/autowork) | E F D | 1,741 | 10,006 | 0.0 | 17% | 7% | 0% | 535 KB | 1 (+0) |
 | [lukemcqueen/hermes-cortex](https://github.com/lukemcqueen/hermes-cortex) | E F D | 1,649 | 4,309 | 0.0 | 47% | 15% | 0% | 474 KB | 4 (+0) |
 | [argszero/emrg](https://github.com/argszero/emrg) | E F A | 1,618 | 4,974 | 9.9 | 33% | 6% | 100% | 469 KB | 14 (+0) |
 | [Claudfather/Claudlobby](https://github.com/Claudfather/Claudlobby) | E F B | 1,595 | 1,590 | 11.0 | 80% | 0% | 100% | 361 KB | 0 (+0) |
 | [maba-pag/owlbear](https://github.com/maba-pag/owlbear) | E F B | 1,543 | 3,107 | 18.8 | 36% | 34% | 99% | 258 KB | 3 (+0) |
+| [dronrider/devkit](https://github.com/dronrider/devkit) | E F B | 1,500 | 13,605 | 0.1 | 5% | 0% | 84% | 1,294 KB | 0 (+0) |
 | [Round-Block/bisellium](https://github.com/Round-Block/bisellium) | E F A | 1,497 | 14,831 | 21.6 | 24% | 0% | 95% | 363 KB | 0 (+0) |
 | [teststuffstash/homelab](https://github.com/teststuffstash/homelab) | E F C | 1,470 | 6,962 | 21.2 | 33% | 0% | 100% | 602 KB | 0 (+0) |
 | [handline-dev/handline](https://github.com/handline-dev/handline) | E F A | 1,434 | 11,329 | 28.2 | 48% | 5% | 99% | 46 KB | 0 (+0) |
@@ -318,7 +318,7 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [kodmial/continuum](https://github.com/kodmial/continuum) | F F C | 273 | 3,917 | 1.2 | 18% | 0% | 82% | 685 KB | 0 (+0) |
 | [AnEntrypoint/gm](https://github.com/AnEntrypoint/gm) | F F E | 252 | 1,854 | 0.0 | 51% | 0% | 28% | 197 KB | 1 (+0) |
 | [serious-alchemy/arbiter](https://github.com/serious-alchemy/arbiter) | F F B | 244 | 895 | 9.4 | 0% | 0% | 90% | 459 KB | 0 (+0) |
-| [popcre/ai-devops](https://github.com/popcre/ai-devops) | F F B | 243 | 1,662 | 14.8 | 15% | 0% | 100% | 126 KB | 0 (+0) |
+| [popcre/ai-devops](https://github.com/popcre/ai-devops) | F F B | 243 | 1,560 | 14.9 | 15% | 0% | 100% | 126 KB | 0 (+0) |
 | [KelpCoin/DreamLedger](https://github.com/KelpCoin/DreamLedger) | F F E | 238 | 1,363 | 3.8 | 11% | 0% | 21% | 115 KB | 0 (+0) |
 | [Apeloff1/Skeleton](https://github.com/Apeloff1/Skeleton) | F F D | 234 | 41,449 | 35.1 | 21% | 0% | 21% | 3,975 KB | 1 (+0) |
 | [Johnprempeh2/gs-agentic-manager](https://github.com/Johnprempeh2/gs-agentic-manager) | F F B | 225 | 32,783 | 9.8 | 0% | 0% | 97% | 1,414 KB | 0 (+0) |
@@ -351,7 +351,7 @@ _344 repos, last measured 2026-11-23. Sorted by code lines on the median day. Th
 | [zach-source/claude-factory](https://github.com/zach-source/claude-factory) | F F B | – | – | 22.3 | – | – | 99% | 703 KB | 2 (+0) |
 | [Gulliby-development/baked](https://github.com/Gulliby-development/baked) | F F B | 0 | 664 | 21.6 | 43% | 0% | 99% | 981 KB | 2 (+0) |
 | [coreplanelabs/switchboard](https://github.com/coreplanelabs/switchboard) | F F B | – | – | 20.6 | – | – | 99% | 884 KB | 5 (+0) |
-| [gustavomhss/hugr-orchestra](https://github.com/gustavomhss/hugr-orchestra) | F F B | 0 | 296 | 20.2 | 0% | 0% | 100% | 192 KB | 0 (+0) |
+| [gustavomhss/hugr-orchestra](https://github.com/gustavomhss/hugr-orchestra) | F F B | 0 | 0 | 20.1 | – | – | 100% | 192 KB | 0 (+0) |
 | [kryptobaseddev/cleo](https://github.com/kryptobaseddev/cleo) | F F A | 0 | 8,641 | 19.1 | 40% | 0% | 93% | 315 KB | 159 (+0) |
 | [stabem/GraphHelm](https://github.com/stabem/GraphHelm) | F F D | 0 | 473 | 18.3 | 21% | 0% | – | 454 KB | 1 (+0) |
 | [nateprich-projects/command-center](https://github.com/nateprich-projects/command-center) | F F B | – | – | 18.2 | 14% | 0% | 99% | 1,120 KB | 0 (+0) |
