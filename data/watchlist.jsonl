@@ -3387,7 +3387,7 @@
 {"added": "2026-10-26", "gate": {"night_utilization": 0.447, "nights_covered": 5}, "gate_passed": "2026-10-26", "repo": "khda79/workplacecloudhub.com", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.441, "nights_covered": 7}, "gate_passed": "2026-10-14", "repo": "khmass-liturgy/pb", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-28", "gate": {"night_utilization": 0.558, "nights_covered": 5}, "gate_passed": "2026-10-28", "repo": "khoa-yelo/giap", "source": "gharchive", "status": "active", "status_since": "2026-10-28"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.619, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "Khyretos/kreative-kompanion", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate": {"night_utilization": 0.619, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "Khyretos/kreative-kompanion", "source": "gharchive", "status": "dormant", "status_since": "2026-11-27"}
 {"added": "2026-11-23", "gate": {"night_utilization": 0.646, "nights_covered": 7}, "gate_passed": "2026-11-23", "repo": "Kiddos19882/AutoDraw", "source": "gharchive", "status": "active", "status_since": "2026-11-23"}
 {"added": "2026-10-14", "gate": {"night_utilization": 0.613, "nights_covered": 6}, "gate_passed": "2026-10-14", "repo": "Kidswaste/hearth", "source": "gharchive", "status": "active", "status_since": "2026-10-14"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.708, "nights_covered": 7}, "gate_passed": "2026-10-26", "repo": "kiemtimem123/so-lieu", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
