@@ -129,7 +129,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [pom11/hscc](https://github.com/pom11/hscc) | B D B | 24,611 | 32,531 | 22.1 | 65% | 38% | 96% | 297 KB | 7 (+0) |
 | [craigoley/remudero](https://github.com/craigoley/remudero) | B D C | 23,624 | 31,257 | 134 | 68% | 28% | 95% | 5,251 KB | 0 (+0) |
 | [michal-ciechan/Antiphon](https://github.com/michal-ciechan/Antiphon) | B E C | 22,890 | 78,559 | 0.1 | 68% | 32% | 50% | 574 KB | 1 (+0) |
-| [swarmgraph/yoyodyne](https://github.com/swarmgraph/yoyodyne) | B D B | 22,659 | 25,134 | 42.8 | 64% | 50% | 98% | 660 KB | 1 (+0) |
+| [swarmgraph/yoyodyne](https://github.com/swarmgraph/yoyodyne) | B D B | 22,659 | 26,104 | 43.9 | 67% | 34% | 99% | 668 KB | 1 (+0) |
 | [favcrm/cadence](https://github.com/favcrm/cadence) | B F C | 22,638 | 31,242 | 25.4 | 33% | 42% | 100% | 528 KB | 0 (+0) |
 | [bllshttng/footnote](https://github.com/bllshttng/footnote) | B C B | 22,596 | 27,897 | 44.1 | 77% | 40% | 97% | 552 KB | 2 (+0) |
 | [natepiano/claude_commands](https://github.com/natepiano/claude_commands) | B E D | 21,905 | 49,365 | 0.0 | 48% | 60% | – | 575 KB | 2 (+0) |
@@ -143,7 +143,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [tkadauke/syrus](https://github.com/tkadauke/syrus) | C F D | 18,415 | 23,334 | 10.0 | 42% | 28% | 32% | 254 KB | 11 (+0) |
 | [bobmatnyc/trusty-tools](https://github.com/bobmatnyc/trusty-tools) | C C C | 18,037 | 27,773 | 27.1 | 72% | 35% | 99% | 615 KB | 22 (+0) |
 | [Consiliency/agent-harness](https://github.com/Consiliency/agent-harness) | C F B | 17,467 | 21,689 | 9.2 | 37% | 0% | 100% | 1,133 KB | 1 (+0) |
-| [hivecommons/hive](https://github.com/hivecommons/hive) | C F B | 17,387 | 30,238 | 101 | 25% | 9% | 93% | 6,167 KB | 91 (+1) |
+| [hivecommons/hive](https://github.com/hivecommons/hive) | C F B | 17,387 | 20,787 | 99.6 | 20% | 10% | 92% | 6,193 KB | 93 (+2) |
 | [sainteye/clawdline](https://github.com/sainteye/clawdline) | C F C | 17,334 | 25,416 | 0.0 | 26% | 18% | 76% | 20,387 KB | 2 (+0) |
 | [vantt/forgent](https://github.com/vantt/forgent) | C E D | 16,984 | 106,170 | 0.1 | 47% | 4% | 0% | 255 KB | 0 (+0) |
 | [Simon-McIntosh/reckon](https://github.com/Simon-McIntosh/reckon) | C C D | 16,933 | 35,606 | 0.0 | 76% | 19% | 0% | 3,286 KB | 0 (+0) |
@@ -163,9 +163,9 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [shubhodeep1/coding-workflows](https://github.com/shubhodeep1/coding-workflows) | C D B | 12,693 | 16,476 | 44.5 | 61% | 30% | 100% | 1,623 KB | 2 (+0) |
 | [SocialGouv/iterion](https://github.com/SocialGouv/iterion) | C F C | 12,322 | 29,429 | 8.5 | 31% | 31% | 91% | 637 KB | 19 (+0) |
 | [pullboard-dev/pullboard](https://github.com/pullboard-dev/pullboard) | C E D | 12,318 | 26,623 | 0.0 | 62% | 0% | 28% | 308 KB | 850 (+0) |
-| [dmlguq456/hearting](https://github.com/dmlguq456/hearting) | C D C | 12,100 | 12,201 | 30.1 | 67% | 0% | 100% | 473 KB | 10 (+0) |
+| [dmlguq456/hearting](https://github.com/dmlguq456/hearting) | C E C | 12,100 | 10,523 | 28.9 | 59% | 0% | 100% | 474 KB | 10 (+0) |
 | [Kangentic/kangentic](https://github.com/Kangentic/kangentic) | C F B | 11,737 | 18,414 | 9.4 | 8% | 46% | 99% | 556 KB | 153 (+0) |
-| [Latand/delegatus](https://github.com/Latand/delegatus) | C E B | 11,284 | 25,313 | 19.2 | 80% | 18% | 100% | 1,200 KB | 42 (+0) |
+| [Latand/delegatus](https://github.com/Latand/delegatus) | C C B | 11,284 | 25,159 | 19.3 | 82% | 18% | 99% | 1,218 KB | 42 (+0) |
 | [subgentic/coral](https://github.com/subgentic/coral) | C C B | 11,220 | 13,511 | 0.0 | 71% | 50% | 86% | 265 KB | 137 (+1) |
 | [arul28/ADE](https://github.com/arul28/ADE) | C C C | 10,836 | 16,501 | 17.1 | 84% | 9% | 99% | 8,727 KB | 147 (+0) |
 | [upyoke/yoke](https://github.com/upyoke/yoke) | C F B | 10,536 | 19,083 | 38.3 | 26% | 12% | 100% | 605 KB | 0 (+0) |
@@ -189,6 +189,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [CodySwannGT/lisa](https://github.com/CodySwannGT/lisa) | D F B | 7,553 | 59,280 | 8.8 | 54% | 10% | 99% | 339 KB | 6 (+0) |
 | [digitaldrywood/detent](https://github.com/digitaldrywood/detent) | D F D | 7,401 | 17,384 | 3.9 | 29% | 1% | 25% | 270 KB | 20 (+0) |
 | [MoonLadderStudios/MoonMind](https://github.com/MoonLadderStudios/MoonMind) | D F C | 7,264 | 15,067 | 9.9 | 64% | 9% | 61% | 1,265 KB | 13 (+0) |
+| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D F B | 7,092 | 17,058 | 0.0 | 53% | 16% | 97% | 717 KB | 0 (+0) |
 | [CartagoGit/DelendAI](https://github.com/CartagoGit/DelendAI) | D C A | 6,986 | 12,743 | 61.0 | 74% | 0% | 100% | 59 KB | 1 (+0) |
 | [Cheekyfellastef/stephan-os](https://github.com/Cheekyfellastef/stephan-os) | D F B | 6,904 | 7,414 | 10.7 | 32% | 0% | 96% | 544 KB | 0 (+0) |
 | [tdduydev/xdev-hive](https://github.com/tdduydev/xdev-hive) | D F B | 6,903 | 84,844 | 21.0 | 1% | 0% | 84% | 213 KB | 0 (+0) |
@@ -200,7 +201,6 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [hisamekms/dagq](https://github.com/hisamekms/dagq) | D F D | 6,326 | 5,722 | 0.0 | 74% | 0% | 4% | 474 KB | 0 (+0) |
 | [agent-sh/tower-crane](https://github.com/agent-sh/tower-crane) | D B B | 6,309 | 8,397 | 16.1 | 83% | 22% | 100% | 151 KB | 0 (+0) |
 | [medici-finance/assay](https://github.com/medici-finance/assay) | D F B | 6,302 | 11,742 | 40.0 | 0% | 32% | 99% | 237 KB | 7 (+0) |
-| [ShiftLead/shiftlead](https://github.com/ShiftLead/shiftlead) | D F B | 6,222 | 17,000 | 0.0 | 54% | 19% | 97% | 717 KB | 0 (+0) |
 | [coleam00/Archon](https://github.com/coleam00/Archon) | D F A | 6,099 | 8,912 | 16.5 | 23% | 0% | 98% | 42 KB | 24,010 (+15) |
 | [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | D E B | 5,906 | 13,056 | 39.1 | 53% | 30% | 75% | 1,510 KB | 71,141 (+24) |
 | [VargaFoundation/choregos](https://github.com/VargaFoundation/choregos) | D F B | 5,901 | 24,640 | 27.6 | 33% | 0% | 76% | 270 KB | 0 (+0) |
@@ -229,7 +229,6 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [BlackBeltTechnology/pi-agent-dashboard](https://github.com/BlackBeltTechnology/pi-agent-dashboard) | E F C | 4,249 | 18,794 | 3.0 | 24% | 0% | 68% | 3,327 KB | 354 (+1) |
 | [manuel-alvarez-alvarez/ariadne](https://github.com/manuel-alvarez-alvarez/ariadne) | E F A | 4,218 | 9,933 | 5.7 | 13% | 0% | 90% | 225 KB | 2 (+0) |
 | [kamilkreiser/Wednesday](https://github.com/kamilkreiser/Wednesday) | E F F | 4,043 | 70,488 | 0.0 | 31% | 18% | – | 8,190 KB | 0 (+0) |
-| [alexwaumann/code-foundry](https://github.com/alexwaumann/code-foundry) | E F B | 3,971 | 14,175 | 17.6 | 36% | 0% | 82% | 340 KB | 0 (+0) |
 | [ArcavenAE/marvel](https://github.com/ArcavenAE/marvel) | E F B | 3,897 | 4,468 | 13.7 | 32% | 0% | 95% | 168 KB | 1 (+0) |
 | [bogdan-alexandrescu/SwarmCloud](https://github.com/bogdan-alexandrescu/SwarmCloud) | E F B | 3,730 | 17,277 | 34.9 | 63% | 0% | 96% | 2,702 KB | 0 (+0) |
 | [HarnessDesk/HarnessDesk](https://github.com/HarnessDesk/HarnessDesk) | E F B | 3,550 | 4,130 | 9.6 | 0% | 0% | 88% | 790 KB | 5 (+1) |
@@ -237,7 +236,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [AndrewDryga/coop](https://github.com/AndrewDryga/coop) | E F C | 3,507 | 6,810 | 0.0 | 4% | 0% | 89% | 194 KB | 102 (+0) |
 | [rjmurillo/ai-agents](https://github.com/rjmurillo/ai-agents) | E F B | 3,452 | 25,306 | 15.9 | 25% | 0% | 97% | 1,129 KB | 50 (+1) |
 | [quadseven/loom](https://github.com/quadseven/loom) | E E C | 3,376 | 3,837 | 21.2 | 56% | 12% | 96% | 1,003 KB | 0 (+0) |
-| [ToanMobile/agent-workbench](https://github.com/ToanMobile/agent-workbench) | E F C | 3,276 | 5,216 | 14.3 | 54% | 0% | 88% | 688 KB | 2 (+0) |
+| [ToanMobile/agent-workbench](https://github.com/ToanMobile/agent-workbench) | E F C | 3,276 | 4,688 | 13.2 | 60% | 0% | 88% | 688 KB | 2 (+0) |
 | [argszero/emrg](https://github.com/argszero/emrg) | E F A | 3,248 | 5,605 | 10.6 | 16% | 23% | 100% | 492 KB | 14 (+0) |
 | [genaforvena/mishe-tauftauf](https://github.com/genaforvena/mishe-tauftauf) | E B A | 3,062 | 4,864 | 0.0 | 80% | 18% | 89% | 403 KB | 3 (+0) |
 | [platypeeps/sd-ai-command-pack](https://github.com/platypeeps/sd-ai-command-pack) | E E C | 2,935 | 3,350 | 14.1 | 59% | 41% | 100% | 252 KB | 1 (+0) |
@@ -268,7 +267,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [syntropic137/syntropic137](https://github.com/syntropic137/syntropic137) | E E A | 1,948 | 3,809 | 5.5 | 72% | 0% | 99% | 236 KB | 6 (+0) |
 | [developmentconexus-ops/conexus](https://github.com/developmentconexus-ops/conexus) | E F A | 1,895 | 32,978 | 19.0 | 33% | 0% | 96% | 43 KB | 0 (+0) |
 | [jacobhausler/hermes-workflows](https://github.com/jacobhausler/hermes-workflows) | E F C | 1,895 | 3,810 | 4.6 | 34% | 0% | 91% | 787 KB | 10 (+1) |
-| [mindattic/MindAttic.Orchestrator](https://github.com/mindattic/MindAttic.Orchestrator) | E C C | 1,811 | 9,661 | 0.0 | 74% | 80% | 100% | 2,501 KB | 0 (+0) |
+| [mindattic/MindAttic.Orchestrator](https://github.com/mindattic/MindAttic.Orchestrator) | E B C | 1,811 | 9,042 | 0.0 | 84% | 66% | 100% | 2,776 KB | 0 (+0) |
 | [thefrederiksen/devthrottle](https://github.com/thefrederiksen/devthrottle) | E F D | 1,789 | 33,186 | 23.4 | 56% | 6% | 50% | 3,082 KB | 110 (+0) |
 | [perfectuser21/cecelia](https://github.com/perfectuser21/cecelia) | E F B | 1,776 | 2,298 | 8.1 | 68% | 15% | 82% | 151 KB | 0 (+0) |
 | [xiechimon/pacman](https://github.com/xiechimon/pacman) | E F A | 1,762 | 7,082 | 24.2 | 27% | 0% | 93% | 121 KB | 3 (+0) |
@@ -299,6 +298,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [sourabhJainR/AUREN](https://github.com/sourabhJainR/AUREN) | F F B | 967 | 1,134 | 10.8 | 0% | 0% | 99% | 339 KB | 1 (+0) |
 | [yukimemi/magi](https://github.com/yukimemi/magi) | F F C | 895 | 2,830 | 6.7 | 46% | 27% | 85% | 1,073 KB | 2 (+0) |
 | [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | F F B | 889 | 16,303 | 12.3 | 48% | 0% | 76% | 5,530 KB | 41,081 (+23) |
+| [Johnprempeh2/gs-agentic-manager](https://github.com/Johnprempeh2/gs-agentic-manager) | F F B | 861 | 43,528 | 6.9 | 6% | 0% | 97% | 1,414 KB | 0 (+0) |
 | [AviGopal/substrate](https://github.com/AviGopal/substrate) | F E C | 815 | 947 | 0.0 | 44% | 9% | 100% | 545 KB | 0 (+0) |
 | [maba-pag/owlbear](https://github.com/maba-pag/owlbear) | F F B | 711 | 1,720 | 16.7 | 12% | 0% | 99% | 258 KB | 3 (+0) |
 | [david-engelmann/maidan](https://github.com/david-engelmann/maidan) | F F A | 711 | 5,387 | 14.8 | 55% | 24% | 99% | 262 KB | 8 (+0) |
@@ -314,21 +314,20 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [HJewkes/titan-platform](https://github.com/HJewkes/titan-platform) | F F A | 493 | 1,803 | 51.6 | 46% | 0% | 99% | 29 KB | 0 (+0) |
 | [leshchenko1979/opencrabs-dev-factory](https://github.com/leshchenko1979/opencrabs-dev-factory) | F F D | 473 | 3,759 | 0.1 | 30% | 10% | – | 67 KB | 0 (+0) |
 | [Claudfather/Claudlobby](https://github.com/Claudfather/Claudlobby) | F F B | 467 | 2,974 | 11.3 | 74% | 18% | 100% | 371 KB | 0 (+0) |
-| [saymyname-app/agent-factory](https://github.com/saymyname-app/agent-factory) | F F C | 430 | 1,072 | 7.0 | 44% | 0% | 98% | 485 KB | 0 (+0) |
 | [fpresta0607/code-goblins](https://github.com/fpresta0607/code-goblins) | F F A | 394 | 4,770 | 23.9 | 80% | 0% | 100% | 136 KB | 1 (+0) |
 | [djimit/djimitflo](https://github.com/djimit/djimitflo) | F F A | 394 | 722 | 11.9 | 0% | 18% | 100% | 386 KB | 2 (+0) |
 | [stranske/Orchestrator](https://github.com/stranske/Orchestrator) | F F C | 372 | 1,171 | 11.8 | 0% | 0% | 95% | 431 KB | 0 (+0) |
 | [popcre/ai-devops](https://github.com/popcre/ai-devops) | F F B | 364 | 1,807 | 16.1 | 13% | 0% | 100% | 126 KB | 0 (+0) |
 | [kurone-kito/idd-skill](https://github.com/kurone-kito/idd-skill) | F F E | 357 | 3,084 | 10.3 | 30% | 7% | 98% | 635 KB | 11 (+0) |
+| [saymyname-app/agent-factory](https://github.com/saymyname-app/agent-factory) | F F C | 338 | 908 | 6.7 | 52% | 0% | 98% | 485 KB | 0 (+0) |
 | [takecchi/alteroid](https://github.com/takecchi/alteroid) | F F A | 277 | 447 | 39.0 | 40% | 0% | 99% | 340 KB | 1 (+0) |
 | [chetwerikoff/orchestrator-pack](https://github.com/chetwerikoff/orchestrator-pack) | F F B | 263 | 2,245 | 2.8 | 0% | 0% | 99% | 650 KB | 1 (+0) |
 | [serious-alchemy/arbiter](https://github.com/serious-alchemy/arbiter) | F F B | 244 | 895 | 9.4 | 0% | 0% | 90% | 459 KB | 0 (+0) |
 | [KelpCoin/DreamLedger](https://github.com/KelpCoin/DreamLedger) | F F E | 238 | 1,363 | 3.8 | 11% | 0% | 21% | 115 KB | 0 (+0) |
-| [Johnprempeh2/gs-agentic-manager](https://github.com/Johnprempeh2/gs-agentic-manager) | F F B | 225 | 11,086 | 7.0 | 0% | 0% | 97% | 1,414 KB | 0 (+0) |
 | [timerloggedout-spec/termux-monorepo](https://github.com/timerloggedout-spec/termux-monorepo) | F F C | 176 | 274,473 | 101 | 0% | 0% | 87% | 378 KB | 3 (+0) |
 | [itkadr-git/myrmidon](https://github.com/itkadr-git/myrmidon) | F F B | 173 | 10,030 | 88.5 | 15% | 0% | 96% | 1,570 KB | 0 (+0) |
 | [ShiroDoromoto/amenbo](https://github.com/ShiroDoromoto/amenbo) | F F C | 169 | 691 | 11.9 | 0% | 0% | 97% | 885 KB | 3 (+0) |
-| [leshchenko1979/agent-factories](https://github.com/leshchenko1979/agent-factories) | F F D | 140 | 1,508 | 0.0 | 0% | 0% | – | 1,044 KB | 1 (+0) |
+| [leshchenko1979/agent-factories](https://github.com/leshchenko1979/agent-factories) | F F D | 140 | 1,509 | 0.0 | 0% | 0% | – | 1,044 KB | 1 (+0) |
 | [MoRen9527/TriMetaverse](https://github.com/MoRen9527/TriMetaverse) | F F D | 133 | 10,603 | 0.0 | 31% | 0% | 0% | 254 KB | 0 (+0) |
 | [stabem/GraphHelm](https://github.com/stabem/GraphHelm) | F F D | 127 | 440 | 14.2 | 47% | 0% | – | 454 KB | 1 (+0) |
 | [uw-syfi/vibesys](https://github.com/uw-syfi/vibesys) | F F B | 112 | 1,871 | 25.3 | 17% | 0% | 82% | 242 KB | 141 (+1) |
@@ -346,6 +345,7 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [coreplanelabs/switchboard](https://github.com/coreplanelabs/switchboard) | F F B | – | – | 20.6 | – | – | 99% | 884 KB | 5 (+0) |
 | [zach-source/claude-factory](https://github.com/zach-source/claude-factory) | F F B | – | – | 20.1 | – | – | 99% | 703 KB | 3 (+0) |
 | [nateprich-projects/command-center](https://github.com/nateprich-projects/command-center) | F F B | – | – | 18.2 | 14% | 0% | 99% | 1,120 KB | 0 (+0) |
+| [alexwaumann/code-foundry](https://github.com/alexwaumann/code-foundry) | F F B | 0 | 12,627 | 17.1 | 38% | 0% | 82% | 340 KB | 0 (+0) |
 | [Zennay/zCloud](https://github.com/Zennay/zCloud) | F F D | 0 | 0 | 16.2 | 10% | 0% | 12% | 279 KB | 0 (+0) |
 | [Simple-With-Us/BotFleet](https://github.com/Simple-With-Us/BotFleet) | F F B | – | – | 16.0 | 22% | 39% | 74% | 1,050 KB | 4 (+0) |
 | [gustavomhss/hugr-orchestra](https://github.com/gustavomhss/hugr-orchestra) | F F B | – | – | 15.8 | – | – | 100% | 192 KB | 0 (+0) |
@@ -375,8 +375,8 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [MattFlower/limitless](https://github.com/MattFlower/limitless) | F F C | – | – | 5.4 | – | – | 98% | 165 KB | 0 (+0) |
 | [mickeyyaya/evolve-loop](https://github.com/mickeyyaya/evolve-loop) | F D B | – | – | 5.4 | 68% | 28% | 91% | 86 KB | 7 (+0) |
 | [drmoisan/drm-copilot](https://github.com/drmoisan/drm-copilot) | F F C | 0 | 9,211 | 5.1 | 0% | 0% | 91% | 24 KB | 0 (+0) |
-| [marioatcloudvane/litefactory](https://github.com/marioatcloudvane/litefactory) | F F D | 0 | 0 | 5.1 | – | – | 44% | 144 KB | 16 (+0) |
 | [AutoDevJapan/cc-pc-tools-rs](https://github.com/AutoDevJapan/cc-pc-tools-rs) | F F A | 0 | 2,841 | 5.0 | 0% | 0% | 100% | 370 KB | 0 (+0) |
+| [marioatcloudvane/litefactory](https://github.com/marioatcloudvane/litefactory) | F F D | 0 | 0 | 4.8 | 0% | 0% | 44% | 144 KB | 16 (+0) |
 | [beyond10x/conductor](https://github.com/beyond10x/conductor) | F F B | 0 | 6,872 | 4.7 | 44% | 0% | 100% | 1,536 KB | 0 (+0) |
 | [melvenac/Self-Improving-Agent](https://github.com/melvenac/Self-Improving-Agent) | F F B | 0 | 922 | 4.3 | 0% | 0% | 96% | 127 KB | 0 (+0) |
 | [sinsan-develop/Anvil](https://github.com/sinsan-develop/Anvil) | F F D | – | – | 4.2 | – | – | – | 201 KB | 0 (+0) |
@@ -384,8 +384,8 @@ _340 repos, last measured 2026-11-27. Sorted by code lines on the median day. Th
 | [a11ign/agent-org](https://github.com/a11ign/agent-org) | F F C | 0 | 0 | 4.0 | 0% | 0% | 97% | 249 KB | 0 (+0) |
 | [turbokast/mythhelm](https://github.com/turbokast/mythhelm) | F F B | 0 | 48 | 3.6 | 0% | 0% | 98% | 54 KB | 0 (+0) |
 | [repairman29/chump](https://github.com/repairman29/chump) | F F E | 0 | 7,970 | 3.4 | 0% | 0% | 91% | 635 KB | 0 (+0) |
-| [Agent-Clubhouse/Goobers](https://github.com/Agent-Clubhouse/Goobers) | F F A | 0 | 0 | 3.3 | – | – | 97% | 243 KB | 9 (+0) |
 | [marcogallotta/switchstand](https://github.com/marcogallotta/switchstand) | F F B | – | – | 3.3 | – | – | 99% | 87 KB | 0 (+0) |
+| [Agent-Clubhouse/Goobers](https://github.com/Agent-Clubhouse/Goobers) | F F A | – | – | 3.2 | – | – | 97% | 243 KB | 9 (+0) |
 | [HJewkes/agent-chat](https://github.com/HJewkes/agent-chat) | F F C | 0 | 154 | 3.2 | 0% | 0% | 99% | 271 KB | 0 (+0) |
 | [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox) | F F B | 0 | 0 | 3.2 | – | – | 89% | 489 KB | 89 (+0) |
 | [rick-dev-creator/avala](https://github.com/rick-dev-creator/avala) | F F B | 0 | 692 | 3.1 | 0% | 0% | 83% | 1,423 KB | 1 (+0) |
