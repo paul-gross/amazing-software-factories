@@ -6449,7 +6449,7 @@
 {"added": "2026-11-26", "gate": {"night_utilization": 0.532, "nights_covered": 7}, "gate_passed": "2026-11-26", "repo": "true-line/cartograph", "source": "gharchive", "status": "active", "status_since": "2026-11-26"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.5, "nights_covered": 5}, "gate_passed": "2026-10-13", "repo": "trueforge-org/containerforge", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-26", "gate": {"night_utilization": 0.513, "nights_covered": 6}, "gate_passed": "2026-10-26", "repo": "trueforge-org/truecharts", "source": "gharchive", "status": "active", "status_since": "2026-10-26"}
-{"added": "2026-10-10", "gate": {"night_utilization": 0.528, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "trung-via/AIOS-renew", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
+{"added": "2026-10-10", "gate": {"night_utilization": 0.528, "nights_covered": 6}, "gate_passed": "2026-10-10", "repo": "trung-via/AIOS-renew", "source": "gharchive", "status": "dormant", "status_since": "2026-11-27"}
 {"added": "2026-10-15", "gate": {"night_utilization": 0.622, "nights_covered": 5}, "gate_passed": "2026-10-15", "repo": "truvity/sluis", "source": "gharchive", "status": "active", "status_since": "2026-10-15"}
 {"added": "2026-10-13", "gate": {"night_utilization": 0.777, "nights_covered": 7}, "gate_passed": "2026-10-13", "repo": "truyenhkm5group-stack/hkt", "source": "gharchive", "status": "active", "status_since": "2026-10-13"}
 {"added": "2026-10-10", "gate": {"night_utilization": 0.44, "nights_covered": 5}, "gate_passed": "2026-10-10", "repo": "trvny/trvny", "source": "gharchive", "status": "active", "status_since": "2026-10-10"}
